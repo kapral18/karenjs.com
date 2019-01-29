@@ -1,0 +1,14 @@
+{
+    "endOfLine": "lf",
+    "tabWidth": 4,
+    "arrowParens": "always",
+    "overrides": [
+        {
+            "files": "*.md",
+            "options": {
+                "printWidth": 70,
+                "proseWrap": "never"
+            }
+        }
+    ]
+}
