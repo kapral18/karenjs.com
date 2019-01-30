@@ -150,7 +150,7 @@ const Header = ({ title }) => {
                     </pre>
                 </LogoHeading>
                 <NavLinks>
-                    <CustomGatsbyLink to="/about" title="About">
+                    {/* <CustomGatsbyLink to="/about" title="About">
                         About
                     </CustomGatsbyLink>
                     <CustomGatsbyLink to="/cv" title="CV">
@@ -161,7 +161,7 @@ const Header = ({ title }) => {
                     </CustomGatsbyLink>
                     <CustomGatsbyLink to="/appearances" title="Appearances">
                         Appearances
-                    </CustomGatsbyLink>
+                    </CustomGatsbyLink> */}
                     <CustomGatsbyLink to="/blog" title="Blog">
                         Blog
                     </CustomGatsbyLink>
