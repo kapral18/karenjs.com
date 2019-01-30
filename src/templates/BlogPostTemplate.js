@@ -91,6 +91,7 @@ export const pageQuery = graphql`
             }
             frontmatter {
                 title
+                hashtags
                 date(formatString: "MMMM DD, YYYY")
             }
         }
@@ -149,7 +150,8 @@ class BlogPostTemplate extends React.Component {
                         post={{
                             title: post.frontmatter.title,
                             excerpt: post.excerpt,
-                            author: author
+                            author,
+                            hashtags: post.frontmatter.hashtags
                         }}
                     />
                     <LinkList>

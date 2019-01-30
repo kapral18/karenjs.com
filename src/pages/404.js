@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "gatsby";
 
 import Layout from "../components/Layout";
 import SEO from "../components/Seo";
@@ -10,7 +11,10 @@ const Container = styled.div`
 
 const NotFoundPage = () => (
     <Layout>
-        <SEO title="404: Not found" />
+        <SEO
+            title="Karen Grigoryan, Front-end Developer. Personal Website. 404: Not Found."
+            keywords={["javascript", "gatsby", "blog", "react", "404"]}
+        />
         <Container>
             <span
                 css={`
@@ -21,10 +25,10 @@ const NotFoundPage = () => (
                 role="img"
                 aria-label="facepalm emoji"
             >
-                🤦🏻‍♂️
+                😞
             </span>
             <h1>NOT FOUND</h1>
-            <p>I have not added this page yet.</p>
+            <Link to="/">Return to main page</Link>
         </Container>
     </Layout>
 );

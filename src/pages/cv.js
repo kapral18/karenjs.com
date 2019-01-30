@@ -56,13 +56,14 @@ class IndexPage extends Component {
         return (
             <Layout>
                 <SEO
-                    title="Karen Grigoryan, Front-end Developer. Personal Website. Appearances."
+                    title="Karen Grigoryan, Front-end Developer. Personal Website. CV."
                     keywords={[
                         "javascript",
                         "gatsby",
                         "blog",
                         "react",
-                        "appearances"
+                        "resume",
+                        "cv"
                     ]}
                 />
                 <PersonInfoCard />

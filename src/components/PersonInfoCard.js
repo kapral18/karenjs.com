@@ -116,10 +116,6 @@ const PersonInfoCard = () => (
             return (
                 <Container>
                     <Image
-                        css={`
-                            border-radius: 50%;
-                            border: 1px solid;
-                        `}
                         fixed={data.avatar.childImageSharp.fixed}
                         alt={author}
                     />

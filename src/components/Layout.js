@@ -27,6 +27,7 @@ const Footer = styled.footer`
     height: 6rem;
     font-size: 1rem;
     display: flex;
+    justify-content: center;
     align-items: center;
 `;
 
@@ -49,12 +50,12 @@ const Layout = ({ children }) => {
                         <Header title={data.site.siteMetadata.title} />
                         <Content>{children}</Content>
                         <Footer>
-                            © {new Date().getFullYear()}, Built with ❤️ with
+                            © {new Date().getFullYear()}, built by Karen G. with
                             <a
                                 css="margin-left: 0.25em"
                                 href="https://www.gatsbyjs.org"
                             >
-                                Gatsby
+                                gatsby.js
                             </a>
                         </Footer>
                     </Container>

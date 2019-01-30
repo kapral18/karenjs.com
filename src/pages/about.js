@@ -55,7 +55,16 @@ class IndexPage extends Component {
         const posts = data.allMarkdownRemark.edges;
         return (
             <Layout>
-                <SEO title="All Posts" keywords={[`gatsby`, `blog`, `react`]} />
+                <SEO
+                    title="Karen Grigoryan, Front-end Developer. Personal Website. About."
+                    keywords={[
+                        "javascript",
+                        "gatsby",
+                        "blog",
+                        "react",
+                        "about"
+                    ]}
+                />
                 <PersonInfoCard />
                 <main>
                     <Title>Latest Posts</Title>

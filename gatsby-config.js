@@ -1,6 +1,7 @@
 module.exports = {
     siteMetadata: {
         title: `<KarenJS />`,
+        siteUrl: "https://www.karenjs.com",
         description:
             "Personal website and blog on javascript by Karen Grigoryan",
         author: "Karen Grigoryan",
@@ -18,6 +19,7 @@ module.exports = {
         }
     },
     plugins: [
+        "gatsby-plugin-netlify",
         "gatsby-plugin-styled-components",
         "gatsby-plugin-react-helmet",
         {
@@ -67,6 +69,8 @@ module.exports = {
                 //trackingId: "ADD YOUR TRACKING ID HERE",
             }
         },
+        "gatsby-plugin-sitemap",
+        "gatsby-plugin-robots-txt",
         {
             resolve: "gatsby-plugin-manifest",
             options: {

@@ -3,7 +3,7 @@ import { Location, navigate } from "@reach/router";
 import Prism from "prismjs";
 import styled from "styled-components";
 import CustomGatsbyLink from "./CustomGatsbyLink";
-import { ArrowBack } from "styled-icons/boxicons-regular";
+import { ArrowBack, Home } from "styled-icons/boxicons-regular";
 import { colors } from "../common/css/settings";
 import media from "../utils/media";
 
@@ -23,8 +23,7 @@ const isLocationBlog = (location) => {
     return location.pathname.includes("/blog/");
 };
 
-const ReturnArrow = styled(ArrowBack).attrs({
-    title: "Return to main page",
+const getHeaderLinkIcon = (iconClass) => styled(iconClass).attrs({
     size: "5rem",
     fill: "white"
 })`
@@ -32,9 +31,22 @@ const ReturnArrow = styled(ArrowBack).attrs({
     display: block;
 `;
 
-const ReturnArrowWrapped = styled(ReturnArrow)`
+const ReturnArrow = styled(getHeaderLinkIcon(ArrowBack)).attrs({
+    title: "Go back"
+})`
     ${media.tablet`
         display: none;
+    `}
+`;
+
+const HomeIcon = styled(getHeaderLinkIcon(Home)).attrs({
+    title: "Return home",
+    size: "2rem"
+})`
+    display: none;
+
+    ${media.phone`
+        display: initial;
     `}
 `;
 
@@ -86,6 +98,10 @@ const NavLinks = styled.div`
     height: 100%;
     align-items: center;
 
+    ${media.mobile`
+        font-size: 1.1rem;
+    `};
+
     ${media.tablet`
         position: static;
     `}
@@ -115,16 +131,19 @@ const Header = ({ title }) => {
                             return null;
                         }
                         return (
-                            <ReturnArrowWrapped
-                                onClick={
-                                    isLocationBlog(location)
-                                        ? handleNavBackTwice
-                                        : handleNavBack
-                                }
-                            />
+                            <>
+                                <ReturnArrow
+                                    onClick={
+                                        isLocationBlog(location)
+                                            ? handleNavBackTwice
+                                            : handleNavBack
+                                    }
+                                />
+                            </>
                         );
                     }}
                 </Location>
+                <HomeIcon onClick={() => navigate("/")} />
                 <LogoHeading to="/" title="Go to main page">
                     <pre>
                         <code className="language-js">{title}</code>
@@ -134,14 +153,17 @@ const Header = ({ title }) => {
                     <CustomGatsbyLink to="/about" title="About">
                         About
                     </CustomGatsbyLink>
-                    <CustomGatsbyLink to="/blog" title="Blog">
-                        Blog
+                    <CustomGatsbyLink to="/cv" title="CV">
+                        CV
+                    </CustomGatsbyLink>
+                    <CustomGatsbyLink to="/projects" title="Projects">
+                        Projects
                     </CustomGatsbyLink>
                     <CustomGatsbyLink to="/appearances" title="Appearances">
                         Appearances
                     </CustomGatsbyLink>
-                    <CustomGatsbyLink to="/contacts" title="Contacts">
-                        Contacts
+                    <CustomGatsbyLink to="/blog" title="Blog">
+                        Blog
                     </CustomGatsbyLink>
                 </NavLinks>
             </InnerContainer>

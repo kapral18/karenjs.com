@@ -1,7 +1,15 @@
 ---
 title: "Hello world!"
 date: "2019-01-22"
+hashtags:
+    - hello
+    - blog
+    - javascript
+    - reactjs
+    - gatsbyjs
 ---
+
+An article about Title
 
 ### Hey how's it going?
 
