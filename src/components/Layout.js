@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { StaticQuery, graphql } from "gatsby";
-import GlobalStyles from "../common/css/global";
+import GlobalStyles from "../common/global";
 import Header from "./Header";
 import media from "../utils/media";
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
 import styled from "styled-components";
-import { colors } from "../common/css/settings";
+import { colors } from "../common/settings";
 import Layout from "../components/Layout";
 import SEO from "../components/Seo";
 import Share from "../components/Share";

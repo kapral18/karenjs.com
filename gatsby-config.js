@@ -22,6 +22,7 @@ module.exports = {
         "gatsby-plugin-netlify",
         "gatsby-plugin-styled-components",
         "gatsby-plugin-react-helmet",
+        "gatsby-transformer-json",
         {
             resolve: "gatsby-source-filesystem",
             options: {

@@ -7,7 +7,7 @@ import * as faBrands from "styled-icons/fa-brands";
 import * as feather from "styled-icons/feather";
 
 import media from "../utils/media";
-import { colors } from "../common/css/settings";
+import { colors } from "../common/settings";
 
 const Container = styled.div`
     display: flex;

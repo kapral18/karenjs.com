@@ -4,8 +4,9 @@ import Prism from "prismjs";
 import styled from "styled-components";
 import CustomGatsbyLink from "./CustomGatsbyLink";
 import { ArrowBack, Home } from "styled-icons/boxicons-regular";
-import { colors } from "../common/css/settings";
+import { colors } from "../common/settings";
 import media from "../utils/media";
+import OutLink from "./OutLink";
 
 const handleNavBack = () => {
     navigate("../");
@@ -117,6 +118,16 @@ const NavLinks = styled.div`
     }
 `;
 
+const NavOutLink = styled(OutLink)`
+    margin: 0 1rem;
+    color: #fff;
+    font-family: "Fira Sans", sans-serif;
+    text-decoration: none;
+    :hover {
+        color: #e2777a;
+    }
+`;
+
 const Header = ({ title }) => {
     useEffect(() => {
         Prism.highlightAll();
@@ -152,19 +163,19 @@ const Header = ({ title }) => {
                 <NavLinks>
                     {/* <CustomGatsbyLink to="/about" title="About">
                         About
-                    </CustomGatsbyLink>
-                    <CustomGatsbyLink to="/cv" title="CV">
-                        CV
-                    </CustomGatsbyLink>
-                    <CustomGatsbyLink to="/projects" title="Projects">
+                    </CustomGatsbyLink> */}
+                    {/* <CustomGatsbyLink to="/projects" title="Projects">
                         Projects
-                    </CustomGatsbyLink>
-                    <CustomGatsbyLink to="/appearances" title="Appearances">
-                        Appearances
                     </CustomGatsbyLink> */}
                     <CustomGatsbyLink to="/blog" title="Blog">
                         Blog
                     </CustomGatsbyLink>
+                    <CustomGatsbyLink to="/appearances" title="Appearances">
+                        Appearances
+                    </CustomGatsbyLink>
+                    <NavOutLink href="https://kapral18.github.io/cv">
+                        CV
+                    </NavOutLink>
                 </NavLinks>
             </InnerContainer>
         </Container>

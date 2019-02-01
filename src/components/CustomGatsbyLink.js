@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "gatsby";
-import { colors } from "../common/css/settings";
+import { colors } from "../common/settings";
 
 const CustomGatsbyLink = styled(Link)`
     text-decoration: none;
