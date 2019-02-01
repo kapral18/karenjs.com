@@ -34,6 +34,7 @@ export const pageQuery = graphql`
                     name
                     host
                     location
+                    slidesUrl
                 }
             }
         }
@@ -72,7 +73,8 @@ const AppearancesPage = ({ data }) => {
                             date: node.date,
                             url: node.url,
                             host: node.host,
-                            location: node.location
+                            location: node.location,
+                            slidesUrl: node.slidesUrl
                         });
 
                         return acc;

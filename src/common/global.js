@@ -60,6 +60,9 @@ const GlobalStyles = createGlobalStyle`
         color: inherit;
         font-size: medium;
     }
+    a {
+        text-decoration: none;
+    }
 `;
 
 export default GlobalStyles;

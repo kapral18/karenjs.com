@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 import styled from "styled-components";
 import Box from "../common/Box";
 import OutLink from "./OutLink";
@@ -37,13 +38,25 @@ const HostStyle = styled.em`
     font-size: 1.2rem;
 `;
 
-const Appearance = ({ name, url, date, host, location }) => {
+const SlidesOutLink = styled(OutLink)`
+    font-size: 1.2rem;
+`;
+
+const Appearance = ({ name, url, date, host, location, slidesUrl }) => {
     return (
         <AppearanceStyle>
             <Box>
                 <AppearanceOutLink href={url}>{name}</AppearanceOutLink>
-                <DateStyle>{date}</DateStyle>
+                <DateStyle>
+                    {moment(date)
+                        .format("DD MMM")
+                        .valueOf()}
+                </DateStyle>
             </Box>
+
+            <div>
+                <SlidesOutLink href={slidesUrl}>[Slides]</SlidesOutLink>
+            </div>
 
             <HostStyle>
                 {host} ({location})
