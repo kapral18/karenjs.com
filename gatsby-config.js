@@ -12,7 +12,7 @@ module.exports = {
                 "https://stackoverflow.com/users/2998898/karen-grigoryan?tab=profile",
             Linkedin: "https://www.linkedin.com/in/kapral18/",
             Twitter: "https://twitter.com/kaafury",
-            Telegram: "tg://resolve?domain=kapral18",
+            Telegram: "https://t.me/kapral18",
             Github: "https://github.com/kapral18",
             Medium: "https://medium.com/@karengrigoryan",
             Youtube: "https://www.youtube.com/kapral18"
