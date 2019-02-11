@@ -5,7 +5,6 @@ module.exports = {
         description:
             "Personal website and blog on JavaScript, React and related.. by Karen Grigoryan, Front-end Engineer.",
         author: "Karen Grigoryan",
-        authorTagline: "Front-end Engineer from Amsterdam, The Netherlands",
         socialUrls: {
             Mail: "mailto:hey@karenjs.com",
             StackOverflow:

@@ -6,7 +6,6 @@ import OutLink from "./OutLink";
 
 const AppearanceOutLink = styled(OutLink)`
     color: #000;
-    font-family: "Fira Sans", sans-serif;
     text-decoration: none;
     :hover {
         color: #e2777a;

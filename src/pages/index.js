@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 
 import Layout from "../components/Layout";
 import SEO from "../components/Seo";
 import PersonInfoCard from "../components/PersonInfoCard";
 import Post from "../components/Post";
-import Title from "../components/Title";
 
 export const query = graphql`
     query IndexPageQuery {
@@ -14,11 +13,13 @@ export const query = graphql`
                 title
             }
         }
+
         posts: allMarkdownRemark(
             filter: { fields: { slug: { glob: "/blog/**" } } }
             limit: 3
             sort: { fields: [frontmatter___date], order: DESC }
         ) {
+            totalCount
             edges {
                 node {
                     id
@@ -48,11 +49,12 @@ class IndexPage extends Component {
                 <SEO title="Home" />
                 <PersonInfoCard />
                 <main>
-                    <Title>Latest Posts</Title>
-
                     {posts.map(({ node }) => {
                         return <Post key={node.id} node={node} />;
                     })}
+                    {data.totalCount > 3 && (
+                        <Link to="/blog/">More articles...</Link>
+                    )}
                 </main>
             </Layout>
         );

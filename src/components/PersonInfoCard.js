@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import OutLink from "./OutLink";
-import { StaticQuery, graphql } from "gatsby";
+import { Link, StaticQuery, graphql } from "gatsby";
 import Image from "gatsby-image";
 import * as faBrands from "styled-icons/fa-brands";
 import * as feather from "styled-icons/feather";
@@ -12,7 +12,7 @@ import { colors } from "../common/settings";
 const Container = styled.div`
     display: flex;
     align-items: center;
-    margin: 5rem 0;
+    margin: 5rem 0 1rem;
 
     ${media.tablet`
         flex-direction: column;
@@ -28,27 +28,9 @@ const TextContainer = styled.div`
     `}
 `;
 
-const Name = styled.h3`
-    font-size: 2.4rem;
-    letter-spacing: 0.1rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    font-family: "system";
-`;
-
-const TagLine = styled.sub`
-    font-weight: normal;
-    font-size: 1.6rem;
-    margin: 0;
-    display: block;
-`;
-
 const getSocialIcon = (iconClass, title) => {
     return styled(iconClass).attrs({ title, size: "1.5rem" })`
-        margin: 1.5rem 0;
+        vertical-align: top;
         stroke: white;
         path {
             fill: ${colors.body};
@@ -70,6 +52,8 @@ const IconOutLink = styled(OutLink)`
 
 const SocialMediaLine = styled.div`
     display: flex;
+    align-items: center;
+    margin-top: 1rem;
 
     ${media.tablet`
         justify-content: center;
@@ -80,7 +64,7 @@ const personInfoQuery = graphql`
     query PersonInfoQuery {
         avatar: file(absolutePath: { regex: "/maface\\\\.png/" }) {
             childImageSharp {
-                fixed(width: 70, height: 70) {
+                fixed(width: 56, height: 56) {
                     ...GatsbyImageSharpFixed
                 }
             }
@@ -88,7 +72,6 @@ const personInfoQuery = graphql`
         site {
             siteMetadata {
                 author
-                authorTagline
                 socialUrls {
                     Twitter
                     StackOverflow
@@ -108,11 +91,7 @@ const PersonInfoCard = () => (
     <StaticQuery
         query={personInfoQuery}
         render={(data) => {
-            const {
-                author,
-                authorTagline,
-                socialUrls
-            } = data.site.siteMetadata;
+            const { author, socialUrls } = data.site.siteMetadata;
             return (
                 <Container>
                     <Image
@@ -120,8 +99,10 @@ const PersonInfoCard = () => (
                         alt={author}
                     />
                     <TextContainer>
-                        <Name>{author}</Name>
-                        <TagLine>{authorTagline}</TagLine>
+                        <div>
+                            JavaScript thoughts by{" "}
+                            <Link to="/about/">{author}</Link>
+                        </div>
                         <SocialMediaLine>
                             {Object.entries(socialUrls).map(
                                 ([socialMediaName, socialMediaUrl]) => {

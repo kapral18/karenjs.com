@@ -2,15 +2,6 @@ import { createGlobalStyle } from "styled-components";
 import { colors } from "./settings";
 
 const GlobalStyles = createGlobalStyle`
-    @font-face {
-        font-family: system;
-        font-style: normal;
-        font-weight: 300;
-        src: local('.SFNSText-Light'), local('.HelveticaNeueDeskInterface-Light'),
-        local('.LucidaGrandeUI'), local('Ubuntu Light'), local('Segoe UI Light'),
-        local('Roboto-Light'), local('DroidSans'), local('Tahoma');
-    }
-
     html, body {
         height: 100%;
     }
@@ -20,7 +11,8 @@ const GlobalStyles = createGlobalStyle`
     }
 
     body {
-        font-family: 'system';
+        font-family: 'Lato', sans-serif;
+        font-weight: 400;
         margin: 0;
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
@@ -31,7 +23,8 @@ const GlobalStyles = createGlobalStyle`
     }
 
     h1, h2, h3, h4, h5, h6 {
-        font-family: 'Fira Sans', sans-serif;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 900;
     }
 
     h2 {
@@ -47,7 +40,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     .code, code {
-        font-family: Menlo, Monaco, "Courier New", Courier, monospace;
+        font-family: "Droid Sans Mono", Menlo, Monaco, "Courier New", Courier, monospace;
         word-break: break-word;
     }
 
