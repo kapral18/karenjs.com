@@ -41,7 +41,7 @@ const IndexPage = ({ data }) => {
     const { edges } = data.posts;
     return (
         <Layout>
-            <SEO slug="/blog/" title="Blog Posts Index" />
+            <SEO slug="/blog/" title="Blog Posts" />
             <main>
                 <Title>All posts</Title>
 

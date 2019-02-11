@@ -46,14 +46,14 @@ const SEO = ({ description, lang, slug, keywords, title, article }) => {
 
                 const tags = baseTags.concat(keywords);
 
-                const decoratedTitle = `${siteMetadata.title} | ${title}`;
+                const decoratedTitle = `${siteMetadata.title} - ${title}`;
 
                 return (
                     <Helmet
                         htmlAttributes={{
                             lang
                         }}
-                        titleTemplate={`${siteMetadata.title} | %s`}
+                        titleTemplate={`${siteMetadata.title} - %s`}
                     >
                         <title>{title}</title>
 
