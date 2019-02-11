@@ -162,7 +162,7 @@ const Header = ({ title }) => {
                 <HomeIcon onClick={() => navigate("/")} />
                 <LogoHeading to="/" title="Go to main page">
                     <pre>
-                        <code className="language-js">{title}</code>
+                        <code className="language-js">{`<${title} />`}</code>
                     </pre>
                 </LogoHeading>
                 <NavLinks>
