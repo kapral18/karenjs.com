@@ -5,7 +5,6 @@ import Layout from "../../components/Layout";
 import Appearance from "../../components/Appearance";
 import YearLine from "../../components/YearLine";
 import SEO from "../../components/Seo";
-import Title from "../../components/Title";
 
 export const query = graphql`
     query AppearancesPageQuery {
@@ -39,37 +38,39 @@ const AppearancesPage = ({ data }) => {
                 keywords={["workshops", "conferences", "talks", "appearances"]}
             />
             <main>
-                <Title>Public Appearances</Title>
-                {data.allAppearancesJson.edges
-                    .reduce((acc, { node }) => {
-                        const year = node.date.split("-")[0];
+                <article css="margin-top: 8rem;">
+                    <h1>Public Appearances</h1>
+                    {data.allAppearancesJson.edges
+                        .reduce((acc, { node }) => {
+                            const year = node.date.split("-")[0];
 
-                        if (!acc.find(({ date }) => date.includes(year))) {
+                            if (!acc.find(({ date }) => date.includes(year))) {
+                                acc.push({
+                                    id: `year sum before ${node.id}`,
+                                    year,
+                                    isYearSum: true
+                                });
+                            }
                             acc.push({
-                                id: `year sum before ${node.id}`,
-                                year,
-                                isYearSum: true
+                                id: node.id,
+                                name: node.name,
+                                date: node.date,
+                                url: node.url,
+                                host: node.host,
+                                location: node.location,
+                                slidesUrl: node.slidesUrl
                             });
-                        }
-                        acc.push({
-                            id: node.id,
-                            name: node.name,
-                            date: node.date,
-                            url: node.url,
-                            host: node.host,
-                            location: node.location,
-                            slidesUrl: node.slidesUrl
-                        });
 
-                        return acc;
-                    }, [])
-                    .map(({ id: key, ...mNode }) => {
-                        if (mNode.isYearSum) {
-                            return <YearLine key={key} {...mNode} />;
-                        }
+                            return acc;
+                        }, [])
+                        .map(({ id: key, ...mNode }) => {
+                            if (mNode.isYearSum) {
+                                return <YearLine key={key} {...mNode} />;
+                            }
 
-                        return <Appearance key={key} {...mNode} />;
-                    })}
+                            return <Appearance key={key} {...mNode} />;
+                        })}
+                </article>
             </main>
         </Layout>
     );

@@ -4,7 +4,6 @@ import { graphql } from "gatsby";
 import Layout from "../../components/Layout";
 import SEO from "../../components/Seo";
 import Post from "../../components/Post";
-import Title from "../../components/Title";
 
 export const query = graphql`
     query BlogPostsPageQuery {
@@ -43,11 +42,13 @@ const IndexPage = ({ data }) => {
         <Layout>
             <SEO slug="/blog/" title="Blog Posts" />
             <main>
-                <Title>All posts</Title>
+                <article css="margin-top: 8rem;">
+                    <h1>All posts</h1>
 
-                {edges.map(({ node }) => {
-                    return <Post key={node.id} node={node} />;
-                })}
+                    {edges.map(({ node }) => {
+                        return <Post key={node.id} node={node} />;
+                    })}
+                </article>
             </main>
         </Layout>
     );
