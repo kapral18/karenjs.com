@@ -6,6 +6,7 @@ const CustomGatsbyLink = styled(Link)`
     text-decoration: none;
     color: ${colors.body};
     :hover {
+        text-decoration: none;
         color: ${colors.linkHover};
     }
 `;

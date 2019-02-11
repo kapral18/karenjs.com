@@ -11,10 +11,7 @@ const Container = styled.div`
 
 const NotFoundPage = () => (
     <Layout>
-        <SEO
-            title="Karen Grigoryan, Front-end Developer. Personal Website. 404: Not Found."
-            keywords={["javascript", "gatsby", "blog", "react", "404"]}
-        />
+        <SEO slug="/404/" title="Page Not Found" />
         <Container>
             <span
                 css={`

@@ -48,7 +48,7 @@ const Share = ({ post }) => {
                                 url={url}
                                 title={callToRead}
                                 via="kaafury"
-                                hashtags={post.hashtags}
+                                hashtags={post.tags}
                                 className="social-icon"
                             >
                                 <TwitterIcon size={28} round />

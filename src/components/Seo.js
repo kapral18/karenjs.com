@@ -1,14 +1,27 @@
 import React from "react";
 import Helmet from "react-helmet";
+import urlJoin from "url-join";
 import { StaticQuery, graphql } from "gatsby";
 
-const detailsQuery = graphql`
-    query DefaultSEOQuery {
+const seoQuery = graphql`
+    query SeoQuery {
         site {
             siteMetadata {
                 title
+                siteUrl
                 description
                 author
+            }
+        }
+
+        maface: file(absolutePath: { regex: "/maface\\\\.png/" }) {
+            internal {
+                mediaType
+            }
+            childImageSharp {
+                resize {
+                    src
+                }
             }
         }
     }
@@ -16,73 +29,157 @@ const detailsQuery = graphql`
 
 const defaultProps = {
     lang: "en",
-    meta: [],
-    keywords: []
+    keywords: [],
+    slug: "/"
 };
 
-function SEO({ description, lang, meta, keywords, title }) {
+const baseTags = ["javascript", "react", "gatsby", "blog"];
+
+const SEO = ({ description, lang, slug, keywords, title, article }) => {
     return (
         <StaticQuery
-            query={detailsQuery}
+            query={seoQuery}
             render={(data) => {
-                const metaDescription =
-                    description || data.site.siteMetadata.description;
+                const { siteMetadata } = data.site;
+
+                const metaDescription = description || siteMetadata.description;
+
+                const tags = baseTags.concat(keywords);
+
                 return (
                     <Helmet
                         htmlAttributes={{
                             lang
                         }}
-                        title={title}
-                        titleTemplate={`%s | ${data.site.siteMetadata.title}`}
-                        meta={[
-                            {
-                                name: "description",
-                                content: metaDescription
-                            },
-                            {
-                                property: "og:title",
-                                content: title
-                            },
-                            {
-                                property: "og:description",
-                                content: metaDescription
-                            },
-                            {
-                                property: "og:type",
-                                content: "website"
-                            },
-                            {
-                                name: "twitter:card",
-                                content: "summary"
-                            },
-                            {
-                                name: "twitter:creator",
-                                content: data.site.siteMetadata.author
-                            },
-                            {
-                                name: "twitter:title",
-                                content: title
-                            },
-                            {
-                                name: "twitter:description",
-                                content: metaDescription
+                        titleTemplate={`${siteMetadata.title} | %s`}
+                    >
+                        <title>{title}</title>
+
+                        <meta name="description" content={metaDescription} />
+                        <meta name="keywords" content={tags.join(", ")} />
+
+                        <meta property="og:title" content={title} />
+
+                        <meta
+                            property="og:description"
+                            content={metaDescription}
+                        />
+
+                        <meta
+                            property="og:type"
+                            content={article ? "article" : "website"}
+                        />
+
+                        <meta
+                            property="og:image"
+                            content={urlJoin(
+                                siteMetadata.siteUrl,
+                                article
+                                    ? article.featuredImage.childImageSharp
+                                          .resize.src
+                                    : data.maface.childImageSharp.resize.src
+                            )}
+                        />
+
+                        <meta
+                            property="og:image:url"
+                            content={urlJoin(
+                                siteMetadata.siteUrl,
+                                article
+                                    ? article.featuredImage.childImageSharp
+                                          .resize.src
+                                    : data.maface.childImageSharp.resize.src
+                            )}
+                        />
+
+                        <meta
+                            property="og:image:secure_url"
+                            content={urlJoin(
+                                siteMetadata.siteUrl,
+                                article
+                                    ? article.featuredImage.childImageSharp
+                                          .resize.src
+                                    : data.maface.childImageSharp.resize.src
+                            )}
+                        />
+
+                        <meta
+                            property="og:image:type"
+                            content={
+                                article
+                                    ? article.featuredImage.internal.mediaType
+                                    : data.maface.internal.mediaType
                             }
-                        ]
-                            .concat(
-                                keywords.length > 0
-                                    ? {
-                                          name: "keywords",
-                                          content: keywords.join(", ")
-                                      }
-                                    : []
-                            )
-                            .concat(meta)}
-                    />
+                        />
+
+                        <meta
+                            property="og:image:alt"
+                            content={
+                                article
+                                    ? article.featuredImageAlt
+                                    : "Karen Grigoryan. Front-end Engineer. <KarenJS /> (https://www.karenjs.com)"
+                            }
+                        />
+
+                        <meta
+                            property="og:url"
+                            content={urlJoin(siteMetadata.siteUrl, slug)}
+                        />
+
+                        <meta property="og:site_name" content={title} />
+
+                        <meta name="twitter:card" content={"summary"} />
+
+                        <meta name="twitter:creator" content={"@kaafury"} />
+
+                        <meta name="twitter:title" content={title} />
+
+                        <meta
+                            name="twitter:url"
+                            content={urlJoin(siteMetadata.siteUrl, slug)}
+                        />
+
+                        <meta
+                            property="twitter:image"
+                            content={urlJoin(
+                                siteMetadata.siteUrl,
+                                article
+                                    ? article.featuredImage.childImageSharp
+                                          .resize.src
+                                    : data.maface.childImageSharp.resize.src
+                            )}
+                        />
+
+                        <meta name="twitter:title" content={title} />
+
+                        <meta
+                            name="twitter:description"
+                            content={metaDescription}
+                        />
+
+                        {article && [
+                            <meta
+                                key="article:author"
+                                property="article:author"
+                                content={urlJoin(
+                                    siteMetadata.siteUrl,
+                                    "/about/"
+                                )}
+                            />,
+                            ...tags.map((tag) => (
+                                <meta
+                                    property="article:tag"
+                                    key={tag}
+                                    content={tag}
+                                />
+                            ))
+                        ]}
+                    </Helmet>
                 );
             }}
         />
     );
-}
+};
 
 SEO.defaultProps = defaultProps;
 

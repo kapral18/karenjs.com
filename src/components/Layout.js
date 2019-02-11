@@ -31,18 +31,20 @@ const Footer = styled.footer`
     align-items: center;
 `;
 
+const layoutQuery = graphql`
+    query LayoutQuery {
+        site {
+            siteMetadata {
+                title
+            }
+        }
+    }
+`;
+
 const Layout = ({ children }) => {
     return (
         <StaticQuery
-            query={graphql`
-                {
-                    site {
-                        siteMetadata {
-                            title
-                        }
-                    }
-                }
-            `}
+            query={layoutQuery}
             render={(data) => {
                 return (
                     <Container>

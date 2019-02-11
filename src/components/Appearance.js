@@ -10,6 +10,7 @@ const AppearanceOutLink = styled(OutLink)`
     text-decoration: none;
     :hover {
         color: #e2777a;
+        text-decoration: none;
     }
 `;
 

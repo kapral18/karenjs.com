@@ -1,72 +1,104 @@
 const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
 
-exports.createPages = ({ graphql, actions }) => {
+const BASE_TEMPLATE = "BlogPost";
+const TEMPLATES_DIR_PATH = path.resolve("./src/templates");
+const BASE_TEMPLATE_PATH = path.join(
+    TEMPLATES_DIR_PATH,
+    `${BASE_TEMPLATE}/index.js`
+);
+
+const getTemplate = (template) => {
+    if (template) {
+        return path.join(TEMPLATES_DIR_PATH, `${template}/index.js`);
+    }
+    return BASE_TEMPLATE_PATH;
+};
+
+exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions;
 
-    return new Promise((resolve, reject) => {
-        const blogPost = path.resolve("./src/templates/BlogPostTemplate.js");
-        resolve(
-            graphql(
-                `
-                    {
-                        allMarkdownRemark(
-                            sort: { fields: [frontmatter___date], order: DESC }
-                            limit: 1000
-                        ) {
-                            edges {
-                                node {
-                                    fields {
-                                        slug
-                                    }
-                                    frontmatter {
-                                        title
-                                    }
-                                }
-                            }
+    const result = await graphql(`
+        {
+            posts: allMarkdownRemark(
+                filter: { fields: { slug: { glob: "/blog/**" } } }
+                sort: { fields: [frontmatter___date], order: DESC }
+                limit: 1000
+            ) {
+                edges {
+                    node {
+                        fields {
+                            slug
+                        }
+                        frontmatter {
+                            title
                         }
                     }
-                `
-            ).then((result) => {
-                if (result.errors) {
-                    console.error(result.errors);
-                    reject(result.errors);
                 }
-
-                // Create blog posts pages.
-                const posts = result.data.allMarkdownRemark.edges;
-
-                posts.forEach((post, index) => {
-                    const previous =
-                        index === posts.length - 1
-                            ? null
-                            : posts[index + 1].node;
-                    const next = index === 0 ? null : posts[index - 1].node;
-
-                    createPage({
-                        path: post.node.fields.slug,
-                        component: blogPost,
-                        context: {
-                            slug: post.node.fields.slug,
-                            previous,
-                            next
+            }
+            other: allMarkdownRemark(
+                filter: { fields: { slug: { glob: "!/blog/**" } } }
+            ) {
+                edges {
+                    node {
+                        fields {
+                            slug
                         }
-                    });
-                });
-            })
-        );
+                        frontmatter {
+                            title
+                            template
+                        }
+                    }
+                }
+            }
+        }
+    `);
+
+    if (result.errors) {
+        console.error(result.errors);
+        process.exit(1);
+    }
+
+    const { posts, other } = result.data;
+
+    posts.edges.forEach(({ node }, index, allPosts) => {
+        const prev =
+            index === allPosts.length - 1 ? null : allPosts[index + 1].node;
+        const next = index === 0 ? null : allPosts[index - 1].node;
+
+        createPage({
+            path: node.fields.slug,
+            component: getTemplate(),
+            context: {
+                slug: node.fields.slug,
+                prev,
+                next
+            }
+        });
+    });
+
+    other.edges.forEach(({ node }) => {
+        createPage({
+            path: node.fields.slug,
+            component: getTemplate(node.frontmatter.template),
+            context: {
+                slug: node.fields.slug
+            }
+        });
     });
 };
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
-    const { createNodeField } = actions;
+    if (node.internal.type !== "MarkdownRemark") return;
 
-    if (node.internal.type === "MarkdownRemark") {
-        const value = createFilePath({ node, getNode });
-        createNodeField({
-            name: "slug",
-            node,
-            value
-        });
-    }
+    const { permalink } = node.frontmatter;
+
+    const { createNodeField } = actions;
+    const slug = permalink || createFilePath({ node, getNode });
+
+    createNodeField({
+        node,
+        name: "slug",
+        value: slug
+    });
 };

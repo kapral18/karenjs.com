@@ -56,6 +56,10 @@ const LogoHeading = styled(CustomGatsbyLink)`
     ${media.phone`
         display: none;
     `}
+
+    pre {
+        background: #220e10;
+    }
 `;
 
 const Container = styled.div`
@@ -64,7 +68,7 @@ const Container = styled.div`
     left: 0;
     right: 0;
     z-index: 1;
-    background: #2d2d2d;
+    background: #220e10;
 `;
 
 const InnerContainer = styled.nav`
@@ -124,6 +128,7 @@ const NavOutLink = styled(OutLink)`
     font-family: "Fira Sans", sans-serif;
     text-decoration: none;
     :hover {
+        text-decoration: none;
         color: #e2777a;
     }
 `;
@@ -161,9 +166,9 @@ const Header = ({ title }) => {
                     </pre>
                 </LogoHeading>
                 <NavLinks>
-                    {/* <CustomGatsbyLink to="/about" title="About">
+                    <CustomGatsbyLink to="/about" title="About">
                         About
-                    </CustomGatsbyLink> */}
+                    </CustomGatsbyLink>
                     {/* <CustomGatsbyLink to="/projects" title="Projects">
                         Projects
                     </CustomGatsbyLink> */}

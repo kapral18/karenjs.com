@@ -1,25 +1,14 @@
 import React from "react";
 import { graphql } from "gatsby";
-import styled from "styled-components";
 
 import Layout from "../../components/Layout";
 import Appearance from "../../components/Appearance";
 import YearLine from "../../components/YearLine";
 import SEO from "../../components/Seo";
-import media from "../../utils/media";
+import Title from "../../components/Title";
 
-const Title = styled.h3`
-    font-weight: 800;
-    font-size: 2.6rem;
-    margin: 6rem 0 0;
-
-    ${media.phone`
-        margin: 3rem 0 0;
-    `}
-`;
-
-export const pageQuery = graphql`
-    query {
+export const query = graphql`
+    query AppearancesPageQuery {
         site {
             siteMetadata {
                 title
@@ -45,14 +34,9 @@ const AppearancesPage = ({ data }) => {
     return (
         <Layout>
             <SEO
-                title="Karen Grigoryan, Front-end Developer. Personal Website. Appearances."
-                keywords={[
-                    "javascript",
-                    "gatsby",
-                    "blog",
-                    "react",
-                    "appearances"
-                ]}
+                title="Public Appearances"
+                slug="/appearances/"
+                keywords={["workshops", "conferences", "talks", "appearances"]}
             />
             <main>
                 <Title>Public Appearances</Title>

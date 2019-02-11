@@ -1,19 +1,16 @@
 ---
 title: "Hello world!"
 date: "2019-01-22"
-hashtags:
-    - hello
-    - blog
-    - javascript
-    - reactjs
-    - gatsbyjs
+featuredImage: "./oldman.jpg"
+featuredImageAlt: "Photo of an old man greeting the world by Persnickety Prints @ https://unsplash.com/"
+tags:
+    - first post
+    - hello world
 ---
 
-An article about Title
+Hey, how's it going?
 
-### Hey how's it going?
-
-![alt](./oldman.jpg)
+![Photo of an old man greeting the world by Persnickety Prints @ https://unsplash.com/](./oldman.jpg)
 
 I've been getting all sorts of goodies from tech community for far too long, it's time give back.
 

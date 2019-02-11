@@ -76,8 +76,8 @@ const SocialMediaLine = styled.div`
     `}
 `;
 
-const query = graphql`
-    {
+const personInfoQuery = graphql`
+    query PersonInfoQuery {
         avatar: file(absolutePath: { regex: "/maface.png/" }) {
             childImageSharp {
                 fixed(width: 70, height: 70) {
@@ -106,7 +106,7 @@ const query = graphql`
 
 const PersonInfoCard = () => (
     <StaticQuery
-        query={query}
+        query={personInfoQuery}
         render={(data) => {
             const {
                 author,

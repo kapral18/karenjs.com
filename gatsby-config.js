@@ -3,7 +3,7 @@ module.exports = {
         title: `<KarenJS />`,
         siteUrl: "https://www.karenjs.com",
         description:
-            "Personal website and blog on javascript by Karen Grigoryan",
+            "Personal website and blog on JavaScript, React and related.. by Karen Grigoryan, Front-end Engineer",
         author: "Karen Grigoryan",
         authorTagline: "Front-end Engineer from Amsterdam, The Netherlands",
         socialUrls: {
@@ -41,6 +41,7 @@ module.exports = {
             resolve: "gatsby-transformer-remark",
             options: {
                 plugins: [
+                    "gatsby-remark-emoji-unicode",
                     {
                         resolve: "gatsby-remark-images",
                         options: {
@@ -49,11 +50,23 @@ module.exports = {
                         }
                     },
                     {
+                        resolve: "gatsby-remark-better-embed-video",
+                        options: {
+                            width: 800,
+                            ratio: 1.77, // Optional: Defaults to 16/9 = 1.77.
+                            height: 400, // Optional: Overrides optional.ratio.
+                            related: false, // Optional: Will remove related videos from the end of an embedded YouTube video.
+                            noIframeBorder: true, // Optional: Disable insertion of <style> border: 0.
+                            showInfo: false // Optional: Hides video title and player actions.
+                        }
+                    },
+                    {
                         resolve: "gatsby-remark-responsive-iframe",
                         options: {
                             wrapperStyle: "margin-bottom: 1.0725rem"
                         }
                     },
+                    "gatsby-remark-external-links",
                     "gatsby-remark-prismjs",
                     "gatsby-remark-copy-linked-files",
                     "gatsby-remark-smartypants",
@@ -65,9 +78,19 @@ module.exports = {
         "gatsby-plugin-sharp",
         "gatsby-plugin-catch-links",
         {
-            resolve: "gatsby-plugin-google-analytics",
+            resolve: `gatsby-plugin-google-analytics`,
             options: {
-                //trackingId: "ADD YOUR TRACKING ID HERE",
+                trackingId: process.env.GA_ID || "",
+                head: false,
+                anonymize: true,
+                respectDNT: true
+            }
+        },
+        {
+            resolve: `gatsby-plugin-nprogress`,
+            options: {
+                color: `tomato`,
+                showSpinner: false
             }
         },
         "gatsby-plugin-sitemap",

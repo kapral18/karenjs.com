@@ -1,31 +1,21 @@
 import React, { Component } from "react";
 import { graphql } from "gatsby";
-import styled from "styled-components";
 
 import Layout from "../components/Layout";
 import SEO from "../components/Seo";
 import PersonInfoCard from "../components/PersonInfoCard";
 import Post from "../components/Post";
-import media from "../utils/media";
+import Title from "../components/Title";
 
-const Title = styled.h3`
-    font-weight: 800;
-    font-size: 2.6rem;
-    margin: 6rem 0 0;
-
-    ${media.phone`
-        margin: 3rem 0 0;
-    `}
-`;
-
-export const pageQuery = graphql`
-    query {
+export const query = graphql`
+    query IndexPageQuery {
         site {
             siteMetadata {
                 title
             }
         }
-        allMarkdownRemark(
+        posts: allMarkdownRemark(
+            filter: { fields: { slug: { glob: "/blog/**" } } }
             limit: 3
             sort: { fields: [frontmatter___date], order: DESC }
         ) {
@@ -52,13 +42,10 @@ export const pageQuery = graphql`
 class IndexPage extends Component {
     render() {
         const { data } = this.props;
-        const posts = data.allMarkdownRemark.edges;
+        const posts = data.posts.edges;
         return (
             <Layout>
-                <SEO
-                    title="Karen Grigoryan, Front-end Developer. Personal Website."
-                    keywords={["javascript", "gatsby", "blog", "react"]}
-                />
+                <SEO title="Home" />
                 <PersonInfoCard />
                 <main>
                     <Title>Latest Posts</Title>
