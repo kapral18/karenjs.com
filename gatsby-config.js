@@ -104,7 +104,7 @@ module.exports = {
                 background_color: "#fff",
                 theme_color: "#fff",
                 display: "minimal-ui",
-                icon: "src/images/maface.png"
+                icon: "src/images/logo.png"
             }
         },
         "gatsby-plugin-offline"

@@ -14,7 +14,7 @@ const seoQuery = graphql`
             }
         }
 
-        maface: file(absolutePath: { regex: "/maface\\\\.png/" }) {
+        logo: file(absolutePath: { regex: "/logo\\\\.png/" }) {
             internal {
                 mediaType
             }
@@ -46,6 +46,8 @@ const SEO = ({ description, lang, slug, keywords, title, article }) => {
 
                 const tags = baseTags.concat(keywords);
 
+                const decoratedTitle = `${siteMetadata.title} | ${title}`;
+
                 return (
                     <Helmet
                         htmlAttributes={{
@@ -55,10 +57,14 @@ const SEO = ({ description, lang, slug, keywords, title, article }) => {
                     >
                         <title>{title}</title>
 
+                        <meta name="author" content="Karen Grigoryan" />
+                        <meta name="robots" content="index, follow" />
+                        <meta name="copyright" content="Karen Grigoryan" />
+                        <meta name="generator" content="Gatsby" />
                         <meta name="description" content={metaDescription} />
                         <meta name="keywords" content={tags.join(", ")} />
 
-                        <meta property="og:title" content={title} />
+                        <meta property="og:title" content={decoratedTitle} />
 
                         <meta
                             property="og:description"
@@ -77,7 +83,7 @@ const SEO = ({ description, lang, slug, keywords, title, article }) => {
                                 article
                                     ? article.featuredImage.childImageSharp
                                           .resize.src
-                                    : data.maface.childImageSharp.resize.src
+                                    : data.logo.childImageSharp.resize.src
                             )}
                         />
 
@@ -88,7 +94,7 @@ const SEO = ({ description, lang, slug, keywords, title, article }) => {
                                 article
                                     ? article.featuredImage.childImageSharp
                                           .resize.src
-                                    : data.maface.childImageSharp.resize.src
+                                    : data.logo.childImageSharp.resize.src
                             )}
                         />
 
@@ -99,7 +105,7 @@ const SEO = ({ description, lang, slug, keywords, title, article }) => {
                                 article
                                     ? article.featuredImage.childImageSharp
                                           .resize.src
-                                    : data.maface.childImageSharp.resize.src
+                                    : data.logo.childImageSharp.resize.src
                             )}
                         />
 
@@ -108,7 +114,7 @@ const SEO = ({ description, lang, slug, keywords, title, article }) => {
                             content={
                                 article
                                     ? article.featuredImage.internal.mediaType
-                                    : data.maface.internal.mediaType
+                                    : data.logo.internal.mediaType
                             }
                         />
 
@@ -126,13 +132,16 @@ const SEO = ({ description, lang, slug, keywords, title, article }) => {
                             content={urlJoin(siteMetadata.siteUrl, slug)}
                         />
 
-                        <meta property="og:site_name" content={title} />
+                        <meta
+                            property="og:site_name"
+                            content={decoratedTitle}
+                        />
 
                         <meta name="twitter:card" content={"summary"} />
 
                         <meta name="twitter:creator" content={"@kaafury"} />
 
-                        <meta name="twitter:title" content={title} />
+                        <meta name="twitter:title" content={decoratedTitle} />
 
                         <meta
                             name="twitter:url"
@@ -146,11 +155,9 @@ const SEO = ({ description, lang, slug, keywords, title, article }) => {
                                 article
                                     ? article.featuredImage.childImageSharp
                                           .resize.src
-                                    : data.maface.childImageSharp.resize.src
+                                    : data.logo.childImageSharp.resize.src
                             )}
                         />
-
-                        <meta name="twitter:title" content={title} />
 
                         <meta
                             name="twitter:description"

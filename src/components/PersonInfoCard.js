@@ -78,7 +78,7 @@ const SocialMediaLine = styled.div`
 
 const personInfoQuery = graphql`
     query PersonInfoQuery {
-        avatar: file(absolutePath: { regex: "/maface.png/" }) {
+        avatar: file(absolutePath: { regex: "/maface\\\\.png/" }) {
             childImageSharp {
                 fixed(width: 70, height: 70) {
                     ...GatsbyImageSharpFixed
