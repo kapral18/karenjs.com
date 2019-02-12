@@ -46,16 +46,10 @@
         "styled-theming": "2.2.0",
         "typeface-droid-sans-mono": "0.0.44",
         "typeface-fira-sans": "0.0.54",
-        "typeface-lato": "0.0.54",
         "typeface-montserrat": "0.0.54",
+        "typeface-pt-sans": "0.0.54",
         "url-join": "4.0.0"
     },
-    "keywords": [
-        "gatsby",
-        "styled-components",
-        "blog",
-        "ecmascript"
-    ],
     "license": "MIT",
     "scripts": {
         "build": "gatsby build",

@@ -11,7 +11,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     body {
-        font-family: 'Lato', sans-serif;
+        font-family: 'PT Sans', sans-serif;
         font-weight: 400;
         margin: 0;
         text-rendering: optimizeLegibility;
