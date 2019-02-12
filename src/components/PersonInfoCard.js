@@ -32,6 +32,7 @@ const getSocialIcon = (iconClass, title) => {
     return styled(iconClass).attrs({ title, size: "1.5rem" })`
         vertical-align: top;
         stroke: white;
+
         path {
             fill: ${colors.body};
         }
@@ -48,6 +49,10 @@ const IconOutLink = styled(OutLink)`
     & + & {
         margin-left: 0.5rem;
     }
+
+    img {
+        vertical-align: top;
+    }
 `;
 
 const SocialMediaLine = styled.div`
@@ -62,7 +67,7 @@ const SocialMediaLine = styled.div`
 
 const personInfoQuery = graphql`
     query PersonInfoQuery {
-        avatar: file(absolutePath: { regex: "/maface\\\\.png/" }) {
+        avatar: file(absolutePath: { regex: "/maface[.]png/" }) {
             childImageSharp {
                 fixed(width: 56, height: 56) {
                     ...GatsbyImageSharpFixed
@@ -124,6 +129,14 @@ const PersonInfoCard = () => (
                                     );
                                 }
                             )}
+                            <IconOutLink href="https://dev.to/kapral18">
+                                <img
+                                    src="https://d2fltix0v2e0sb.cloudfront.net/dev-badge.svg"
+                                    alt="Karen Grigoryan's DEV Profile"
+                                    height="15"
+                                    width="15"
+                                />
+                            </IconOutLink>
                         </SocialMediaLine>
                     </TextContainer>
                 </Container>
