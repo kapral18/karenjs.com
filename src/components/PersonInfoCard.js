@@ -41,7 +41,7 @@ const getSocialIcon = (iconClass, title) => {
             transform: scale(1.2);
         }
         :hover path {
-            fill: ${colors.linkHover};
+            stroke: ${colors.linkHover};
         }
     `;
 };

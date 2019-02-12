@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Location, navigate } from "@reach/router";
 import Image from "gatsby-image";
-import Prism from "prismjs";
 import styled, { css } from "styled-components";
 import CustomGatsbyLink from "./CustomGatsbyLink";
 import { ArrowBack, Home } from "styled-icons/boxicons-regular";
@@ -58,6 +57,10 @@ const HomeIcon = styled(getHeaderLinkIcon(Home)).attrs({
 
     display: none;
 
+    :hover path {
+        stroke: ${colors.linkHover};
+    }
+
     ${media.phone`
         display: initial;
     `}
@@ -102,10 +105,6 @@ const InnerContainer = styled.nav`
         justify-content: center;
     `}
 `;
-
-const defaultProps = {
-    title: ""
-};
 
 const NavLinks = styled.div`
     top: 0;
@@ -152,10 +151,6 @@ const NavLink = styled(CustomGatsbyLink)`
 `;
 
 const Header = ({ logo }) => {
-    useEffect(() => {
-        Prism.highlightAll();
-    }, []);
-
     return (
         <Container>
             <InnerContainer>
@@ -202,7 +197,5 @@ const Header = ({ logo }) => {
         </Container>
     );
 };
-
-Header.defaultProps = defaultProps;
 
 export default Header;
