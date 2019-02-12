@@ -1,12 +1,19 @@
 import React, { useEffect } from "react";
 import { Location, navigate } from "@reach/router";
+import Image from "gatsby-image";
 import Prism from "prismjs";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import CustomGatsbyLink from "./CustomGatsbyLink";
 import { ArrowBack, Home } from "styled-icons/boxicons-regular";
 import { colors } from "../common/settings";
 import media from "../utils/media";
 import OutLink from "./OutLink";
+
+const alignNavLink = css`
+    height: 100%;
+    display: flex;
+    align-items: center;
+`;
 
 const handleNavBack = () => {
     navigate("../");
@@ -42,8 +49,13 @@ const ReturnArrow = styled(getHeaderLinkIcon(ArrowBack)).attrs({
 
 const HomeIcon = styled(getHeaderLinkIcon(Home)).attrs({
     title: "Return home",
-    size: "2rem"
+    size: "1.2rem"
 })`
+    ${alignNavLink}
+
+    margin-top: -2px;
+    margin-right: 1rem;
+
     display: none;
 
     ${media.phone`
@@ -53,13 +65,12 @@ const HomeIcon = styled(getHeaderLinkIcon(Home)).attrs({
 
 const LogoHeading = styled(CustomGatsbyLink)`
     margin-left: -20px;
+
+    ${alignNavLink}
+
     ${media.phone`
         display: none;
     `}
-
-    pre {
-        background: #220e10;
-    }
 `;
 
 const Container = styled.div`
@@ -127,13 +138,20 @@ const NavOutLink = styled(OutLink)`
     color: #fff;
     font-family: "Fira Sans", sans-serif;
     text-decoration: none;
+
+    ${alignNavLink}
+
     :hover {
         text-decoration: none;
         color: #e2777a;
     }
 `;
 
-const Header = ({ title }) => {
+const NavLink = styled(CustomGatsbyLink)`
+    ${alignNavLink}
+`;
+
+const Header = ({ logo }) => {
     useEffect(() => {
         Prism.highlightAll();
     }, []);
@@ -161,23 +179,21 @@ const Header = ({ title }) => {
                 </Location>
                 <HomeIcon onClick={() => navigate("/")} />
                 <LogoHeading to="/" title="Go to main page">
-                    <pre>
-                        <code className="language-js">{`<${title} />`}</code>
-                    </pre>
+                    <Image fixed={logo.childImageSharp.fixed} alt="Logo" />
                 </LogoHeading>
                 <NavLinks>
-                    <CustomGatsbyLink to="/about" title="About">
+                    <NavLink to="/about" title="About">
                         About
-                    </CustomGatsbyLink>
-                    {/* <CustomGatsbyLink to="/projects" title="Projects">
+                    </NavLink>
+                    {/* <NavLink to="/projects" title="Projects">
                         Projects
-                    </CustomGatsbyLink> */}
-                    <CustomGatsbyLink to="/blog" title="Blog">
+                    </NavLink> */}
+                    <NavLink to="/blog" title="Blog">
                         Blog
-                    </CustomGatsbyLink>
-                    <CustomGatsbyLink to="/appearances" title="Appearances">
+                    </NavLink>
+                    <NavLink to="/appearances" title="Appearances">
                         Appearances
-                    </CustomGatsbyLink>
+                    </NavLink>
                     <NavOutLink href="https://kapral18.github.io/cv">
                         CV
                     </NavOutLink>

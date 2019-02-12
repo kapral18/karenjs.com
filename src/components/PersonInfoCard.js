@@ -25,6 +25,7 @@ const TextContainer = styled.div`
 
     ${media.tablet`
         margin-left: 0;
+        margin-top: 1rem;
     `}
 `;
 

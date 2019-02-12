@@ -38,6 +38,14 @@ const layoutQuery = graphql`
                 title
             }
         }
+
+        logo: file(absolutePath: { regex: "/logo[.]png/" }) {
+            childImageSharp {
+                fixed(height: 60) {
+                    ...GatsbyImageSharpFixed
+                }
+            }
+        }
     }
 `;
 
@@ -49,7 +57,7 @@ const Layout = ({ children }) => {
                 return (
                     <Container>
                         <GlobalStyles />
-                        <Header title={data.site.siteMetadata.title} />
+                        <Header logo={data.logo} />
                         <Content>{children}</Content>
                         <Footer>
                             © {new Date().getFullYear()}, built by Karen G. with
