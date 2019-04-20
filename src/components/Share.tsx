@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { Location } from "@reach/router";
 import {
     TwitterShareButton,
@@ -18,15 +18,24 @@ import styled from "styled-components";
 
 const Container = styled.div`
     margin: 1rem 0 5rem;
-
-    .social-icon {
-        display: inline-block;
-        margin: 0 1rem 0 0;
-        cursor: pointer;
-    }
 `;
 
-const Share = ({ post }) => {
+const IconWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+`;
+
+interface Props {
+    post: {
+        title: string;
+        excerpt: string;
+        author: string;
+        tags: string[];
+    };
+}
+
+const Share: FC<Props> = ({ post }) => {
     return (
         <Container>
             <p
@@ -43,43 +52,29 @@ const Share = ({ post }) => {
                     const callToRead = `Read ${post.title} by ${post.author}`;
 
                     return (
-                        <>
+                        <IconWrapper>
                             <TwitterShareButton
                                 url={url}
                                 title={callToRead}
                                 via="kaafury"
                                 hashtags={post.tags}
-                                className="social-icon"
                             >
                                 <TwitterIcon size={28} round />
                             </TwitterShareButton>
-                            <RedditShareButton
-                                url={url}
-                                title={callToRead}
-                                className="social-icon"
-                            >
+                            <RedditShareButton url={url} title={callToRead}>
                                 <RedditIcon size={28} round />
                             </RedditShareButton>
                             <LinkedinShareButton
                                 url={url}
                                 title={post.title}
                                 description={callToRead}
-                                className="social-icon"
                             >
                                 <LinkedinIcon size={28} round />
                             </LinkedinShareButton>
-                            <TelegramShareButton
-                                url={url}
-                                title={callToRead}
-                                className="social-icon"
-                            >
+                            <TelegramShareButton url={url} title={callToRead}>
                                 <TelegramIcon size={28} round />
                             </TelegramShareButton>
-                            <WhatsappShareButton
-                                url={url}
-                                title={callToRead}
-                                className="social-icon"
-                            >
+                            <WhatsappShareButton url={url} title={callToRead}>
                                 <WhatsappIcon size={28} round />
                             </WhatsappShareButton>
                             <EmailShareButton
@@ -88,11 +83,10 @@ const Share = ({ post }) => {
                                 body={`${post.excerpt}
                                         Read more at ${url}
                                     `}
-                                className="social-icon"
                             >
                                 <EmailIcon size={28} round />
                             </EmailShareButton>
-                        </>
+                        </IconWrapper>
                     );
                 }}
             </Location>

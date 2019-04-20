@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
 
@@ -9,7 +9,7 @@ const Container = styled.div`
     text-align: center;
 `;
 
-const NotFoundPage = () => (
+const NotFoundPage: FC = () => (
     <Layout>
         <SEO slug="/404/" title="Page Not Found" />
         <Container>

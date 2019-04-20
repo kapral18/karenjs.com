@@ -1,8 +1,10 @@
-import React from "react";
+import React, { FC } from "react";
 import moment from "moment";
 import styled from "styled-components";
 import Box from "../common/Box";
 import OutLink from "./OutLink";
+import { AppearancesJson } from "../types/generated";
+import { DeepNonNullable } from "utility-types";
 
 const AppearanceOutLink = styled(OutLink)`
     color: #000;
@@ -42,7 +44,21 @@ const SlidesOutLink = styled(OutLink)`
     font-size: 1.2rem;
 `;
 
-const Appearance = ({ name, url, date, host, location, slidesUrl }) => {
+type Props = DeepNonNullable<
+    Pick<
+        AppearancesJson,
+        "name" | "url" | "date" | "host" | "location" | "slidesUrl"
+    >
+>;
+
+const Appearance: FC<Props> = ({
+    name,
+    url,
+    date,
+    host,
+    location,
+    slidesUrl
+}) => {
     return (
         <AppearanceStyle>
             <Box>

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import media from "../utils/media";
+import media from "../services/media";
 
 export const Container = styled.article`
     margin-top: 8rem;

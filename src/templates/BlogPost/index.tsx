@@ -1,11 +1,17 @@
-import React from "react";
+import { DeepNonNullable } from "utility-types";
+import React, { FC } from "react";
 import { Link, graphql } from "gatsby";
+
 import Layout from "../../components/Layout";
 import SEO from "../../components/Seo";
 import Share from "../../components/Share";
 
 import { Container, Header, Title, Contents } from "../styles";
 import { LinkList, Sub } from "./styles";
+import {
+    BlogPostBySlugQueryQuery,
+    BlogPostBySlugQueryQueryVariables
+} from "../../types/generated";
 
 export const query = graphql`
     query BlogPostBySlugQuery($slug: String!) {
@@ -46,7 +52,16 @@ export const query = graphql`
     }
 `;
 
-const BlogPostTemplate = ({ data, pageContext }) => {
+interface Props {
+    data: DeepNonNullable<BlogPostBySlugQueryQuery>;
+    pageContext: {
+        slug: BlogPostBySlugQueryQueryVariables["slug"];
+        prev: DeepNonNullable<BlogPostBySlugQueryQuery["markdownRemark"]>;
+        next: DeepNonNullable<BlogPostBySlugQueryQuery["markdownRemark"]>;
+    };
+}
+
+const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
     const { frontmatter, excerpt, html, fields } = data.markdownRemark;
     const { author } = data.site.siteMetadata;
     const { prev, next } = pageContext;
@@ -84,7 +99,12 @@ const BlogPostTemplate = ({ data, pageContext }) => {
                             {frontmatter.date}
                         </time>
                         <span>&nbsp; - &nbsp;</span>
-                        <span>🕥{fields.readingTime.text}</span>
+                        <span>
+                            <span role="img" aria-label="Reading time">
+                                🕥
+                            </span>
+                            {fields.readingTime.text}
+                        </span>
                     </Sub>
                 </Header>
                 <Contents dangerouslySetInnerHTML={{ __html: html }} />

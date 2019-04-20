@@ -3,13 +3,14 @@ title: "About me"
 template: "About"
 ---
 
-👋 Hey, nice to meet you.
+### 👋 Hey, nice to meet you.
 
-I'm **Karen Grigoryan** and I’m a self-taught **front-end engineer**.
+I'm **Karen Grigoryan** and I’m a **Senior Front-End Engineer** [@CataWiki](https://www.catawiki.com).
 
-I have **7+ years** of experience working within both small startup and giant highload platform environment.
+I have **7+ years** of extensive hands-on experience in product-based projects, ranging from small startups to giant high-load platforms.
 
-My previous projects/companies include
+
+### Previous Projects
 
 -   🏢 [1DESK Business Automation Platform](https://www.ipsoft.com/1desk).
 -   🏢 [Casengo Customer Managment Platform](https://casengo.com)
@@ -21,7 +22,7 @@ Also check my in-depth StackOverflow 📜[timeline dev story](https://stackoverf
 
 ### Activities
 
--   🖐 I answer question on [StackOverflow](https://stackoverflow.com/users/2998898/karen-grigoryan)
+-   🖐 I contribute to [StackOverflow](https://stackoverflow.com/users/2998898/karen-grigoryan)
 -   👨‍💻 I code OSS on [GitHub](https://github.com/kapral18)
 -   📣 I do live <a href="/appearances">talks and workshops</a>
 -   ✍️ I write about my js thoughts <a href="/appearances">here</a> and on [medium](https://medium.com/@karengrigoryan)

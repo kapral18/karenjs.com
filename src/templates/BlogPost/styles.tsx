@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colors } from "../../common/settings";
+import { colors } from "../../services/settings";
 
 export const LinkList = styled.ul`
     display: flex;

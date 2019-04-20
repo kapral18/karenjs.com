@@ -1,8 +1,10 @@
-import React from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
+import { DeepNonNullable, $ElementType } from "utility-types";
 
 import CustomGatsbyLink from "./CustomGatsbyLink";
-import media from "../utils/media";
+import media from "../services/media";
+import { BlogPostsPageQueryQuery } from "../types/generated";
 
 const Container = styled.div`
     padding: 1rem 0;
@@ -23,7 +25,12 @@ const Title = styled.h4`
     font-size: 2.2rem;
 `;
 
-const Post = ({ node }) => (
+type Props = $ElementType<
+    DeepNonNullable<BlogPostsPageQueryQuery>["posts"]["edges"],
+    number
+>;
+
+const Post: FC<Props> = ({ node }) => (
     <CustomGatsbyLink to={node.fields.slug}>
         <Container>
             <Title>{node.frontmatter.title}</Title>
