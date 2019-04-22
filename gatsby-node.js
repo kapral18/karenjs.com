@@ -5,12 +5,12 @@ const BASE_TEMPLATE = "BlogPost";
 const TEMPLATES_DIR_PATH = path.resolve("./src/templates");
 const BASE_TEMPLATE_PATH = path.join(
     TEMPLATES_DIR_PATH,
-    `${BASE_TEMPLATE}/index.js`
+    `${BASE_TEMPLATE}/index.tsx`
 );
 
 const getTemplate = (template) => {
     if (template) {
-        return path.join(TEMPLATES_DIR_PATH, `${template}/index.js`);
+        return path.join(TEMPLATES_DIR_PATH, `${template}/index.tsx`);
     }
     return BASE_TEMPLATE_PATH;
 };
@@ -55,7 +55,6 @@ exports.createPages = async ({ graphql, actions }) => {
     `);
 
     if (result.errors) {
-        console.error(result.errors);
         process.exit(1);
     }
 
@@ -93,12 +92,21 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
     const { permalink } = node.frontmatter;
 
-    const { createNodeField } = actions;
     const slug = permalink || createFilePath({ node, getNode });
 
-    createNodeField({
+    actions.createNodeField({
         node,
         name: "slug",
         value: slug
     });
+};
+
+exports.onCreateWebpackConfig = ({ getConfig, stage }) => {
+    const config = getConfig();
+    if (stage.startsWith("develop") && config.resolve) {
+        config.resolve.alias = {
+            ...config.resolve.alias,
+            "react-dom": "@hot-loader/react-dom"
+        };
+    }
 };

@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/camelcase */
 module.exports = {
     siteMetadata: {
-        title: `KarenJS`,
+        title: "KarenJS",
         siteUrl: "https://www.karenjs.com",
         description:
             "Personal website and blog on JavaScript, React and related.. by Karen Grigoryan, Front-end Engineer.",
@@ -19,21 +20,36 @@ module.exports = {
     },
     plugins: [
         "gatsby-plugin-netlify",
+        "gatsby-plugin-typescript",
+        {
+            resolve: "gatsby-plugin-eslint",
+            options: {
+                test: /\.tsx?$/,
+                exclude: /(node_modules|.cache|public)/,
+                stages: ["develop"],
+                options: {
+                    emitWarning: true,
+                    failOnError: false
+                }
+            }
+        },
         "gatsby-plugin-styled-components",
         "gatsby-plugin-react-helmet",
         "gatsby-transformer-json",
         {
             resolve: "gatsby-source-filesystem",
             options: {
-                name: "images",
-                path: `${__dirname}/src/images`
+                name: "pages",
+                path: `${__dirname}/src/pages/`,
+                ignore: ["**/.*"]
             }
         },
         {
             resolve: "gatsby-source-filesystem",
             options: {
-                name: "pages",
-                path: `${__dirname}/src/pages`
+                name: "images",
+                path: `${__dirname}/src/images/`,
+                ignore: ["**/.*"]
             }
         },
         {
@@ -77,7 +93,7 @@ module.exports = {
         "gatsby-plugin-sharp",
         "gatsby-plugin-catch-links",
         {
-            resolve: `gatsby-plugin-google-analytics`,
+            resolve: "gatsby-plugin-google-analytics",
             options: {
                 trackingId: process.env.GA_ID || "",
                 head: false,
@@ -86,9 +102,9 @@ module.exports = {
             }
         },
         {
-            resolve: `gatsby-plugin-nprogress`,
+            resolve: "gatsby-plugin-nprogress",
             options: {
-                color: `tomato`,
+                color: "tomato",
                 showSpinner: false
             }
         },

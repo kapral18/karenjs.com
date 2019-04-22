@@ -1,9 +1,11 @@
-import React from "react";
+import { DeepNonNullable } from "utility-types";
+import React, { FC } from "react";
 import { graphql } from "gatsby";
 
 import Layout from "../../components/Layout";
 import SEO from "../../components/Seo";
 import Post from "../../components/Post";
+import { BlogPostsPageQueryQuery } from "../../types/generated";
 
 export const query = graphql`
     query BlogPostsPageQuery {
@@ -36,8 +38,13 @@ export const query = graphql`
     }
 `;
 
-const IndexPage = ({ data }) => {
+interface Props {
+    data: DeepNonNullable<BlogPostsPageQueryQuery>;
+}
+
+const IndexPage: FC<Props> = ({ data }) => {
     const { edges } = data.posts;
+
     return (
         <Layout>
             <SEO slug="/blog/" title="Blog Posts" />

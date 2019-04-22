@@ -1,6 +1,6 @@
-const React = require("react");
+import React from "react";
 
-exports.onRenderBody = ({ setPreBodyComponents }) => {
+export const onRenderBody = ({ setPreBodyComponents }) => {
     setPreBodyComponents([
         <noscript key="noscript">
             Sorry! This site requires JavaScript to be enabled.

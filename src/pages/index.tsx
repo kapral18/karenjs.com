@@ -1,10 +1,13 @@
-import React, { Component } from "react";
+/// <reference types="styled-components/cssprop" />
+import React, { FC } from "react";
 import { graphql, Link } from "gatsby";
+import { DeepNonNullable } from "utility-types";
 
 import Layout from "../components/Layout";
 import SEO from "../components/Seo";
 import PersonInfoCard from "../components/PersonInfoCard";
 import Post from "../components/Post";
+import { IndexPageQueryQuery } from "../types/generated";
 
 export const query = graphql`
     query IndexPageQuery {
@@ -40,25 +43,26 @@ export const query = graphql`
     }
 `;
 
-class IndexPage extends Component {
-    render() {
-        const { data } = this.props;
-        const posts = data.posts.edges;
-        return (
-            <Layout>
-                <SEO title="Home" />
-                <PersonInfoCard />
-                <main>
-                    {posts.map(({ node }) => {
-                        return <Post key={node.id} node={node} />;
-                    })}
-                    {data.totalCount > 3 && (
-                        <Link to="/blog/">More articles...</Link>
-                    )}
-                </main>
-            </Layout>
-        );
-    }
+interface Props {
+    data: DeepNonNullable<IndexPageQueryQuery>;
 }
+
+const IndexPage: FC<Props> = ({ data }) => {
+    const { edges: posts } = data.posts;
+    return (
+        <Layout>
+            <SEO title="Home" />
+            <PersonInfoCard />
+            <main>
+                {posts.map(({ node }) => {
+                    return <Post key={node.id} node={node} />;
+                })}
+                {data.posts.totalCount > 3 && (
+                    <Link to="/blog/">More articles...</Link>
+                )}
+            </main>
+        </Layout>
+    );
+};
 
 export default IndexPage;

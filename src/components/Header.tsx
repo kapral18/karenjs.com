@@ -1,12 +1,16 @@
-import React from "react";
-import { Location, navigate } from "@reach/router";
+import React, { FC, ExoticComponent } from "react";
+import { navigate, Location } from "@reach/router";
 import Image from "gatsby-image";
-import styled, { css } from "styled-components";
-import CustomGatsbyLink from "./CustomGatsbyLink";
+import { DeepNonNullable } from "utility-types";
+import styled, { css, StyledComponent } from "styled-components";
+import { StyledIconProps } from "styled-icons/StyledIconBase/StyledIconBase";
 import { ArrowBack, Home } from "styled-icons/boxicons-regular";
-import { colors } from "../common/settings";
-import media from "../utils/media";
+
+import CustomGatsbyLink from "./CustomGatsbyLink";
+import { colors } from "../services/settings";
+import media from "../services/media";
 import OutLink from "./OutLink";
+import { LayoutQueryQuery } from "../types/generated";
 
 const alignNavLink = css`
     height: 100%;
@@ -14,23 +18,37 @@ const alignNavLink = css`
     align-items: center;
 `;
 
-const handleNavBack = () => {
+const navigateRoot = (): void => {
+    navigate("/");
+};
+
+const handleNavBack = (): void => {
     navigate("../");
 };
 
-const handleNavBackTwice = () => {
+const handleNavBackTwice = (): void => {
     navigate("../../");
 };
 
-const isLocationRoot = (location) => {
+const isLocationRoot = (location: Window["location"]): boolean => {
     return location.pathname === "/";
 };
 
-const isLocationBlog = (location) => {
+const isLocationBlog = (location: Window["location"]): boolean => {
     return location.pathname.includes("/blog/");
 };
 
-const getHeaderLinkIcon = (iconClass) => styled(iconClass).attrs({
+const getHeaderLinkIcon = (
+    iconClass: ExoticComponent<StyledIconProps>
+): StyledComponent<
+    ExoticComponent<StyledIconProps>,
+    any,
+    {
+        size: string;
+        fill: string;
+    },
+    "size" | "fill"
+> => styled(iconClass).attrs({
     size: "5rem",
     fill: "white"
 })`
@@ -150,7 +168,11 @@ const NavLink = styled(CustomGatsbyLink)`
     ${alignNavLink}
 `;
 
-const Header = ({ logo }) => {
+interface Props {
+    logo: DeepNonNullable<LayoutQueryQuery>["logo"];
+}
+
+const Header: FC<Props> = ({ logo }) => {
     return (
         <Container>
             <InnerContainer>
@@ -172,7 +194,7 @@ const Header = ({ logo }) => {
                         );
                     }}
                 </Location>
-                <HomeIcon onClick={() => navigate("/")} />
+                <HomeIcon onClick={navigateRoot} />
                 <LogoHeading to="/" title="Go to main page">
                     <Image fixed={logo.childImageSharp.fixed} alt="Logo" />
                 </LogoHeading>

@@ -1,0 +1,7 @@
+**/.cache/
+**/.vscode/
+**/public/
+**/.vscode/
+**/node_modules/
+**/src/types/generated/
+*.js

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
 
 const Year = styled.h3`
@@ -22,7 +22,11 @@ const Year = styled.h3`
     }
 `;
 
-const YearLine = ({ year }) => {
+interface Props {
+    year: string;
+}
+
+const YearLine: FC<Props> = ({ year }) => {
     return <Year>{year}</Year>;
 };
 
