@@ -5,7 +5,10 @@ template: "About"
 
 ### 👋 Hey, nice to meet you.
 
-I am **Karen Grigoryan** and I speak **JavaScript**.
+-   **Name**: _Karen Grigoryan_
+-   **Position**: _Senior Front-end Engineer @ [CataWiki](https://www.catawiki.com)_
+-   **Location**: _Amsterdam, The Netherlands_
+-   **Core Skills**: _JavaScript, TypeScript, React_
 
 ### Contributions
 
@@ -23,8 +26,8 @@ Check more:
 
 -   🖐 [StackOverflow](https://stackoverflow.com/users/2998898/karen-grigoryan)
 -   👨‍💻 [GitHub](https://github.com/kapral18)
--   📣 <a href="/appearances">talks and workshops</a>
--   ✍️ Blog <a href="/appearances">here</a> and on [medium](https://medium.com/@karengrigoryan)
+-   📣 <a href="/appearances">Talks and workshops</a>
+-   ✍️ <a href="/blog">Blog</a>
 
 ### Contacts
 
