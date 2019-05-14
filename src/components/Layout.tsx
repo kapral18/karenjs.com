@@ -7,6 +7,7 @@ import GlobalStyles from "../common/GlobalStyles";
 import Header from "./Header";
 import media from "../services/media";
 import { LayoutQueryQuery } from "../types/generated";
+import OutLink from "./OutLink";
 
 const Container = styled.div`
     padding-top: 6rem;
@@ -27,11 +28,21 @@ const Footer = styled.footer`
     width: 60%;
     max-width: 728px;
     margin: 0 auto;
-    height: 6rem;
+    flex-wrap: wrap;
+    padding-bottom: 6rem;
     font-size: 1rem;
     display: flex;
     justify-content: center;
-    align-items: center;
+`;
+
+const BuiltBy = styled.div`
+    margin-right: 0.3em;
+
+    ${media.phone`
+        margin-right: 0;
+        flex-basis: 100%;
+        text-align: center;
+    `}
 `;
 
 const layoutQuery = graphql`
@@ -61,10 +72,10 @@ const Layout: FC = ({ children }) => {
             <Header logo={data.logo} />
             <Content>{children}</Content>
             <Footer>
-                © {new Date().getFullYear()}, built by Karen Grigoryan with
-                <a css="margin-left: 0.25em" href="https://www.gatsbyjs.org">
-                    GatsbyJS
-                </a>
+                <BuiltBy>
+                    © {new Date().getFullYear()}, built by Karen Grigoryan with
+                </BuiltBy>
+                <OutLink href="https://www.gatsbyjs.org">GatsbyJS</OutLink>
             </Footer>
         </Container>
     );

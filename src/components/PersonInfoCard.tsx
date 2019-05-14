@@ -116,11 +116,10 @@ const PersonInfoCard: FC = () => {
     const { author, socialUrls } = data.site.siteMetadata;
     return (
         <Container>
-            <Image fixed={data.avatar.childImageSharp.fixed} alt={author} />
+            <Link to="/about">
+                <Image fixed={data.avatar.childImageSharp.fixed} alt={author} />
+            </Link>
             <TextContainer>
-                <div>
-                    JavaScript thoughts by <Link to="/about/">{author}</Link>
-                </div>
                 <SocialMediaLine>
                     {Object.entries(socialUrls).map(
                         ([socialMediaName, socialMediaUrl]) => {

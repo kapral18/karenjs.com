@@ -1550,6 +1550,7 @@ export enum MarkdownRemarkFieldsEnum {
   InternalOwner = 'internal___owner',
   InternalType = 'internal___type',
   FrontmatterTitle = 'frontmatter___title',
+  FrontmatterTemplate = 'frontmatter___template',
   FrontmatterDate = 'frontmatter___date',
   FrontmatterFeaturedImageId = 'frontmatter___featuredImage___id',
   FrontmatterFeaturedImageParentId = 'frontmatter___featuredImage___parent___id',
@@ -1601,7 +1602,6 @@ export enum MarkdownRemarkFieldsEnum {
   FrontmatterFeaturedImagePublicUrl = 'frontmatter___featuredImage___publicURL',
   FrontmatterFeaturedImageAlt = 'frontmatter___featuredImageAlt',
   FrontmatterTags = 'frontmatter___tags',
-  FrontmatterTemplate = 'frontmatter___template',
   Excerpt = 'excerpt',
   RawMarkdownBody = 'rawMarkdownBody',
   FileAbsolutePath = 'fileAbsolutePath',
@@ -1631,14 +1631,14 @@ export type MarkdownRemarkFieldsFilterInput = {
 export type MarkdownRemarkFieldsReadingTime = {
   text?: Maybe<Scalars['String']>,
   minutes?: Maybe<Scalars['Float']>,
-  time?: Maybe<Scalars['Int']>,
+  time?: Maybe<Scalars['Float']>,
   words?: Maybe<Scalars['Int']>,
 };
 
 export type MarkdownRemarkFieldsReadingTimeFilterInput = {
   text?: Maybe<StringQueryOperatorInput>,
   minutes?: Maybe<FloatQueryOperatorInput>,
-  time?: Maybe<IntQueryOperatorInput>,
+  time?: Maybe<FloatQueryOperatorInput>,
   words?: Maybe<IntQueryOperatorInput>,
 };
 
@@ -1663,11 +1663,11 @@ export type MarkdownRemarkFilterInput = {
 
 export type MarkdownRemarkFrontmatter = {
   title?: Maybe<Scalars['String']>,
+  template?: Maybe<Scalars['String']>,
   date?: Maybe<Scalars['Date']>,
   featuredImage?: Maybe<File>,
   featuredImageAlt?: Maybe<Scalars['String']>,
   tags?: Maybe<Array<Maybe<Scalars['String']>>>,
-  template?: Maybe<Scalars['String']>,
 };
 
 
@@ -1680,11 +1680,11 @@ export type MarkdownRemarkFrontmatterDateArgs = {
 
 export type MarkdownRemarkFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>,
+  template?: Maybe<StringQueryOperatorInput>,
   date?: Maybe<DateQueryOperatorInput>,
   featuredImage?: Maybe<FileFilterInput>,
   featuredImageAlt?: Maybe<StringQueryOperatorInput>,
   tags?: Maybe<StringQueryOperatorInput>,
-  template?: Maybe<StringQueryOperatorInput>,
 };
 
 export type MarkdownRemarkGroupConnection = {
@@ -1721,7 +1721,12 @@ export type NodeFilterListInput = {
 };
 
 export type PageInfo = {
+  currentPage: Scalars['Int'],
+  hasPreviousPage: Scalars['Boolean'],
   hasNextPage: Scalars['Boolean'],
+  itemCount: Scalars['Int'],
+  pageCount: Scalars['Int'],
+  perPage?: Maybe<Scalars['Int']>,
 };
 
 export type Potrace = {
