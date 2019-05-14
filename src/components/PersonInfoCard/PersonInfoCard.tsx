@@ -1,6 +1,6 @@
 import React, { FC, ExoticComponent } from "react";
 import styled, { StyledComponent } from "styled-components";
-import OutLink from "./OutLink";
+import OutLink from "../OutLink";
 import { DeepNonNullable } from "utility-types";
 import { Link, graphql, useStaticQuery } from "gatsby";
 import Image from "gatsby-image";
@@ -8,28 +8,20 @@ import * as faBrands from "styled-icons/fa-brands";
 import * as feather from "styled-icons/feather";
 import { StyledIconProps } from "styled-icons/StyledIconBase/StyledIconBase";
 
-import media from "../services/media";
-import { colors } from "../services/settings";
-import { PersonInfoQueryQuery } from "../types/generated";
+import { colors } from "../../services/settings";
+import { PersonInfoQueryQuery } from "../../types/generated";
+import DevToIcon from "./assets/devto.inline.svg";
+
+type QueryProps = DeepNonNullable<PersonInfoQueryQuery>;
+type SocialUrls = keyof QueryProps["site"]["siteMetadata"]["socialUrls"];
 
 const Container = styled.div`
-    display: flex;
-    align-items: center;
+    text-align: center;
     margin: 5rem 0 1rem;
-
-    ${media.tablet`
-        flex-direction: column;
-        text-align: center;
-    `}
 `;
 
 const TextContainer = styled.div`
-    margin-left: 3rem;
-
-    ${media.tablet`
-        margin-left: 0;
-        margin-top: 1rem;
-    `}
+    margin-top: 1rem;
 `;
 
 const getSocialIcon = (
@@ -40,22 +32,27 @@ const getSocialIcon = (
     any,
     {
         title: SocialUrls;
-        size: string;
     },
-    "title" | "size"
+    "title"
 > => {
-    return styled(iconClass).attrs({ title, size: "1.5rem" })`
+    return styled(iconClass).attrs({
+        title
+    })`
         vertical-align: top;
         stroke: white;
+        transition: all 0.5s;
+        width: 1.5rem;
+        height: 1.5rem;
 
         path {
             fill: ${colors.body};
         }
+
         :hover {
-            transform: scale(1.2);
-        }
-        :hover path {
-            stroke: ${colors.linkHover};
+            transform: scale(1.5);
+            path {
+                fill: ${colors.linkHover};
+            }
         }
     `;
 };
@@ -66,18 +63,22 @@ const IconOutLink = styled(OutLink)`
     }
 
     img {
+        transition: all 0.5s;
+        display: inline-block;
+        :hover {
+            transform: scale(1.5);
+            margin-left: 6px;
+            path {
+                fill: ${colors.linkHover};
+            }
+        }
         vertical-align: top;
     }
 `;
 
 const SocialMediaLine = styled.div`
-    display: flex;
-    align-items: center;
+    text-align: center;
     margin-top: 1rem;
-
-    ${media.tablet`
-        justify-content: center;
-    `}
 `;
 
 const personInfoQuery = graphql`
@@ -101,14 +102,12 @@ const personInfoQuery = graphql`
                     Telegram
                     Youtube
                     Mail
+                    DevTo
                 }
             }
         }
     }
 `;
-
-type QueryProps = DeepNonNullable<PersonInfoQueryQuery>;
-type SocialUrls = keyof QueryProps["site"]["siteMetadata"]["socialUrls"];
 
 const PersonInfoCard: FC = () => {
     const data = useStaticQuery<QueryProps>(personInfoQuery);
@@ -117,12 +116,22 @@ const PersonInfoCard: FC = () => {
     return (
         <Container>
             <Link to="/about">
-                <Image fixed={data.avatar.childImageSharp.fixed} alt={author} />
+                <Image
+                    fixed={data.avatar.childImageSharp.fixed}
+                    title={author}
+                    alt={author}
+                />
             </Link>
             <TextContainer>
                 <SocialMediaLine>
                     {Object.entries(socialUrls).map(
                         ([socialMediaName, socialMediaUrl]) => {
+                            const iconClass =
+                                socialMediaName === "DevTo"
+                                    ? DevToIcon
+                                    : (faBrands as any)[socialMediaName] ||
+                                      (feather as any)[socialMediaName];
+
                             return (
                                 <IconOutLink
                                     key={socialMediaName}
@@ -130,12 +139,7 @@ const PersonInfoCard: FC = () => {
                                 >
                                     {React.createElement(
                                         getSocialIcon(
-                                            (faBrands as any)[
-                                                socialMediaName
-                                            ] ||
-                                                (feather as any)[
-                                                    socialMediaName
-                                                ],
+                                            iconClass,
                                             socialMediaName as SocialUrls
                                         )
                                     )}
@@ -143,14 +147,6 @@ const PersonInfoCard: FC = () => {
                             );
                         }
                     )}
-                    <IconOutLink href="https://dev.to/kapral18">
-                        <img
-                            src="https://d2fltix0v2e0sb.cloudfront.net/dev-badge.svg"
-                            alt="Karen Grigoryan's DEV Profile"
-                            height="15"
-                            width="15"
-                        />
-                    </IconOutLink>
                 </SocialMediaLine>
             </TextContainer>
         </Container>
