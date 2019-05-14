@@ -10,7 +10,7 @@ tags:
 
 Hey, how's it going?
 
-![Photo of an old man greeting the world by Persnickety Prints @ https://unsplash.com/](./oldman.jpg)
+![ ](./oldman.jpg)
 
 I've been getting all sorts of goodies from tech community for far too long.
 

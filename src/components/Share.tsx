@@ -24,6 +24,15 @@ const IconWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     width: 200px;
+
+    .SocialMediaShareButton {
+        cursor: pointer;
+    }
+`;
+
+const P = styled.p`
+    font-size: 1.4rem;
+    color: rgb(0, 0, 0);
 `;
 
 interface Props {
@@ -38,14 +47,7 @@ interface Props {
 const Share: FC<Props> = ({ post }) => {
     return (
         <Container>
-            <p
-                css={`
-                    font-size: 1.4rem;
-                    color: rgb(0, 0, 0);
-                `}
-            >
-                Share if you liked it:
-            </p>
+            <P>Share if you liked it:</P>
 
             <Location>
                 {({ location: { href: url } }) => {
