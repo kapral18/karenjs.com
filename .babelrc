@@ -1,9 +1,0 @@
-{
-    "plugins": [
-        "ts-optchain"
-    ],
-    "presets": [
-        "@babel/preset-typescript",
-        "babel-preset-gatsby"
-    ]
-}

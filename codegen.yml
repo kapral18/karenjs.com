@@ -1,7 +1,7 @@
 schema: http://localhost:8000/___graphql
 documents:
     - ./src/**/*.{ts,tsx}
-    - ./node_modules/gatsby-*/**/*.js
+    - ./node_modules/gatsby*/!(node_modules)/**/*.js
 generates:
     ./src/types/generated/index.ts:
         config:
@@ -9,6 +9,9 @@ generates:
             scalars:
                 Date: string
                 JSON: "{ [key: string]: any }"
+            namingConvention:
+                enumValues: keep
+            declarationKind: "interface"
         plugins:
             - typescript
             - typescript-operations

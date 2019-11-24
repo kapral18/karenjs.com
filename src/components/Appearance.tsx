@@ -1,16 +1,30 @@
 import React, { FC } from "react";
 import moment from "moment";
 import styled from "styled-components";
-import Box from "../common/Box";
-import OutLink from "./OutLink";
-import { AppearancesJson } from "../types/generated";
 import { DeepNonNullable } from "utility-types";
+
+import Box from "../common/Box";
+import OutLink from "../components/OutLink";
+import { AppearancesJson } from "../types/generated";
+import { colors } from "../services/settings";
 
 const AppearanceOutLink = styled(OutLink)`
     color: #000;
     text-decoration: none;
+
+    :before {
+        content: "›";
+        position: absolute;
+        left: 0;
+        top: -2px;
+    }
+
     :hover {
-        color: #e2777a;
+        color: ${colors.linkHover};
+        text-decoration: none;
+    }
+
+    :focus {
         text-decoration: none;
     }
 `;
@@ -23,13 +37,6 @@ const DateStyle = styled.div`
 const AppearanceStyle = styled.div`
     padding-left: 1rem;
     position: relative;
-
-    :before {
-        content: "›";
-        position: absolute;
-        left: 0;
-        top: -2px;
-    }
 
     & + & {
         margin-top: 1rem;

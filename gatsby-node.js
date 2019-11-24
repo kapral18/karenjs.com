@@ -15,13 +15,23 @@ const getTemplate = (template) => {
     return BASE_TEMPLATE_PATH;
 };
 
-exports.createPages = async ({ graphql, actions }) => {
-    const { createPage } = actions;
+exports.createPages = async ({ graphql, actions, reporter }) => {
+    const { createPage, createRedirect } = actions;
+
+    createRedirect({
+        fromPath: "/blog/this-mechanics-part-1/",
+        toPath: "/blog/understanding-this-one-example-at-a-time/",
+        isPermanent: true,
+        redirectInBrowser: true
+    });
 
     const result = await graphql(`
         {
             posts: allMarkdownRemark(
-                filter: { fields: { slug: { glob: "/blog/**" } } }
+                filter: {
+                    fields: { slug: { glob: "/blog/**" } }
+                    frontmatter: { draft: { ne: true } }
+                }
                 sort: { fields: [frontmatter___date], order: DESC }
                 limit: 1000
             ) {
@@ -55,6 +65,9 @@ exports.createPages = async ({ graphql, actions }) => {
     `);
 
     if (result.errors) {
+        reporter.panicOnBuild(
+            `Errors while running GraphQL query: ${result.errors}.`
+        );
         process.exit(1);
     }
 

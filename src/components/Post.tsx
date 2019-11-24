@@ -1,10 +1,14 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import { DeepNonNullable, $ElementType } from "utility-types";
+import { $ElementType } from "utility-types";
 
-import CustomGatsbyLink from "./CustomGatsbyLink";
-import media from "../services/media";
+import GenericError from "../components/GenericError";
 import { BlogPostsPageQueryQuery } from "../types/generated";
+import media from "../services/media";
+import CustomGatsbyLink from "./CustomGatsbyLink";
+import { Comment } from "@styled-icons/boxicons-solid";
+import Disqus from "disqus-react";
+import { disqusConfig } from "../templates/BlogPost";
 
 const Container = styled.div`
     padding: 1rem 0;
@@ -25,23 +29,77 @@ const Title = styled.h4`
     font-size: 2.2rem;
 `;
 
-type Props = $ElementType<
-    DeepNonNullable<BlogPostsPageQueryQuery>["posts"]["edges"],
-    number
->;
+const CustomGatsbyLinkStyles = styled(CustomGatsbyLink)`
+    color: currentColor;
+`;
 
-const Post: FC<Props> = ({ node }) => (
-    <CustomGatsbyLink to={node.fields.slug}>
-        <Container>
-            <Title>{node.frontmatter.title}</Title>
-            <sub>
-                <span>on {node.frontmatter.date}</span>
-                <span>&nbsp; - &nbsp;</span>
-                <span>{node.fields.readingTime.text}</span>
-            </sub>
-            <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-        </Container>
-    </CustomGatsbyLink>
-);
+type Props = $ElementType<BlogPostsPageQueryQuery["posts"]["edges"], number> & {
+    siteUrl: string;
+};
+
+const Post: FC<Props> = ({ node, siteUrl }) => {
+    if (!node.id || !node.fields || !node.frontmatter || !node.excerpt) {
+        return (
+            <GenericError
+                missing={{
+                    id: node.id,
+                    fields: node.fields,
+                    frontmatter: node.frontmatter,
+                    excerpt: node.excerpt
+                }}
+                message="<Post />: props missing: node.id or node.fields or node.frontmatter or node.excerpt"
+            />
+        );
+    }
+
+    const { id } = node;
+    const { title, date } = node.frontmatter;
+
+    if (!title || !date) {
+        return (
+            <GenericError
+                missing={{ title, date }}
+                message="<Post />: props missing: node.frontmatter.title or node.frontmatter.date"
+            />
+        );
+    }
+
+    const { slug, readingTime } = node.fields;
+
+    if (!slug || !readingTime) {
+        return (
+            <GenericError
+                missing={{ slug, readingTime }}
+                message="<Post />: props missing: node.fields.slug or node.fields.readingTime"
+            />
+        );
+    }
+
+    return (
+        <CustomGatsbyLinkStyles to={slug}>
+            <Container>
+                <Title>{title}</Title>
+                <sub>
+                    <span>on {date}</span>
+                    <span>&nbsp; - &nbsp;</span>
+                    <span>{readingTime.text}</span>
+                    <span>&nbsp; - &nbsp;</span>
+                    <span>
+                        <Comment size="1.2em" title="Comments" />
+                        &nbsp;
+                        <Disqus.CommentCount
+                            {...disqusConfig({
+                                identifier: id,
+                                url: siteUrl + slug,
+                                title
+                            })}
+                        />
+                    </span>
+                </sub>
+                <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+            </Container>
+        </CustomGatsbyLinkStyles>
+    );
+};
 
 export default Post;

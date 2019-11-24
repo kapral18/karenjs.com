@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+
 import { colors } from "../services/settings";
 
 const GlobalStyles = createGlobalStyle`
@@ -11,7 +12,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     body {
-        font-family: 'PT Sans', sans-serif;
+        font-family: 'Merriweather', sans-serif;
         font-weight: 400;
         margin: 0;
         text-rendering: optimizeLegibility;
@@ -55,10 +56,127 @@ const GlobalStyles = createGlobalStyle`
     }
     a {
         text-decoration: none;
+        color: ${colors.link};
 
         :hover {
             text-decoration: underline;
+            color: ${colors.linkHover};
         }
+
+        :active {
+            color: ${colors.linkActive}
+        }
+
+        :focus {
+            text-decoration: underline;
+            color: ${colors.linkFocus}
+        }
+    }
+    /**
+    * Add back the container background-color, border-radius, padding, margin
+    * and overflow that we removed from <pre>.
+    */
+    .gatsby-highlight {
+        background-color: #220e10;
+        border-radius: 0.3em;
+        margin: 0.5em 0;
+        padding: 1em;
+        overflow: auto;
+    }
+
+    /**
+    * Remove the default PrismJS theme background-color, border-radius, margin,
+    * padding and overflow.
+    * 1. Make the element just wide enough to fit its content.
+    * 2. Always fill the visible space in .gatsby-highlight.
+    * 3. Adjust the position of the line numbers
+    */
+    .gatsby-highlight pre[class*="language-"] {
+        background-color: transparent;
+        margin: 0;
+        padding: 0;
+        overflow: initial;
+        float: left; /* 1 */
+        min-width: 100%; /* 2 */
+    }
+
+    .gatsby-highlight pre[class*="language-"].line-numbers {
+        padding: 0;
+        padding-left: 2.8em;
+        overflow: initial;
+    }
+
+    .gatsby-highlight-code-line {
+        background-color: #692b31;
+        display: block;
+        margin-right: -1em;
+        margin-left: -1em;
+        padding-right: 1em;
+        padding-left: 0.75em;
+        border-left: 0.25em solid #692b31;
+    }
+
+    .command-line-prompt > span:before {
+        color: #999;
+        content: " ";
+        display: block;
+        padding-right: 0.8em;
+    }
+
+        /* Prompt for all users */
+        .command-line-prompt > span[data-user]:before {
+        content: "[" attr(data-user) "@" attr(data-host) "] $";
+    }
+
+        /* Prompt for root */
+        .command-line-prompt > span[data-user="root"]:before {
+        content: "[" attr(data-user) "@" attr(data-host) "] #";
+    }
+
+        .command-line-prompt > span[data-prompt]:before {
+        content: attr(data-prompt);
+    }
+
+    .gatsby-resp-image-figcaption {
+        display: none;
+    }
+
+    :not(pre) > code[class*="language-"] {
+        background: #999;
+        color: #fff;
+        white-space: nowrap;
+
+        a & {
+          background: currentColor;
+        }
+    }
+
+    a:hover :not(pre) > code[class*="language-"] {
+        background: ${colors.link};
+    }
+
+    .anchor {
+        color: currentColor;
+
+        :hover {
+            color: currentColor
+        }
+
+        :active {
+            color: currentColor
+        }
+
+        :focus {
+            color: currentColor
+        }
+    }
+
+    #gatsby-plugin-page-progress {
+        transition: none !important;
+    }
+
+    p > img {
+      width: 100%;
     }
 `;
 

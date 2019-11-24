@@ -16,10 +16,6 @@ import {
 } from "react-share";
 import styled from "styled-components";
 
-const Container = styled.div`
-    margin: 1rem 0 5rem;
-`;
-
 const IconWrapper = styled.div`
     display: flex;
     justify-content: space-between;
@@ -30,7 +26,8 @@ const IconWrapper = styled.div`
     }
 `;
 
-const P = styled.p`
+const Paragraph = styled.p`
+    margin-top: 0;
     font-size: 1.4rem;
     color: rgb(0, 0, 0);
 `;
@@ -46,8 +43,8 @@ interface Props {
 
 const Share: FC<Props> = ({ post }) => {
     return (
-        <Container>
-            <P>Share if you liked it:</P>
+        <div>
+            <Paragraph>Share if you liked it:</Paragraph>
 
             <Location>
                 {({ location: { href: url } }) => {
@@ -66,11 +63,7 @@ const Share: FC<Props> = ({ post }) => {
                             <RedditShareButton url={url} title={callToRead}>
                                 <RedditIcon size={28} round />
                             </RedditShareButton>
-                            <LinkedinShareButton
-                                url={url}
-                                title={post.title}
-                                description={callToRead}
-                            >
+                            <LinkedinShareButton url={url}>
                                 <LinkedinIcon size={28} round />
                             </LinkedinShareButton>
                             <TelegramShareButton url={url} title={callToRead}>
@@ -92,7 +85,7 @@ const Share: FC<Props> = ({ post }) => {
                     );
                 }}
             </Location>
-        </Container>
+        </div>
     );
 };
 

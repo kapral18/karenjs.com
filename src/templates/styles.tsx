@@ -13,7 +13,6 @@ export const Container = styled.article`
     }
 
     blockquote {
-        margin-left: 0.25rem;
         font-size: 1.6rem;
         color: inherit;
         font-style: italic;
@@ -48,6 +47,8 @@ export const Container = styled.article`
 `;
 
 export const Header = styled.header`
+    margin-bottom: 3rem;
+
     ${media.tablet`
         text-align: center;
     `};

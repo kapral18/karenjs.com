@@ -12,7 +12,6 @@ module.exports = {
         "prettier/@typescript-eslint"
     ],
     parserOptions: {
-        ecmaVersion: 2018,
         sourceType: "module",
         ecmaFeatures: {
             jsx: true
@@ -23,11 +22,13 @@ module.exports = {
         browser: true,
         node: true,
         commonjs: true,
-        es6: true,
-        jest: true
+        jest: true,
+        // this automatically sets ecmaVersion in parserOptions to 11
+        es2020: true
     },
     rules: {
         indent: "off",
+        "@typescript-eslint/no-use-before-define": "off",
         "@typescript-eslint/indent": "off",
         "@typescript-eslint/no-object-literal-type-assertion": "off",
         "@typescript-eslint/no-explicit-any": "off",
@@ -48,5 +49,8 @@ module.exports = {
             pragma: "React",
             version: "detect"
         }
+    },
+    globals: {
+        globalThis: "readable"
     }
 };
