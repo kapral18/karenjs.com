@@ -3,7 +3,9 @@ import Helmet from "react-helmet";
 import urlJoin from "url-join";
 import { graphql, useStaticQuery } from "gatsby";
 import { SeoQueryQuery, MarkdownRemarkFrontmatter } from "../types/generated";
-import { DeepNonNullable } from "utility-types";
+import isObjectOfType from "../services/isObjectOfType";
+import isString from "lodash/isString";
+import GenericError from "./GenericError";
 
 const seoQuery = graphql`
     query SeoQuery {
@@ -33,31 +35,107 @@ const baseTags = ["javascript", "react", "gatsby", "blog"];
 
 const defaultProps = {
     lang: "en",
-    keywords: [] as string[],
+    keywords: [] as MarkdownRemarkFrontmatter["tags"],
     slug: "/"
 };
 
 type Props = {
     description?: string;
     title: string;
-    article?: DeepNonNullable<MarkdownRemarkFrontmatter>;
+    article?: MarkdownRemarkFrontmatter;
 } & typeof defaultProps;
 
-const SEO = ({
+const Seo = ({
     description,
     lang,
     slug,
     keywords,
     title,
     article
-}: Props): ReactElement => {
-    const data = useStaticQuery<DeepNonNullable<SeoQueryQuery>>(seoQuery);
+}: Props): ReactElement | null => {
+    const data = useStaticQuery<SeoQueryQuery>(seoQuery);
+
+    if (!data.site || !data.site.siteMetadata) {
+        return (
+            <GenericError
+                missing={{ site: data.site }}
+                message="<Seo />: props missing: data.site or data.site.siteMetadata"
+            />
+        );
+    }
 
     const { siteMetadata } = data.site;
 
+    const { siteUrl } = siteMetadata;
+
+    if (!siteUrl) {
+        return (
+            <GenericError
+                missing={{ siteUrl }}
+                message="<Seo />: props missing: data.site.siteMetadata.siteUrl"
+            />
+        );
+    }
+
     const metaDescription = description || siteMetadata.description;
 
-    const tags = baseTags.concat(keywords);
+    if (!metaDescription) {
+        return (
+            <GenericError
+                missing={{ metaDescription }}
+                message="<Seo />: props missing: data.site.siteMetadata.description or description"
+            />
+        );
+    }
+
+    if (
+        !data.logo ||
+        !data.logo.internal.mediaType ||
+        !data.logo.childImageSharp ||
+        !data.logo.childImageSharp.resize ||
+        !data.logo.childImageSharp.resize.src
+    ) {
+        return (
+            <GenericError
+                missing={{ logo: data.logo }}
+                message={`<Seo />: props missing:
+                            data.logo or
+                            data.logo.internal.mediaType or
+                            data.logo.childImageSharp or
+                            data.logo.childImageSharp.resize or
+                            data.logo.childImageSharp.resize.src`}
+            />
+        );
+    }
+
+    const { mediaType: logoMediaType } = data.logo.internal;
+
+    const { src: logoUrl } = data.logo.childImageSharp.resize;
+
+    const articleFeaturedImage = article && article.featuredImage;
+
+    const articleFeaturedImageAlt =
+        article && article.featuredImageAlt
+            ? article.featuredImageAlt
+            : "Karen Grigoryan. Front-end Engineer. <KarenJS /> (https://www.karenjs.com)";
+
+    const articleFeaturedImageMediaType =
+        articleFeaturedImage && articleFeaturedImage.internal.mediaType
+            ? articleFeaturedImage.internal.mediaType
+            : logoMediaType;
+
+    const articleImageUrl =
+        articleFeaturedImage &&
+        articleFeaturedImage.childImageSharp &&
+        articleFeaturedImage.childImageSharp.resize &&
+        articleFeaturedImage.childImageSharp.resize.src
+            ? articleFeaturedImage.childImageSharp.resize.src
+            : logoUrl;
+
+    const tags =
+        keywords && isObjectOfType<string>(keywords, isString)
+            ? baseTags.concat(keywords)
+            : baseTags;
 
     const decoratedTitle = `${siteMetadata.title} - ${title}`;
 
@@ -88,56 +166,27 @@ const SEO = ({
 
             <meta
                 property="og:image"
-                content={urlJoin(
-                    siteMetadata.siteUrl,
-                    article
-                        ? article.featuredImage.childImageSharp.resize.src
-                        : data.logo.childImageSharp.resize.src
-                )}
+                content={urlJoin(siteUrl, articleImageUrl)}
             />
 
             <meta
                 property="og:image:url"
-                content={urlJoin(
-                    siteMetadata.siteUrl,
-                    article
-                        ? article.featuredImage.childImageSharp.resize.src
-                        : data.logo.childImageSharp.resize.src
-                )}
+                content={urlJoin(siteUrl, articleImageUrl)}
             />
 
             <meta
                 property="og:image:secure_url"
-                content={urlJoin(
-                    siteMetadata.siteUrl,
-                    article
-                        ? article.featuredImage.childImageSharp.resize.src
-                        : data.logo.childImageSharp.resize.src
-                )}
+                content={urlJoin(siteUrl, articleImageUrl)}
             />
 
             <meta
                 property="og:image:type"
-                content={
-                    article
-                        ? article.featuredImage.internal.mediaType
-                        : data.logo.internal.mediaType
-                }
+                content={articleFeaturedImageMediaType}
             />
 
-            <meta
-                property="og:image:alt"
-                content={
-                    article
-                        ? article.featuredImageAlt
-                        : "Karen Grigoryan. Front-end Engineer. <KarenJS /> (https://www.karenjs.com)"
-                }
-            />
+            <meta property="og:image:alt" content={articleFeaturedImageAlt} />
 
-            <meta
-                property="og:url"
-                content={urlJoin(siteMetadata.siteUrl, slug)}
-            />
+            <meta property="og:url" content={urlJoin(siteUrl, slug)} />
 
             <meta property="og:site_name" content={decoratedTitle} />
 
@@ -147,19 +196,11 @@ const SEO = ({
 
             <meta name="twitter:title" content={decoratedTitle} />
 
-            <meta
-                name="twitter:url"
-                content={urlJoin(siteMetadata.siteUrl, slug)}
-            />
+            <meta name="twitter:url" content={urlJoin(siteUrl, slug)} />
 
             <meta
                 property="twitter:image"
-                content={urlJoin(
-                    siteMetadata.siteUrl,
-                    article
-                        ? article.featuredImage.childImageSharp.resize.src
-                        : data.logo.childImageSharp.resize.src
-                )}
+                content={urlJoin(siteUrl, articleImageUrl)}
             />
 
             <meta name="twitter:description" content={metaDescription} />
@@ -168,7 +209,7 @@ const SEO = ({
                 <meta
                     key="article:author"
                     property="article:author"
-                    content={urlJoin(siteMetadata.siteUrl, "/about/")}
+                    content={urlJoin(siteUrl, "/about/")}
                 />,
                 ...tags.map((tag) => (
                     <meta property="article:tag" key={tag} content={tag} />
@@ -178,6 +219,6 @@ const SEO = ({
     );
 };
 
-SEO.defaultProps = defaultProps;
+Seo.defaultProps = defaultProps;
 
-export default SEO;
+export default Seo;

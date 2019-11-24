@@ -1,8 +1,6 @@
 # <KarenJS />
 
-My personal website/blog on WebDev and JS in specific.
-
-...
+My personal website/blog on JavaScript and related topics.
 
 ## Change log
 

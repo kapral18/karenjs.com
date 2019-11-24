@@ -5,33 +5,42 @@ template: "About"
 
 ### 👋 Hey, nice to meet you.
 
--   **Name**: _Karen Grigoryan_
--   **Position**: _Senior Front-end Engineer @ [CataWiki](https://www.catawiki.com)_
--   **Location**: _Amsterdam, The Netherlands_
--   **Core Skills**: _JavaScript, TypeScript, React_
+I'm **Karen Grigoryan**.
 
-### Contributions
+I am a **JavaScript Engineer** with **8+ years** of extensive hands-on experience in various small to massive projects.
 
--   🏢 [CataWiki Online Auction Platform](https://www.catawiki.com)
--   🏢 [1DESK Business Automation Platform](https://www.ipsoft.com/1desk)
--   🏢 [Casengo Customer Managment Platform](https://casengo.com)
--   🏢 [Mail.Ru Email Service](https://mail.ru)
+Currently, I am focused on **React/TypeScript** stack.
 
-Check more:
+#### Projects
 
--   🗒️[CV](https://kapral18.github.io/cv)
--   📜[StackOverflow TimeLine](https://stackoverflow.com/story/karengrigoryan)
+These are some of the projects I've been working on over the years:
 
-### Activities
+🏢 [LeasePlan Auto Lease and Fleet Management Platform](https://leaseplan.com) (_current_)
 
--   🖐 [StackOverflow](https://stackoverflow.com/users/2998898/karen-grigoryan)
--   👨‍💻 [GitHub](https://github.com/kapral18)
--   📣 <a href="/appearances">Talks and workshops</a>
--   ✍️ <a href="/blog">Blog</a>
+🏢 [CataWiki Online Auction Platform](https://www.catawiki.com)
 
-### Contacts
+🏢 [1DESK Business Automation Platform](https://www.ipsoft.com/1desk)
 
--   ✉️ [Email](mailto://hey@karenjs.com)
--   💬 [LinkedIn](https://www.linkedin.com/in/kapral18)
--   💬 [Telegram](https://t.me/kapral18)
--   👋 [Twitter](https://twitter.com/KaaFury)
+🏢 [Casengo Customer Managment Platform](https://casengo.com)
+
+🏢 [Mail.Ru Email Service](https://mail.ru)
+
+#### Activities
+
+I am occasionally active on:
+
+🖐 [StackOverflow](https://stackoverflow.com/users/2998898/karen-grigoryan)
+
+👨‍💻 [GitHub](https://github.com/kapral18)
+
+#### Contacts
+
+You can always find me via these channels, in no preference order:
+
+✉️ [Email](mailto://hey@karenjs.com)
+
+💬 [LinkedIn](https://www.linkedin.com/in/kapral18)
+
+💬 [Telegram](https://t.me/kapral18)
+
+👋 [Twitter](https://twitter.com/KaaFury)

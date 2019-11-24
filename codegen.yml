@@ -9,6 +9,8 @@ generates:
             scalars:
                 Date: string
                 JSON: "{ [key: string]: any }"
+            namingConvention:
+                enumValues: keep
         plugins:
             - typescript
             - typescript-operations
