@@ -48,6 +48,8 @@ export const Container = styled.article`
 `;
 
 export const Header = styled.header`
+    margin-bottom: 3rem;
+
     ${media.tablet`
         text-align: center;
     `};

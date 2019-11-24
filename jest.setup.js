@@ -1,4 +1,8 @@
-// Global/Window object Stubs for Jest
+import "jest-styled-components";
+import "@testing-library/jest-dom/extend-expect";
+
+window.open = () => null;
+
 window.matchMedia =
     window.matchMedia ||
     function() {

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "gatsby";
 
 import Layout from "../components/Layout";
-import SEO from "../components/Seo";
+import Seo from "../components/Seo";
 
 const Container = styled.div`
     text-align: center;
@@ -11,7 +11,7 @@ const Container = styled.div`
 
 const NotFoundPage: FC = () => (
     <Layout>
-        <SEO slug="/404/" title="Page Not Found" />
+        <Seo slug="/404/" title="Page Not Found" />
         <Container>
             <span
                 css={`

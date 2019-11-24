@@ -13,17 +13,14 @@ type FinalState = { [k in SizeKeys]: ThemedCssFunction<any> };
 
 const mediaKeys = Object.keys(sizes) as SizeKeys[];
 
-const media = mediaKeys.reduce(
-    (acc, label) => {
-        acc[label] = (first: any, ...interpolations: any[]) => css`
-            @media (max-width: ${sizes[label] / 16}em) {
-                ${css(first, ...interpolations)}
-            }
-        `;
+const media = mediaKeys.reduce((acc, label) => {
+    acc[label] = (first: any, ...interpolations: any[]) => css`
+        @media (max-width: ${sizes[label] / 16}em) {
+            ${css(first, ...interpolations)}
+        }
+    `;
 
-        return acc;
-    },
-    {} as FinalState
-);
+    return acc;
+}, {} as FinalState);
 
 export default media;
