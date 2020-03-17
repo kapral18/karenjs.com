@@ -99,7 +99,7 @@ const Seo = ({
         article?.featuredImage?.internal.mediaType ?? logoMediaType;
 
     const articleImageUrl =
-        article?.featuredImage?.childImageSharp?.resize?.src ?? logoUrl;
+        article?.featuredImage?.childImageSharp?.fluid?.src ?? logoUrl;
 
     const tags =
         keywords && isObjectOfType<string>(keywords, isString)
@@ -159,9 +159,9 @@ const Seo = ({
 
             <meta property="og:site_name" content={decoratedTitle} />
 
-            <meta name="twitter:card" content={"summary"} />
+            <meta name="twitter:card" content="summary" />
 
-            <meta name="twitter:creator" content={"@kaafury"} />
+            <meta name="twitter:creator" content="@kaafury" />
 
             <meta name="twitter:title" content={decoratedTitle} />
 
