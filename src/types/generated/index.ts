@@ -229,7 +229,9 @@ export interface Directory  extends Node {
   atime: Scalars['Date'];
   mtime: Scalars['Date'];
   ctime: Scalars['Date'];
+  /** @deprecated Use `birthTime` instead */
   birthtime?: Maybe<Scalars['Date']>;
+  /** @deprecated Use `birthTime` instead */
   birthtimeMs?: Maybe<Scalars['Float']>;
   blksize?: Maybe<Scalars['Int']>;
   blocks?: Maybe<Scalars['Int']>;
@@ -534,7 +536,9 @@ export interface File  extends Node {
   atime: Scalars['Date'];
   mtime: Scalars['Date'];
   ctime: Scalars['Date'];
+  /** @deprecated Use `birthTime` instead */
   birthtime?: Maybe<Scalars['Date']>;
+  /** @deprecated Use `birthTime` instead */
   birthtimeMs?: Maybe<Scalars['Float']>;
   blksize?: Maybe<Scalars['Int']>;
   blocks?: Maybe<Scalars['Int']>;
@@ -544,8 +548,8 @@ export interface File  extends Node {
   parent?: Maybe<Node>;
   children: Array<Node>;
   internal: Internal;
-  childAppearancesJson?: Maybe<AppearancesJson>;
   childMarkdownRemark?: Maybe<MarkdownRemark>;
+  childAppearancesJson?: Maybe<AppearancesJson>;
 }
 
 
@@ -843,53 +847,8 @@ export enum FileFieldsEnum {
   internal___mediaType = 'internal___mediaType',
   internal___owner = 'internal___owner',
   internal___type = 'internal___type',
-  childAppearancesJson___id = 'childAppearancesJson___id',
-  childAppearancesJson___parent___id = 'childAppearancesJson___parent___id',
-  childAppearancesJson___parent___parent___id = 'childAppearancesJson___parent___parent___id',
-  childAppearancesJson___parent___parent___children = 'childAppearancesJson___parent___parent___children',
-  childAppearancesJson___parent___children = 'childAppearancesJson___parent___children',
-  childAppearancesJson___parent___children___id = 'childAppearancesJson___parent___children___id',
-  childAppearancesJson___parent___children___children = 'childAppearancesJson___parent___children___children',
-  childAppearancesJson___parent___internal___content = 'childAppearancesJson___parent___internal___content',
-  childAppearancesJson___parent___internal___contentDigest = 'childAppearancesJson___parent___internal___contentDigest',
-  childAppearancesJson___parent___internal___description = 'childAppearancesJson___parent___internal___description',
-  childAppearancesJson___parent___internal___fieldOwners = 'childAppearancesJson___parent___internal___fieldOwners',
-  childAppearancesJson___parent___internal___ignoreType = 'childAppearancesJson___parent___internal___ignoreType',
-  childAppearancesJson___parent___internal___mediaType = 'childAppearancesJson___parent___internal___mediaType',
-  childAppearancesJson___parent___internal___owner = 'childAppearancesJson___parent___internal___owner',
-  childAppearancesJson___parent___internal___type = 'childAppearancesJson___parent___internal___type',
-  childAppearancesJson___children = 'childAppearancesJson___children',
-  childAppearancesJson___children___id = 'childAppearancesJson___children___id',
-  childAppearancesJson___children___parent___id = 'childAppearancesJson___children___parent___id',
-  childAppearancesJson___children___parent___children = 'childAppearancesJson___children___parent___children',
-  childAppearancesJson___children___children = 'childAppearancesJson___children___children',
-  childAppearancesJson___children___children___id = 'childAppearancesJson___children___children___id',
-  childAppearancesJson___children___children___children = 'childAppearancesJson___children___children___children',
-  childAppearancesJson___children___internal___content = 'childAppearancesJson___children___internal___content',
-  childAppearancesJson___children___internal___contentDigest = 'childAppearancesJson___children___internal___contentDigest',
-  childAppearancesJson___children___internal___description = 'childAppearancesJson___children___internal___description',
-  childAppearancesJson___children___internal___fieldOwners = 'childAppearancesJson___children___internal___fieldOwners',
-  childAppearancesJson___children___internal___ignoreType = 'childAppearancesJson___children___internal___ignoreType',
-  childAppearancesJson___children___internal___mediaType = 'childAppearancesJson___children___internal___mediaType',
-  childAppearancesJson___children___internal___owner = 'childAppearancesJson___children___internal___owner',
-  childAppearancesJson___children___internal___type = 'childAppearancesJson___children___internal___type',
-  childAppearancesJson___internal___content = 'childAppearancesJson___internal___content',
-  childAppearancesJson___internal___contentDigest = 'childAppearancesJson___internal___contentDigest',
-  childAppearancesJson___internal___description = 'childAppearancesJson___internal___description',
-  childAppearancesJson___internal___fieldOwners = 'childAppearancesJson___internal___fieldOwners',
-  childAppearancesJson___internal___ignoreType = 'childAppearancesJson___internal___ignoreType',
-  childAppearancesJson___internal___mediaType = 'childAppearancesJson___internal___mediaType',
-  childAppearancesJson___internal___owner = 'childAppearancesJson___internal___owner',
-  childAppearancesJson___internal___type = 'childAppearancesJson___internal___type',
-  childAppearancesJson___name = 'childAppearancesJson___name',
-  childAppearancesJson___date = 'childAppearancesJson___date',
-  childAppearancesJson___url = 'childAppearancesJson___url',
-  childAppearancesJson___slidesUrl = 'childAppearancesJson___slidesUrl',
-  childAppearancesJson___host = 'childAppearancesJson___host',
-  childAppearancesJson___location = 'childAppearancesJson___location',
   childMarkdownRemark___id = 'childMarkdownRemark___id',
   childMarkdownRemark___frontmatter___title = 'childMarkdownRemark___frontmatter___title',
-  childMarkdownRemark___frontmatter___template = 'childMarkdownRemark___frontmatter___template',
   childMarkdownRemark___frontmatter___date = 'childMarkdownRemark___frontmatter___date',
   childMarkdownRemark___frontmatter___draft = 'childMarkdownRemark___frontmatter___draft',
   childMarkdownRemark___frontmatter___featuredImage___sourceInstanceName = 'childMarkdownRemark___frontmatter___featuredImage___sourceInstanceName',
@@ -929,6 +888,7 @@ export enum FileFieldsEnum {
   childMarkdownRemark___frontmatter___featuredImage___id = 'childMarkdownRemark___frontmatter___featuredImage___id',
   childMarkdownRemark___frontmatter___featuredImage___children = 'childMarkdownRemark___frontmatter___featuredImage___children',
   childMarkdownRemark___frontmatter___featuredImageAlt = 'childMarkdownRemark___frontmatter___featuredImageAlt',
+  childMarkdownRemark___frontmatter___template = 'childMarkdownRemark___frontmatter___template',
   childMarkdownRemark___frontmatter___tags = 'childMarkdownRemark___frontmatter___tags',
   childMarkdownRemark___excerpt = 'childMarkdownRemark___excerpt',
   childMarkdownRemark___rawMarkdownBody = 'childMarkdownRemark___rawMarkdownBody',
@@ -985,7 +945,51 @@ export enum FileFieldsEnum {
   childMarkdownRemark___internal___ignoreType = 'childMarkdownRemark___internal___ignoreType',
   childMarkdownRemark___internal___mediaType = 'childMarkdownRemark___internal___mediaType',
   childMarkdownRemark___internal___owner = 'childMarkdownRemark___internal___owner',
-  childMarkdownRemark___internal___type = 'childMarkdownRemark___internal___type'
+  childMarkdownRemark___internal___type = 'childMarkdownRemark___internal___type',
+  childAppearancesJson___id = 'childAppearancesJson___id',
+  childAppearancesJson___parent___id = 'childAppearancesJson___parent___id',
+  childAppearancesJson___parent___parent___id = 'childAppearancesJson___parent___parent___id',
+  childAppearancesJson___parent___parent___children = 'childAppearancesJson___parent___parent___children',
+  childAppearancesJson___parent___children = 'childAppearancesJson___parent___children',
+  childAppearancesJson___parent___children___id = 'childAppearancesJson___parent___children___id',
+  childAppearancesJson___parent___children___children = 'childAppearancesJson___parent___children___children',
+  childAppearancesJson___parent___internal___content = 'childAppearancesJson___parent___internal___content',
+  childAppearancesJson___parent___internal___contentDigest = 'childAppearancesJson___parent___internal___contentDigest',
+  childAppearancesJson___parent___internal___description = 'childAppearancesJson___parent___internal___description',
+  childAppearancesJson___parent___internal___fieldOwners = 'childAppearancesJson___parent___internal___fieldOwners',
+  childAppearancesJson___parent___internal___ignoreType = 'childAppearancesJson___parent___internal___ignoreType',
+  childAppearancesJson___parent___internal___mediaType = 'childAppearancesJson___parent___internal___mediaType',
+  childAppearancesJson___parent___internal___owner = 'childAppearancesJson___parent___internal___owner',
+  childAppearancesJson___parent___internal___type = 'childAppearancesJson___parent___internal___type',
+  childAppearancesJson___children = 'childAppearancesJson___children',
+  childAppearancesJson___children___id = 'childAppearancesJson___children___id',
+  childAppearancesJson___children___parent___id = 'childAppearancesJson___children___parent___id',
+  childAppearancesJson___children___parent___children = 'childAppearancesJson___children___parent___children',
+  childAppearancesJson___children___children = 'childAppearancesJson___children___children',
+  childAppearancesJson___children___children___id = 'childAppearancesJson___children___children___id',
+  childAppearancesJson___children___children___children = 'childAppearancesJson___children___children___children',
+  childAppearancesJson___children___internal___content = 'childAppearancesJson___children___internal___content',
+  childAppearancesJson___children___internal___contentDigest = 'childAppearancesJson___children___internal___contentDigest',
+  childAppearancesJson___children___internal___description = 'childAppearancesJson___children___internal___description',
+  childAppearancesJson___children___internal___fieldOwners = 'childAppearancesJson___children___internal___fieldOwners',
+  childAppearancesJson___children___internal___ignoreType = 'childAppearancesJson___children___internal___ignoreType',
+  childAppearancesJson___children___internal___mediaType = 'childAppearancesJson___children___internal___mediaType',
+  childAppearancesJson___children___internal___owner = 'childAppearancesJson___children___internal___owner',
+  childAppearancesJson___children___internal___type = 'childAppearancesJson___children___internal___type',
+  childAppearancesJson___internal___content = 'childAppearancesJson___internal___content',
+  childAppearancesJson___internal___contentDigest = 'childAppearancesJson___internal___contentDigest',
+  childAppearancesJson___internal___description = 'childAppearancesJson___internal___description',
+  childAppearancesJson___internal___fieldOwners = 'childAppearancesJson___internal___fieldOwners',
+  childAppearancesJson___internal___ignoreType = 'childAppearancesJson___internal___ignoreType',
+  childAppearancesJson___internal___mediaType = 'childAppearancesJson___internal___mediaType',
+  childAppearancesJson___internal___owner = 'childAppearancesJson___internal___owner',
+  childAppearancesJson___internal___type = 'childAppearancesJson___internal___type',
+  childAppearancesJson___name = 'childAppearancesJson___name',
+  childAppearancesJson___date = 'childAppearancesJson___date',
+  childAppearancesJson___url = 'childAppearancesJson___url',
+  childAppearancesJson___slidesUrl = 'childAppearancesJson___slidesUrl',
+  childAppearancesJson___host = 'childAppearancesJson___host',
+  childAppearancesJson___location = 'childAppearancesJson___location'
 }
 
 export interface FileFilterInput {
@@ -1028,8 +1032,8 @@ export interface FileFilterInput {
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
-  childAppearancesJson?: Maybe<AppearancesJsonFilterInput>;
   childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>;
+  childAppearancesJson?: Maybe<AppearancesJsonFilterInput>;
 }
 
 export interface FileGroupConnection {
@@ -1088,8 +1092,10 @@ export enum ImageFormat {
 
 export interface ImageSharp  extends Node {
   fixed?: Maybe<ImageSharpFixed>;
+  /** @deprecated Resolutions was deprecated in Gatsby v2. It's been renamed to "fixed" https://example.com/write-docs-and-fix-this-example-link */
   resolutions?: Maybe<ImageSharpResolutions>;
   fluid?: Maybe<ImageSharpFluid>;
+  /** @deprecated Sizes was deprecated in Gatsby v2. It's been renamed to "fluid" https://example.com/write-docs-and-fix-this-example-link */
   sizes?: Maybe<ImageSharpSizes>;
   original?: Maybe<ImageSharpOriginal>;
   resize?: Maybe<ImageSharpResize>;
@@ -1708,7 +1714,6 @@ export interface MarkdownRemarkFields {
 export enum MarkdownRemarkFieldsEnum {
   id = 'id',
   frontmatter___title = 'frontmatter___title',
-  frontmatter___template = 'frontmatter___template',
   frontmatter___date = 'frontmatter___date',
   frontmatter___draft = 'frontmatter___draft',
   frontmatter___featuredImage___sourceInstanceName = 'frontmatter___featuredImage___sourceInstanceName',
@@ -1761,14 +1766,6 @@ export enum MarkdownRemarkFieldsEnum {
   frontmatter___featuredImage___internal___mediaType = 'frontmatter___featuredImage___internal___mediaType',
   frontmatter___featuredImage___internal___owner = 'frontmatter___featuredImage___internal___owner',
   frontmatter___featuredImage___internal___type = 'frontmatter___featuredImage___internal___type',
-  frontmatter___featuredImage___childAppearancesJson___id = 'frontmatter___featuredImage___childAppearancesJson___id',
-  frontmatter___featuredImage___childAppearancesJson___children = 'frontmatter___featuredImage___childAppearancesJson___children',
-  frontmatter___featuredImage___childAppearancesJson___name = 'frontmatter___featuredImage___childAppearancesJson___name',
-  frontmatter___featuredImage___childAppearancesJson___date = 'frontmatter___featuredImage___childAppearancesJson___date',
-  frontmatter___featuredImage___childAppearancesJson___url = 'frontmatter___featuredImage___childAppearancesJson___url',
-  frontmatter___featuredImage___childAppearancesJson___slidesUrl = 'frontmatter___featuredImage___childAppearancesJson___slidesUrl',
-  frontmatter___featuredImage___childAppearancesJson___host = 'frontmatter___featuredImage___childAppearancesJson___host',
-  frontmatter___featuredImage___childAppearancesJson___location = 'frontmatter___featuredImage___childAppearancesJson___location',
   frontmatter___featuredImage___childMarkdownRemark___id = 'frontmatter___featuredImage___childMarkdownRemark___id',
   frontmatter___featuredImage___childMarkdownRemark___excerpt = 'frontmatter___featuredImage___childMarkdownRemark___excerpt',
   frontmatter___featuredImage___childMarkdownRemark___rawMarkdownBody = 'frontmatter___featuredImage___childMarkdownRemark___rawMarkdownBody',
@@ -1780,7 +1777,16 @@ export enum MarkdownRemarkFieldsEnum {
   frontmatter___featuredImage___childMarkdownRemark___timeToRead = 'frontmatter___featuredImage___childMarkdownRemark___timeToRead',
   frontmatter___featuredImage___childMarkdownRemark___tableOfContents = 'frontmatter___featuredImage___childMarkdownRemark___tableOfContents',
   frontmatter___featuredImage___childMarkdownRemark___children = 'frontmatter___featuredImage___childMarkdownRemark___children',
+  frontmatter___featuredImage___childAppearancesJson___id = 'frontmatter___featuredImage___childAppearancesJson___id',
+  frontmatter___featuredImage___childAppearancesJson___children = 'frontmatter___featuredImage___childAppearancesJson___children',
+  frontmatter___featuredImage___childAppearancesJson___name = 'frontmatter___featuredImage___childAppearancesJson___name',
+  frontmatter___featuredImage___childAppearancesJson___date = 'frontmatter___featuredImage___childAppearancesJson___date',
+  frontmatter___featuredImage___childAppearancesJson___url = 'frontmatter___featuredImage___childAppearancesJson___url',
+  frontmatter___featuredImage___childAppearancesJson___slidesUrl = 'frontmatter___featuredImage___childAppearancesJson___slidesUrl',
+  frontmatter___featuredImage___childAppearancesJson___host = 'frontmatter___featuredImage___childAppearancesJson___host',
+  frontmatter___featuredImage___childAppearancesJson___location = 'frontmatter___featuredImage___childAppearancesJson___location',
   frontmatter___featuredImageAlt = 'frontmatter___featuredImageAlt',
+  frontmatter___template = 'frontmatter___template',
   frontmatter___tags = 'frontmatter___tags',
   excerpt = 'excerpt',
   rawMarkdownBody = 'rawMarkdownBody',
@@ -1928,11 +1934,11 @@ export interface MarkdownRemarkFilterInput {
 
 export interface MarkdownRemarkFrontmatter {
   title?: Maybe<Scalars['String']>;
-  template?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['Date']>;
   draft?: Maybe<Scalars['Boolean']>;
   featuredImage?: Maybe<File>;
   featuredImageAlt?: Maybe<Scalars['String']>;
+  template?: Maybe<Scalars['String']>;
   tags?: Maybe<Array<Maybe<Scalars['String']>>>;
 }
 
@@ -1946,11 +1952,11 @@ export interface MarkdownRemarkFrontmatterDateArgs {
 
 export interface MarkdownRemarkFrontmatterFilterInput {
   title?: Maybe<StringQueryOperatorInput>;
-  template?: Maybe<StringQueryOperatorInput>;
   date?: Maybe<DateQueryOperatorInput>;
   draft?: Maybe<BooleanQueryOperatorInput>;
   featuredImage?: Maybe<FileFilterInput>;
   featuredImageAlt?: Maybe<StringQueryOperatorInput>;
+  template?: Maybe<StringQueryOperatorInput>;
   tags?: Maybe<StringQueryOperatorInput>;
 }
 
@@ -2090,8 +2096,8 @@ export interface QueryFileArgs {
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
-  childAppearancesJson?: Maybe<AppearancesJsonFilterInput>;
   childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>;
+  childAppearancesJson?: Maybe<AppearancesJsonFilterInput>;
 }
 
 
@@ -2528,7 +2534,6 @@ export enum SiteFieldsEnum {
   siteMetadata___socialUrls___Twitter = 'siteMetadata___socialUrls___Twitter',
   siteMetadata___socialUrls___Telegram = 'siteMetadata___socialUrls___Telegram',
   siteMetadata___socialUrls___Github = 'siteMetadata___socialUrls___Github',
-  siteMetadata___socialUrls___Medium = 'siteMetadata___socialUrls___Medium',
   siteMetadata___socialUrls___Youtube = 'siteMetadata___socialUrls___Youtube',
   siteMetadata___socialUrls___DevTo = 'siteMetadata___socialUrls___DevTo',
   port = 'port',
@@ -3555,7 +3560,6 @@ export interface SiteSiteMetadataSocialUrls {
   Twitter?: Maybe<Scalars['String']>;
   Telegram?: Maybe<Scalars['String']>;
   Github?: Maybe<Scalars['String']>;
-  Medium?: Maybe<Scalars['String']>;
   Youtube?: Maybe<Scalars['String']>;
   DevTo?: Maybe<Scalars['String']>;
 }
@@ -3567,7 +3571,6 @@ export interface SiteSiteMetadataSocialUrlsFilterInput {
   Twitter?: Maybe<StringQueryOperatorInput>;
   Telegram?: Maybe<StringQueryOperatorInput>;
   Github?: Maybe<StringQueryOperatorInput>;
-  Medium?: Maybe<StringQueryOperatorInput>;
   Youtube?: Maybe<StringQueryOperatorInput>;
   DevTo?: Maybe<StringQueryOperatorInput>;
 }
@@ -3647,48 +3650,48 @@ export type PagesQueryQuery = { allSitePage: { nodes: Array<Pick<SitePage, 'path
 export type LayoutQueryQueryVariables = {};
 
 
-export type LayoutQueryQuery = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, logo: Maybe<{ childImageSharp: Maybe<{ fixed: Maybe<GatsbyImageSharpFixedFragment> }> }> };
+export type LayoutQueryQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, logo?: Maybe<{ childImageSharp?: Maybe<{ fixed?: Maybe<GatsbyImageSharpFixedFragment> }> }> };
 
 export type PersonInfoQueryQueryVariables = {};
 
 
-export type PersonInfoQueryQuery = { avatar: Maybe<{ childImageSharp: Maybe<{ fixed: Maybe<GatsbyImageSharpFixedFragment> }> }>, site: Maybe<{ siteMetadata: Maybe<(
+export type PersonInfoQueryQuery = { avatar?: Maybe<{ childImageSharp?: Maybe<{ fixed?: Maybe<GatsbyImageSharpFixedFragment> }> }>, site?: Maybe<{ siteMetadata?: Maybe<(
       Pick<SiteSiteMetadata, 'author'>
-      & { socialUrls: Maybe<Pick<SiteSiteMetadataSocialUrls, 'Twitter' | 'StackOverflow' | 'Github' | 'Linkedin' | 'Medium' | 'Telegram' | 'Youtube' | 'Mail' | 'DevTo'>> }
+      & { socialUrls?: Maybe<Pick<SiteSiteMetadataSocialUrls, 'Twitter' | 'StackOverflow' | 'Github' | 'Linkedin' | 'Telegram' | 'Youtube' | 'Mail' | 'DevTo'>> }
     )> }> };
 
 export type SeoQueryQueryVariables = {};
 
 
-export type SeoQueryQuery = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'siteUrl' | 'description' | 'author'>> }>, logo: Maybe<{ internal: Pick<Internal, 'mediaType'>, childImageSharp: Maybe<{ resize: Maybe<Pick<ImageSharpResize, 'src'>> }> }> };
+export type SeoQueryQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'siteUrl' | 'description' | 'author'>> }>, logo?: Maybe<{ internal: Pick<Internal, 'mediaType'>, childImageSharp?: Maybe<{ resize?: Maybe<Pick<ImageSharpResize, 'src'>> }> }> };
 
 export type AppearancesPageQueryQueryVariables = {};
 
 
-export type AppearancesPageQueryQuery = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, allAppearancesJson: { edges: Array<{ node: Pick<AppearancesJson, 'id' | 'url' | 'date' | 'name' | 'host' | 'location' | 'slidesUrl'> }> } };
+export type AppearancesPageQueryQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, allAppearancesJson: { edges: Array<{ node: Pick<AppearancesJson, 'id' | 'url' | 'date' | 'name' | 'host' | 'location' | 'slidesUrl'> }> } };
 
 export type BlogPostsPageQueryQueryVariables = {};
 
 
-export type BlogPostsPageQueryQuery = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'siteUrl'>> }>, posts: { edges: Array<{ node: (
+export type BlogPostsPageQueryQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'siteUrl'>> }>, posts: { edges: Array<{ node: (
         Pick<MarkdownRemark, 'id' | 'excerpt'>
-        & { fields: Maybe<(
+        & { fields?: Maybe<(
           Pick<MarkdownRemarkFields, 'slug'>
-          & { readingTime: Maybe<Pick<MarkdownRemarkFieldsReadingTime, 'text'>> }
-        )>, frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'date' | 'title'>> }
+          & { readingTime?: Maybe<Pick<MarkdownRemarkFieldsReadingTime, 'text'>> }
+        )>, frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'date' | 'title'>> }
       ) }> } };
 
 export type IndexPageQueryQueryVariables = {};
 
 
-export type IndexPageQueryQuery = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'siteUrl'>> }>, posts: (
+export type IndexPageQueryQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'siteUrl'>> }>, posts: (
     Pick<MarkdownRemarkConnection, 'totalCount'>
     & { edges: Array<{ node: (
         Pick<MarkdownRemark, 'id' | 'excerpt'>
-        & { fields: Maybe<(
+        & { fields?: Maybe<(
           Pick<MarkdownRemarkFields, 'slug'>
-          & { readingTime: Maybe<Pick<MarkdownRemarkFieldsReadingTime, 'text'>> }
-        )>, frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'date' | 'title'>> }
+          & { readingTime?: Maybe<Pick<MarkdownRemarkFieldsReadingTime, 'text'>> }
+        )>, frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'date' | 'title'>> }
       ) }> }
   ) };
 
@@ -3697,12 +3700,12 @@ export type AboutBySlugQueryQueryVariables = {
 };
 
 
-export type AboutBySlugQueryQuery = { markdownRemark: Maybe<(
+export type AboutBySlugQueryQuery = { markdownRemark?: Maybe<(
     Pick<MarkdownRemark, 'id' | 'html' | 'excerpt'>
-    & { fields: Maybe<(
+    & { fields?: Maybe<(
       Pick<MarkdownRemarkFields, 'slug'>
-      & { readingTime: Maybe<Pick<MarkdownRemarkFieldsReadingTime, 'text'>> }
-    )>, frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'title'>> }
+      & { readingTime?: Maybe<Pick<MarkdownRemarkFieldsReadingTime, 'text'>> }
+    )>, frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'title'>> }
   )> };
 
 export type BlogPostBySlugQueryQueryVariables = {
@@ -3710,14 +3713,14 @@ export type BlogPostBySlugQueryQueryVariables = {
 };
 
 
-export type BlogPostBySlugQueryQuery = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl' | 'author'>> }>, markdownRemark: Maybe<(
+export type BlogPostBySlugQueryQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'siteUrl' | 'author'>> }>, markdownRemark?: Maybe<(
     Pick<MarkdownRemark, 'id' | 'excerpt' | 'html' | 'tableOfContents'>
-    & { fields: Maybe<(
+    & { fields?: Maybe<(
       Pick<MarkdownRemarkFields, 'slug'>
-      & { readingTime: Maybe<Pick<MarkdownRemarkFieldsReadingTime, 'text'>> }
-    )>, frontmatter: Maybe<(
+      & { readingTime?: Maybe<Pick<MarkdownRemarkFieldsReadingTime, 'text'>> }
+    )>, frontmatter?: Maybe<(
       Pick<MarkdownRemarkFrontmatter, 'title' | 'tags' | 'featuredImageAlt' | 'date'>
       & { rawDate: MarkdownRemarkFrontmatter['date'] }
-      & { featuredImage: Maybe<{ internal: Pick<Internal, 'mediaType'>, childImageSharp: Maybe<{ fluid: Maybe<GatsbyImageSharpFluidFragment> }> }> }
+      & { featuredImage?: Maybe<{ internal: Pick<Internal, 'mediaType'>, childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluidFragment> }> }> }
     )> }
   )> };

@@ -16,7 +16,6 @@ module.exports = {
             Twitter: "https://twitter.com/kaafury",
             Telegram: "https://t.me/kapral18",
             Github: "https://github.com/kapral18",
-            Medium: "https://medium.com/@karengrigoryan",
             Youtube: "https://www.youtube.com/kapral18",
             DevTo: "https://dev.to/kapral18"
         }

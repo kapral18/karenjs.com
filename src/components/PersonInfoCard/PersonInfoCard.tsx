@@ -94,7 +94,6 @@ const personInfoQuery = graphql`
                     StackOverflow
                     Github
                     Linkedin
-                    Medium
                     Telegram
                     Youtube
                     Mail
