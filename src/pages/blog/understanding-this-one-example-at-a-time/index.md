@@ -252,7 +252,7 @@ The rules are still the same, but visually the braces might add some confusing n
 
 Here we are dealing with a lot of nested [iife's](https://developer.mozilla.org/en-US/docs/Glossary/IIFE).
 
-But let's disect the `obj.method()` call.
+But let's dissect the `obj.method()` call.
 
 Here is the chain of calls all the way down to the call
 containing `console.log(this.x)` that we want to resolve:
@@ -261,8 +261,7 @@ containing `console.log(this.x)` that we want to resolve:
 GlobalScriptCall() -> obj.method() -> iife1() -> iife2() -> iife3() -> iife4() -> iife5()
 ```
 
-Again we need to focus on the call contains the `this` expression
-directly inside its functions body.
+Again we need to focus on the call containing `this` expression directly in its function body.
 
 Here it's `iife5`.
 
@@ -343,22 +342,20 @@ How so?
 
 If you look close you will see that
 
-```ts{4-6}
+```ts{3-5}
 const obj = {
     x: 1,
-    method:
-        () => {
-            console.log(this.x);
-        }
+    method: () => {
+        console.log(this.x);
+    }
 };
 ```
 
-this highlighted (and indented for more clarity) portion
-is defined in the global level, even before the `obj` is
-finalized as a literal.
+this highlighted portion is defined in the global level,
+even before the `obj` is finalized as a literal.
 
 So we get the `<baseValue>` of `GlobalScriptCall()`
-to use as our new `this` value.
+to be used as our new `this` value.
 
 And [later](#global-code) we will learn that `<baseValue>` of `GlobalScriptCall()`
 is always hardcoded to global object, i.e. `window` in browser
@@ -508,7 +505,7 @@ In our case both operands are the same
 `obj.method, obj.method`
 
 After evaluation last operand returns a value - the underlying `method` function object,
-that `obj.method` reference points to.
+that `obj.method` signature points to.
 
 So we apply the "dot" rule to it.
 
@@ -587,7 +584,7 @@ As you might have noticed, we can pass whatever value as `<baseValue>` into `cal
 
 And of course there is a respective conversion mechanism in place:
 
-`undefined` or `null` in non-strict mode is converted to the global window object,
+`undefined` or `null` in non-strict mode is converted to the global `window` object,
 other values are converted into their object wrapper alternatives.
 
 ```ts
@@ -648,8 +645,8 @@ GlobalScriptCall() -> obj.method() -> iiafe.call({ x: 2 })
 We start with `iiafe.call({ x: 2 })`, because
 `iiafe` contains `this` expression directly in its body:
 
-1. Is `iife` an arrow function ? yes, skip `.call({ x: 2 })` part
-2. Where was `iife` defined ? `obj.method`
+1. Is `iiafe` an arrow function ? yes, skip `.call({ x: 2 })` part
+2. Where was `iiafe` defined ? `obj.method`
 3. Is `obj.method` an arrow function ? no
 4. Apply the "dot" rule to `obj.method`:
 
@@ -844,7 +841,7 @@ GlobalScriptCall() -> obj.method() -> setTimeout(iife) -> iife()
 ```
 
 And at this point it doesn't matter if we tweak the
-`setTimeout()` call trying to affect `iife()` `this` keywrod resolution,
+`setTimeout()` call trying to affect `iife()` `this` keyword resolution,
 because as we now know `iife()` is just called directly as is,
 with its own independent `<baseValue>` as in `<baseValue>.iife()`
 
@@ -858,7 +855,7 @@ All of the above `setTimeout` call variations don't have any affect and `iife()`
 be resolved by applying standard "dot" rule to `iife()` call
 
 1. is `iife()` an arrow function? no
-2. apply "dot" rule for `iife()` call rightaway
+2. apply "dot" rule to `iife()` call rightaway
 
 ```ts
 iife()
@@ -910,7 +907,7 @@ const {method} = obj;
 method(); // undefined
 ```
 
-We build the chain
+We build the chain of calls
 
 ```ts
 GlobalScriptCall() -> obj.method() -> setTimeout(iiafe) -> iiafe()
@@ -1186,7 +1183,7 @@ be a little bit more confusing with eval + strict mode:
 
 ```ts
 function logThis() {
-    console.log(this)
+    console.log(this);
 }
 
 const obj = {
@@ -1215,15 +1212,15 @@ function containedLogThis() {
     "use strict";
 
     return function logThis() {
-        console.log(this)
-    }
+        console.log(this);
+    };
 }
 
 const obj = {
     x: 1,
     method() {
         // logThis is created in strict mode even when called from non-strict
-        const logThis = containedLogThis()
+        const logThis = containedLogThis();
 
         eval(`
             logThis();
@@ -1441,7 +1438,7 @@ except `method()`, and that's because `class` definition code is a strict mode c
 so no conversions happen from `undefined` to global `window` object.
 
 1. Is `method()` call an arrow function call? No
-2. Apply dot rule
+2. Apply the "dot" rule to `method()` call
 
 ```ts
 method();
@@ -1520,8 +1517,8 @@ contains `this` expression directly inside.
 
 Here we have two candidates
 
-- `iiafe1()`
-- `innerObj.testFunc()`
+-   `iiafe1()`
+-   `innerObj.testFunc()`
 
 Let's also visualize the chain of calls for convenience:
 
@@ -1584,8 +1581,8 @@ GlobalScriptCall() -> method() -> iiafe1() -> eval('this.anotherMethod()') -> fu
 
 We still have 2 expressions to tackle
 
-- `iiafe1()`
-- `innerObj.testFunc()`
+-   `iiafe1()`
+-   `innerObj.testFunc()`
 
 Let's start with `iiafe1` again:
 
@@ -1614,19 +1611,19 @@ always a strict code.
 So if you want to correctly infer `this` keyword:
 
 1. You build the call chain all the way to the call/calls that contain
-`this` expression directly inside.
+   `this` expression directly inside.
 2. If there are multiple calls with `this` keyword expressions directly inside,
-you evaluate them from left to right, i.e. in order of invocation.
+   you evaluate them from left to right, i.e. in order of invocation.
 3. When evaluating the call containing `this` keyword,
-you check if it's an arrow function.
+   you check if it's an arrow function.
 4. If it is, you apply the "dot" rule to the call where this arrow function was defined.
 5. Otherwise you apply the "dot" rule to the call.
-7. Given `call(<baseValue>/apply<baseValue>)` in signature, use that `<baseValue>` as `this`.
-8. Unless if it's an arrow function call, then ignore `call/apply` altogether.
-9. Given call that was previously bound like `bind(<baseValue>)`, use that `<baseValue>` as `this`.
-10. Unless `bind` was called on an arrow function, then ignore `bind` altogether.
-11. When in strict mode don't convert primitive `<baseValue>` to object counterparts.
-12. Beware of edge cases with global evaluation, eval and indirection.
+6. Given `call(<baseValue>/apply<baseValue>)` in signature, use that `<baseValue>` as `this`.
+7. Unless if it's an arrow function call, then ignore `call/apply` altogether.
+8. Given call that was previously bound like `bind(<baseValue>)`, use that `<baseValue>` as `this`.
+9. Unless `bind` was called on an arrow function, then ignore `bind` altogether.
+10. When in strict mode don't convert primitive `<baseValue>` to object counterparts.
+11. Beware of edge cases with global evaluation, eval and indirection.
 
 ### Bonus: NodeJS
 
@@ -1660,7 +1657,7 @@ And since it's a `.call()` that [sets](https://github.com/nodejs/node/blob/v12.1
 we set `window` as global object, it's unaffected by strict mode.
 
 ```ts
-'use strict';
+"use strict";
 console.log(this); // {}, i.e. module.exports
 ```
 
@@ -1717,24 +1714,24 @@ console.log(this); // {}, i.e. module.exports
 
 (function() {
     console.log(this); // Object [global] {
-                       //   global: [Circular],
-                       //   clearInterval: [Function: clearInterval],
-                       //   clearTimeout: [Function: clearTimeout],
-                       //   setInterval: [Function: setInterval],
-                       //   setTimeout: [Function: setTimeout] { [Symbol(util.promisify.custom)]: [Function] },
-                       //   queueMicrotask: [Function: queueMicrotask],
-                       //   clearImmediate: [Function: clearImmediate],
-                       //   setImmediate: [Function: setImmediate] {
-                       //     [Symbol(util.promisify.custom)]: [Function]
-                       //   }
-                       // }
+    //   global: [Circular],
+    //   clearInterval: [Function: clearInterval],
+    //   clearTimeout: [Function: clearTimeout],
+    //   setInterval: [Function: setInterval],
+    //   setTimeout: [Function: setTimeout] { [Symbol(util.promisify.custom)]: [Function] },
+    //   queueMicrotask: [Function: queueMicrotask],
+    //   clearImmediate: [Function: clearImmediate],
+    //   setImmediate: [Function: setImmediate] {
+    //     [Symbol(util.promisify.custom)]: [Function]
+    //   }
+    // }
 })(); // <baseValue> is undefined, gets converted to global object
 
 (function() {
-    'use strict';
+    "use strict";
     console.log(this); // undefined
 })(); // <baseValue> is undefined, doesn't get converted
-      // to global object, because of strict mode
+// to global object, because of strict mode
 ```
 
 ### Good reads
