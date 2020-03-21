@@ -961,7 +961,7 @@ And now let's revisit strict mode and `this` keyword resolution edge cases.
 
 ### Strict mode
 
-[Earlier](#interview-101-case) we touched upon the topic of strict mode.
+[Earlier](#interview-case) we touched upon the topic of strict mode.
 
 But what is "strict" code exactly?
 
