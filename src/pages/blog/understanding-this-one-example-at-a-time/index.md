@@ -8,9 +8,11 @@ template: "BlogPost"
 tags:
     - ecmascript
     - javascript
-    - javascript-this-keyword
-    - javascript-this-keyword-mechanics
-    - javascript-this-keyword-examples
+    - tutorial
+    - mentalmodel
+    - howto
+    - webdev
+    - node
 ---
 
 I've been struggling with understanding javascript `this` keyword
