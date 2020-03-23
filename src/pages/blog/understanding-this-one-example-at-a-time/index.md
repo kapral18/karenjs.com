@@ -1612,19 +1612,19 @@ always a strict code.
 
 So if you want to correctly infer `this` keyword:
 
-1. You build the call chain all the way to the call/calls that contain
+1. Build the call chain all the way down to the call/calls that contain
    `this` expression directly inside.
-2. If there are multiple calls with `this` keyword expressions directly inside,
-   you evaluate them from left to right, i.e. in order of invocation.
+2. If there are multiple calls with `this` keyword directly inside,
+   evaluate them from left to right, i.e. in order of invocation.
 3. When evaluating the call containing `this` keyword,
-   you check if it's an arrow function.
-4. If it is, you apply the "dot" rule to the call where this arrow function was defined.
-5. Otherwise you apply the "dot" rule to the call.
-6. Given `call(<baseValue>/apply<baseValue>)` in signature, use that `<baseValue>` as `this`.
-7. Unless if it's an arrow function call, then ignore `call/apply` altogether.
-8. Given call that was previously bound like `bind(<baseValue>)`, use that `<baseValue>` as `this`.
-9. Unless `bind` was called on an arrow function, then ignore `bind` altogether.
-10. When in strict mode don't convert primitive `<baseValue>` to object counterparts.
+   check if it's an arrow function.
+4. If it is, apply the "dot" rule to the call where this arrow function was defined.
+5. Otherwise apply the "dot" rule to the call, directly containing `this` keyword.
+6. Given a call like `foo.call(<baseValue>)` or `foo.apply(<baseValue>)`, apply "dot" rule to `foo` with explicitly provided `<baseValue>` from `call/apply`.
+7. Unless it's an arrow function call, in which case ignore `call/apply` altogether.
+8. Given call that was previously bound with `.bind(<baseValue>)`, apply "dot" rule to that call with explicitly provided `<baseValue>` from `bind`.
+9. Unless `.bind(<baseValue>)` was called on an arrow function, then ignore `.bind(...)` altogether.
+10. When in strict mode don't convert primitive `<baseValue>` like `undefined` or `null` to object counterparts, like `window`
 11. Beware of edge cases with global evaluation, eval and indirection.
 
 ### Bonus: NodeJS

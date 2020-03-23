@@ -548,8 +548,8 @@ export interface File  extends Node {
   parent?: Maybe<Node>;
   children: Array<Node>;
   internal: Internal;
-  childAppearancesJson?: Maybe<AppearancesJson>;
   childMarkdownRemark?: Maybe<MarkdownRemark>;
+  childAppearancesJson?: Maybe<AppearancesJson>;
 }
 
 
@@ -847,50 +847,6 @@ export enum FileFieldsEnum {
   internal___mediaType = 'internal___mediaType',
   internal___owner = 'internal___owner',
   internal___type = 'internal___type',
-  childAppearancesJson___id = 'childAppearancesJson___id',
-  childAppearancesJson___parent___id = 'childAppearancesJson___parent___id',
-  childAppearancesJson___parent___parent___id = 'childAppearancesJson___parent___parent___id',
-  childAppearancesJson___parent___parent___children = 'childAppearancesJson___parent___parent___children',
-  childAppearancesJson___parent___children = 'childAppearancesJson___parent___children',
-  childAppearancesJson___parent___children___id = 'childAppearancesJson___parent___children___id',
-  childAppearancesJson___parent___children___children = 'childAppearancesJson___parent___children___children',
-  childAppearancesJson___parent___internal___content = 'childAppearancesJson___parent___internal___content',
-  childAppearancesJson___parent___internal___contentDigest = 'childAppearancesJson___parent___internal___contentDigest',
-  childAppearancesJson___parent___internal___description = 'childAppearancesJson___parent___internal___description',
-  childAppearancesJson___parent___internal___fieldOwners = 'childAppearancesJson___parent___internal___fieldOwners',
-  childAppearancesJson___parent___internal___ignoreType = 'childAppearancesJson___parent___internal___ignoreType',
-  childAppearancesJson___parent___internal___mediaType = 'childAppearancesJson___parent___internal___mediaType',
-  childAppearancesJson___parent___internal___owner = 'childAppearancesJson___parent___internal___owner',
-  childAppearancesJson___parent___internal___type = 'childAppearancesJson___parent___internal___type',
-  childAppearancesJson___children = 'childAppearancesJson___children',
-  childAppearancesJson___children___id = 'childAppearancesJson___children___id',
-  childAppearancesJson___children___parent___id = 'childAppearancesJson___children___parent___id',
-  childAppearancesJson___children___parent___children = 'childAppearancesJson___children___parent___children',
-  childAppearancesJson___children___children = 'childAppearancesJson___children___children',
-  childAppearancesJson___children___children___id = 'childAppearancesJson___children___children___id',
-  childAppearancesJson___children___children___children = 'childAppearancesJson___children___children___children',
-  childAppearancesJson___children___internal___content = 'childAppearancesJson___children___internal___content',
-  childAppearancesJson___children___internal___contentDigest = 'childAppearancesJson___children___internal___contentDigest',
-  childAppearancesJson___children___internal___description = 'childAppearancesJson___children___internal___description',
-  childAppearancesJson___children___internal___fieldOwners = 'childAppearancesJson___children___internal___fieldOwners',
-  childAppearancesJson___children___internal___ignoreType = 'childAppearancesJson___children___internal___ignoreType',
-  childAppearancesJson___children___internal___mediaType = 'childAppearancesJson___children___internal___mediaType',
-  childAppearancesJson___children___internal___owner = 'childAppearancesJson___children___internal___owner',
-  childAppearancesJson___children___internal___type = 'childAppearancesJson___children___internal___type',
-  childAppearancesJson___internal___content = 'childAppearancesJson___internal___content',
-  childAppearancesJson___internal___contentDigest = 'childAppearancesJson___internal___contentDigest',
-  childAppearancesJson___internal___description = 'childAppearancesJson___internal___description',
-  childAppearancesJson___internal___fieldOwners = 'childAppearancesJson___internal___fieldOwners',
-  childAppearancesJson___internal___ignoreType = 'childAppearancesJson___internal___ignoreType',
-  childAppearancesJson___internal___mediaType = 'childAppearancesJson___internal___mediaType',
-  childAppearancesJson___internal___owner = 'childAppearancesJson___internal___owner',
-  childAppearancesJson___internal___type = 'childAppearancesJson___internal___type',
-  childAppearancesJson___name = 'childAppearancesJson___name',
-  childAppearancesJson___date = 'childAppearancesJson___date',
-  childAppearancesJson___url = 'childAppearancesJson___url',
-  childAppearancesJson___slidesUrl = 'childAppearancesJson___slidesUrl',
-  childAppearancesJson___host = 'childAppearancesJson___host',
-  childAppearancesJson___location = 'childAppearancesJson___location',
   childMarkdownRemark___id = 'childMarkdownRemark___id',
   childMarkdownRemark___frontmatter___title = 'childMarkdownRemark___frontmatter___title',
   childMarkdownRemark___frontmatter___date = 'childMarkdownRemark___frontmatter___date',
@@ -989,7 +945,51 @@ export enum FileFieldsEnum {
   childMarkdownRemark___internal___ignoreType = 'childMarkdownRemark___internal___ignoreType',
   childMarkdownRemark___internal___mediaType = 'childMarkdownRemark___internal___mediaType',
   childMarkdownRemark___internal___owner = 'childMarkdownRemark___internal___owner',
-  childMarkdownRemark___internal___type = 'childMarkdownRemark___internal___type'
+  childMarkdownRemark___internal___type = 'childMarkdownRemark___internal___type',
+  childAppearancesJson___id = 'childAppearancesJson___id',
+  childAppearancesJson___parent___id = 'childAppearancesJson___parent___id',
+  childAppearancesJson___parent___parent___id = 'childAppearancesJson___parent___parent___id',
+  childAppearancesJson___parent___parent___children = 'childAppearancesJson___parent___parent___children',
+  childAppearancesJson___parent___children = 'childAppearancesJson___parent___children',
+  childAppearancesJson___parent___children___id = 'childAppearancesJson___parent___children___id',
+  childAppearancesJson___parent___children___children = 'childAppearancesJson___parent___children___children',
+  childAppearancesJson___parent___internal___content = 'childAppearancesJson___parent___internal___content',
+  childAppearancesJson___parent___internal___contentDigest = 'childAppearancesJson___parent___internal___contentDigest',
+  childAppearancesJson___parent___internal___description = 'childAppearancesJson___parent___internal___description',
+  childAppearancesJson___parent___internal___fieldOwners = 'childAppearancesJson___parent___internal___fieldOwners',
+  childAppearancesJson___parent___internal___ignoreType = 'childAppearancesJson___parent___internal___ignoreType',
+  childAppearancesJson___parent___internal___mediaType = 'childAppearancesJson___parent___internal___mediaType',
+  childAppearancesJson___parent___internal___owner = 'childAppearancesJson___parent___internal___owner',
+  childAppearancesJson___parent___internal___type = 'childAppearancesJson___parent___internal___type',
+  childAppearancesJson___children = 'childAppearancesJson___children',
+  childAppearancesJson___children___id = 'childAppearancesJson___children___id',
+  childAppearancesJson___children___parent___id = 'childAppearancesJson___children___parent___id',
+  childAppearancesJson___children___parent___children = 'childAppearancesJson___children___parent___children',
+  childAppearancesJson___children___children = 'childAppearancesJson___children___children',
+  childAppearancesJson___children___children___id = 'childAppearancesJson___children___children___id',
+  childAppearancesJson___children___children___children = 'childAppearancesJson___children___children___children',
+  childAppearancesJson___children___internal___content = 'childAppearancesJson___children___internal___content',
+  childAppearancesJson___children___internal___contentDigest = 'childAppearancesJson___children___internal___contentDigest',
+  childAppearancesJson___children___internal___description = 'childAppearancesJson___children___internal___description',
+  childAppearancesJson___children___internal___fieldOwners = 'childAppearancesJson___children___internal___fieldOwners',
+  childAppearancesJson___children___internal___ignoreType = 'childAppearancesJson___children___internal___ignoreType',
+  childAppearancesJson___children___internal___mediaType = 'childAppearancesJson___children___internal___mediaType',
+  childAppearancesJson___children___internal___owner = 'childAppearancesJson___children___internal___owner',
+  childAppearancesJson___children___internal___type = 'childAppearancesJson___children___internal___type',
+  childAppearancesJson___internal___content = 'childAppearancesJson___internal___content',
+  childAppearancesJson___internal___contentDigest = 'childAppearancesJson___internal___contentDigest',
+  childAppearancesJson___internal___description = 'childAppearancesJson___internal___description',
+  childAppearancesJson___internal___fieldOwners = 'childAppearancesJson___internal___fieldOwners',
+  childAppearancesJson___internal___ignoreType = 'childAppearancesJson___internal___ignoreType',
+  childAppearancesJson___internal___mediaType = 'childAppearancesJson___internal___mediaType',
+  childAppearancesJson___internal___owner = 'childAppearancesJson___internal___owner',
+  childAppearancesJson___internal___type = 'childAppearancesJson___internal___type',
+  childAppearancesJson___name = 'childAppearancesJson___name',
+  childAppearancesJson___date = 'childAppearancesJson___date',
+  childAppearancesJson___url = 'childAppearancesJson___url',
+  childAppearancesJson___slidesUrl = 'childAppearancesJson___slidesUrl',
+  childAppearancesJson___host = 'childAppearancesJson___host',
+  childAppearancesJson___location = 'childAppearancesJson___location'
 }
 
 export interface FileFilterInput {
@@ -1032,8 +1032,8 @@ export interface FileFilterInput {
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
-  childAppearancesJson?: Maybe<AppearancesJsonFilterInput>;
   childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>;
+  childAppearancesJson?: Maybe<AppearancesJsonFilterInput>;
 }
 
 export interface FileGroupConnection {
@@ -1766,14 +1766,6 @@ export enum MarkdownRemarkFieldsEnum {
   frontmatter___featuredImage___internal___mediaType = 'frontmatter___featuredImage___internal___mediaType',
   frontmatter___featuredImage___internal___owner = 'frontmatter___featuredImage___internal___owner',
   frontmatter___featuredImage___internal___type = 'frontmatter___featuredImage___internal___type',
-  frontmatter___featuredImage___childAppearancesJson___id = 'frontmatter___featuredImage___childAppearancesJson___id',
-  frontmatter___featuredImage___childAppearancesJson___children = 'frontmatter___featuredImage___childAppearancesJson___children',
-  frontmatter___featuredImage___childAppearancesJson___name = 'frontmatter___featuredImage___childAppearancesJson___name',
-  frontmatter___featuredImage___childAppearancesJson___date = 'frontmatter___featuredImage___childAppearancesJson___date',
-  frontmatter___featuredImage___childAppearancesJson___url = 'frontmatter___featuredImage___childAppearancesJson___url',
-  frontmatter___featuredImage___childAppearancesJson___slidesUrl = 'frontmatter___featuredImage___childAppearancesJson___slidesUrl',
-  frontmatter___featuredImage___childAppearancesJson___host = 'frontmatter___featuredImage___childAppearancesJson___host',
-  frontmatter___featuredImage___childAppearancesJson___location = 'frontmatter___featuredImage___childAppearancesJson___location',
   frontmatter___featuredImage___childMarkdownRemark___id = 'frontmatter___featuredImage___childMarkdownRemark___id',
   frontmatter___featuredImage___childMarkdownRemark___excerpt = 'frontmatter___featuredImage___childMarkdownRemark___excerpt',
   frontmatter___featuredImage___childMarkdownRemark___rawMarkdownBody = 'frontmatter___featuredImage___childMarkdownRemark___rawMarkdownBody',
@@ -1785,6 +1777,14 @@ export enum MarkdownRemarkFieldsEnum {
   frontmatter___featuredImage___childMarkdownRemark___timeToRead = 'frontmatter___featuredImage___childMarkdownRemark___timeToRead',
   frontmatter___featuredImage___childMarkdownRemark___tableOfContents = 'frontmatter___featuredImage___childMarkdownRemark___tableOfContents',
   frontmatter___featuredImage___childMarkdownRemark___children = 'frontmatter___featuredImage___childMarkdownRemark___children',
+  frontmatter___featuredImage___childAppearancesJson___id = 'frontmatter___featuredImage___childAppearancesJson___id',
+  frontmatter___featuredImage___childAppearancesJson___children = 'frontmatter___featuredImage___childAppearancesJson___children',
+  frontmatter___featuredImage___childAppearancesJson___name = 'frontmatter___featuredImage___childAppearancesJson___name',
+  frontmatter___featuredImage___childAppearancesJson___date = 'frontmatter___featuredImage___childAppearancesJson___date',
+  frontmatter___featuredImage___childAppearancesJson___url = 'frontmatter___featuredImage___childAppearancesJson___url',
+  frontmatter___featuredImage___childAppearancesJson___slidesUrl = 'frontmatter___featuredImage___childAppearancesJson___slidesUrl',
+  frontmatter___featuredImage___childAppearancesJson___host = 'frontmatter___featuredImage___childAppearancesJson___host',
+  frontmatter___featuredImage___childAppearancesJson___location = 'frontmatter___featuredImage___childAppearancesJson___location',
   frontmatter___featuredImageAlt = 'frontmatter___featuredImageAlt',
   frontmatter___template = 'frontmatter___template',
   frontmatter___tags = 'frontmatter___tags',
@@ -2096,8 +2096,8 @@ export interface QueryFileArgs {
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
-  childAppearancesJson?: Maybe<AppearancesJsonFilterInput>;
   childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>;
+  childAppearancesJson?: Maybe<AppearancesJsonFilterInput>;
 }
 
 
@@ -2914,28 +2914,18 @@ export enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___ignore = 'pluginCreator___pluginOptions___ignore',
   pluginCreator___pluginOptions___maxWidth = 'pluginCreator___pluginOptions___maxWidth',
   pluginCreator___pluginOptions___showCaptions = 'pluginCreator___pluginOptions___showCaptions',
-  pluginCreator___pluginOptions___pathPrefix = 'pluginCreator___pluginOptions___pathPrefix',
-  pluginCreator___pluginOptions___wrapperStyle = 'pluginCreator___pluginOptions___wrapperStyle',
-  pluginCreator___pluginOptions___backgroundColor = 'pluginCreator___pluginOptions___backgroundColor',
-  pluginCreator___pluginOptions___linkImagesToOriginal = 'pluginCreator___pluginOptions___linkImagesToOriginal',
-  pluginCreator___pluginOptions___markdownCaptions = 'pluginCreator___pluginOptions___markdownCaptions',
-  pluginCreator___pluginOptions___withWebp = 'pluginCreator___pluginOptions___withWebp',
-  pluginCreator___pluginOptions___tracedSVG = 'pluginCreator___pluginOptions___tracedSVG',
-  pluginCreator___pluginOptions___loading = 'pluginCreator___pluginOptions___loading',
-  pluginCreator___pluginOptions___disableBgImageOnAlpha = 'pluginCreator___pluginOptions___disableBgImageOnAlpha',
-  pluginCreator___pluginOptions___disableBgImage = 'pluginCreator___pluginOptions___disableBgImage',
   pluginCreator___pluginOptions___width = 'pluginCreator___pluginOptions___width',
   pluginCreator___pluginOptions___ratio = 'pluginCreator___pluginOptions___ratio',
   pluginCreator___pluginOptions___height = 'pluginCreator___pluginOptions___height',
   pluginCreator___pluginOptions___related = 'pluginCreator___pluginOptions___related',
   pluginCreator___pluginOptions___noIframeBorder = 'pluginCreator___pluginOptions___noIframeBorder',
   pluginCreator___pluginOptions___showInfo = 'pluginCreator___pluginOptions___showInfo',
+  pluginCreator___pluginOptions___wrapperStyle = 'pluginCreator___pluginOptions___wrapperStyle',
   pluginCreator___pluginOptions___offsetY = 'pluginCreator___pluginOptions___offsetY',
   pluginCreator___pluginOptions___className = 'pluginCreator___pluginOptions___className',
   pluginCreator___pluginOptions___aliases___sh = 'pluginCreator___pluginOptions___aliases___sh',
   pluginCreator___pluginOptions___aliases___js = 'pluginCreator___pluginOptions___aliases___js',
   pluginCreator___pluginOptions___showLineNumbers = 'pluginCreator___pluginOptions___showLineNumbers',
-  pluginCreator___pluginOptions___ignoreFileExtensions = 'pluginCreator___pluginOptions___ignoreFileExtensions',
   pluginCreator___pluginOptions___includePaths = 'pluginCreator___pluginOptions___includePaths',
   pluginCreator___pluginOptions___includePaths___regex = 'pluginCreator___pluginOptions___includePaths___regex',
   pluginCreator___pluginOptions___prependToBody = 'pluginCreator___pluginOptions___prependToBody',
@@ -3152,26 +3142,16 @@ export enum SitePluginFieldsEnum {
   pluginOptions___plugins___version = 'pluginOptions___plugins___version',
   pluginOptions___plugins___pluginOptions___maxWidth = 'pluginOptions___plugins___pluginOptions___maxWidth',
   pluginOptions___plugins___pluginOptions___showCaptions = 'pluginOptions___plugins___pluginOptions___showCaptions',
-  pluginOptions___plugins___pluginOptions___pathPrefix = 'pluginOptions___plugins___pluginOptions___pathPrefix',
-  pluginOptions___plugins___pluginOptions___wrapperStyle = 'pluginOptions___plugins___pluginOptions___wrapperStyle',
-  pluginOptions___plugins___pluginOptions___backgroundColor = 'pluginOptions___plugins___pluginOptions___backgroundColor',
-  pluginOptions___plugins___pluginOptions___linkImagesToOriginal = 'pluginOptions___plugins___pluginOptions___linkImagesToOriginal',
-  pluginOptions___plugins___pluginOptions___markdownCaptions = 'pluginOptions___plugins___pluginOptions___markdownCaptions',
-  pluginOptions___plugins___pluginOptions___withWebp = 'pluginOptions___plugins___pluginOptions___withWebp',
-  pluginOptions___plugins___pluginOptions___tracedSVG = 'pluginOptions___plugins___pluginOptions___tracedSVG',
-  pluginOptions___plugins___pluginOptions___loading = 'pluginOptions___plugins___pluginOptions___loading',
-  pluginOptions___plugins___pluginOptions___disableBgImageOnAlpha = 'pluginOptions___plugins___pluginOptions___disableBgImageOnAlpha',
-  pluginOptions___plugins___pluginOptions___disableBgImage = 'pluginOptions___plugins___pluginOptions___disableBgImage',
   pluginOptions___plugins___pluginOptions___width = 'pluginOptions___plugins___pluginOptions___width',
   pluginOptions___plugins___pluginOptions___ratio = 'pluginOptions___plugins___pluginOptions___ratio',
   pluginOptions___plugins___pluginOptions___height = 'pluginOptions___plugins___pluginOptions___height',
   pluginOptions___plugins___pluginOptions___related = 'pluginOptions___plugins___pluginOptions___related',
   pluginOptions___plugins___pluginOptions___noIframeBorder = 'pluginOptions___plugins___pluginOptions___noIframeBorder',
   pluginOptions___plugins___pluginOptions___showInfo = 'pluginOptions___plugins___pluginOptions___showInfo',
+  pluginOptions___plugins___pluginOptions___wrapperStyle = 'pluginOptions___plugins___pluginOptions___wrapperStyle',
   pluginOptions___plugins___pluginOptions___offsetY = 'pluginOptions___plugins___pluginOptions___offsetY',
   pluginOptions___plugins___pluginOptions___className = 'pluginOptions___plugins___pluginOptions___className',
   pluginOptions___plugins___pluginOptions___showLineNumbers = 'pluginOptions___plugins___pluginOptions___showLineNumbers',
-  pluginOptions___plugins___pluginOptions___ignoreFileExtensions = 'pluginOptions___plugins___pluginOptions___ignoreFileExtensions',
   pluginOptions___plugins___pluginOptions___includePaths = 'pluginOptions___plugins___pluginOptions___includePaths',
   pluginOptions___plugins___pluginOptions___prependToBody = 'pluginOptions___plugins___pluginOptions___prependToBody',
   pluginOptions___plugins___pluginOptions___color = 'pluginOptions___plugins___pluginOptions___color',
@@ -3188,28 +3168,18 @@ export enum SitePluginFieldsEnum {
   pluginOptions___ignore = 'pluginOptions___ignore',
   pluginOptions___maxWidth = 'pluginOptions___maxWidth',
   pluginOptions___showCaptions = 'pluginOptions___showCaptions',
-  pluginOptions___pathPrefix = 'pluginOptions___pathPrefix',
-  pluginOptions___wrapperStyle = 'pluginOptions___wrapperStyle',
-  pluginOptions___backgroundColor = 'pluginOptions___backgroundColor',
-  pluginOptions___linkImagesToOriginal = 'pluginOptions___linkImagesToOriginal',
-  pluginOptions___markdownCaptions = 'pluginOptions___markdownCaptions',
-  pluginOptions___withWebp = 'pluginOptions___withWebp',
-  pluginOptions___tracedSVG = 'pluginOptions___tracedSVG',
-  pluginOptions___loading = 'pluginOptions___loading',
-  pluginOptions___disableBgImageOnAlpha = 'pluginOptions___disableBgImageOnAlpha',
-  pluginOptions___disableBgImage = 'pluginOptions___disableBgImage',
   pluginOptions___width = 'pluginOptions___width',
   pluginOptions___ratio = 'pluginOptions___ratio',
   pluginOptions___height = 'pluginOptions___height',
   pluginOptions___related = 'pluginOptions___related',
   pluginOptions___noIframeBorder = 'pluginOptions___noIframeBorder',
   pluginOptions___showInfo = 'pluginOptions___showInfo',
+  pluginOptions___wrapperStyle = 'pluginOptions___wrapperStyle',
   pluginOptions___offsetY = 'pluginOptions___offsetY',
   pluginOptions___className = 'pluginOptions___className',
   pluginOptions___aliases___sh = 'pluginOptions___aliases___sh',
   pluginOptions___aliases___js = 'pluginOptions___aliases___js',
   pluginOptions___showLineNumbers = 'pluginOptions___showLineNumbers',
-  pluginOptions___ignoreFileExtensions = 'pluginOptions___ignoreFileExtensions',
   pluginOptions___includePaths = 'pluginOptions___includePaths',
   pluginOptions___includePaths___regex = 'pluginOptions___includePaths___regex',
   pluginOptions___prependToBody = 'pluginOptions___prependToBody',
@@ -3355,27 +3325,17 @@ export interface SitePluginPluginOptions {
   ignore?: Maybe<Array<Maybe<Scalars['String']>>>;
   maxWidth?: Maybe<Scalars['Int']>;
   showCaptions?: Maybe<Scalars['Boolean']>;
-  pathPrefix?: Maybe<Scalars['String']>;
-  wrapperStyle?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  linkImagesToOriginal?: Maybe<Scalars['Boolean']>;
-  markdownCaptions?: Maybe<Scalars['Boolean']>;
-  withWebp?: Maybe<Scalars['Boolean']>;
-  tracedSVG?: Maybe<Scalars['Boolean']>;
-  loading?: Maybe<Scalars['String']>;
-  disableBgImageOnAlpha?: Maybe<Scalars['Boolean']>;
-  disableBgImage?: Maybe<Scalars['Boolean']>;
   width?: Maybe<Scalars['Int']>;
   ratio?: Maybe<Scalars['Float']>;
   height?: Maybe<Scalars['Int']>;
   related?: Maybe<Scalars['Boolean']>;
   noIframeBorder?: Maybe<Scalars['Boolean']>;
   showInfo?: Maybe<Scalars['Boolean']>;
+  wrapperStyle?: Maybe<Scalars['String']>;
   offsetY?: Maybe<Scalars['Int']>;
   className?: Maybe<Scalars['String']>;
   aliases?: Maybe<SitePluginPluginOptionsAliases>;
   showLineNumbers?: Maybe<Scalars['Boolean']>;
-  ignoreFileExtensions?: Maybe<Array<Maybe<Scalars['String']>>>;
   includePaths?: Maybe<Array<Maybe<SitePluginPluginOptionsIncludePaths>>>;
   prependToBody?: Maybe<Scalars['Boolean']>;
   color?: Maybe<Scalars['String']>;
@@ -3430,27 +3390,17 @@ export interface SitePluginPluginOptionsFilterInput {
   ignore?: Maybe<StringQueryOperatorInput>;
   maxWidth?: Maybe<IntQueryOperatorInput>;
   showCaptions?: Maybe<BooleanQueryOperatorInput>;
-  pathPrefix?: Maybe<StringQueryOperatorInput>;
-  wrapperStyle?: Maybe<StringQueryOperatorInput>;
-  backgroundColor?: Maybe<StringQueryOperatorInput>;
-  linkImagesToOriginal?: Maybe<BooleanQueryOperatorInput>;
-  markdownCaptions?: Maybe<BooleanQueryOperatorInput>;
-  withWebp?: Maybe<BooleanQueryOperatorInput>;
-  tracedSVG?: Maybe<BooleanQueryOperatorInput>;
-  loading?: Maybe<StringQueryOperatorInput>;
-  disableBgImageOnAlpha?: Maybe<BooleanQueryOperatorInput>;
-  disableBgImage?: Maybe<BooleanQueryOperatorInput>;
   width?: Maybe<IntQueryOperatorInput>;
   ratio?: Maybe<FloatQueryOperatorInput>;
   height?: Maybe<IntQueryOperatorInput>;
   related?: Maybe<BooleanQueryOperatorInput>;
   noIframeBorder?: Maybe<BooleanQueryOperatorInput>;
   showInfo?: Maybe<BooleanQueryOperatorInput>;
+  wrapperStyle?: Maybe<StringQueryOperatorInput>;
   offsetY?: Maybe<IntQueryOperatorInput>;
   className?: Maybe<StringQueryOperatorInput>;
   aliases?: Maybe<SitePluginPluginOptionsAliasesFilterInput>;
   showLineNumbers?: Maybe<BooleanQueryOperatorInput>;
-  ignoreFileExtensions?: Maybe<StringQueryOperatorInput>;
   includePaths?: Maybe<SitePluginPluginOptionsIncludePathsFilterListInput>;
   prependToBody?: Maybe<BooleanQueryOperatorInput>;
   color?: Maybe<StringQueryOperatorInput>;
@@ -3523,27 +3473,17 @@ export interface SitePluginPluginOptionsPluginsFilterListInput {
 export interface SitePluginPluginOptionsPluginsPluginOptions {
   maxWidth?: Maybe<Scalars['Int']>;
   showCaptions?: Maybe<Scalars['Boolean']>;
-  pathPrefix?: Maybe<Scalars['String']>;
-  wrapperStyle?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  linkImagesToOriginal?: Maybe<Scalars['Boolean']>;
-  markdownCaptions?: Maybe<Scalars['Boolean']>;
-  withWebp?: Maybe<Scalars['Boolean']>;
-  tracedSVG?: Maybe<Scalars['Boolean']>;
-  loading?: Maybe<Scalars['String']>;
-  disableBgImageOnAlpha?: Maybe<Scalars['Boolean']>;
-  disableBgImage?: Maybe<Scalars['Boolean']>;
   width?: Maybe<Scalars['Int']>;
   ratio?: Maybe<Scalars['Float']>;
   height?: Maybe<Scalars['Int']>;
   related?: Maybe<Scalars['Boolean']>;
   noIframeBorder?: Maybe<Scalars['Boolean']>;
   showInfo?: Maybe<Scalars['Boolean']>;
+  wrapperStyle?: Maybe<Scalars['String']>;
   offsetY?: Maybe<Scalars['Int']>;
   className?: Maybe<Scalars['String']>;
   aliases?: Maybe<SitePluginPluginOptionsPluginsPluginOptionsAliases>;
   showLineNumbers?: Maybe<Scalars['Boolean']>;
-  ignoreFileExtensions?: Maybe<Array<Maybe<Scalars['String']>>>;
   includePaths?: Maybe<Array<Maybe<SitePluginPluginOptionsPluginsPluginOptionsIncludePaths>>>;
   prependToBody?: Maybe<Scalars['Boolean']>;
   color?: Maybe<Scalars['String']>;
@@ -3563,27 +3503,17 @@ export interface SitePluginPluginOptionsPluginsPluginOptionsAliasesFilterInput {
 export interface SitePluginPluginOptionsPluginsPluginOptionsFilterInput {
   maxWidth?: Maybe<IntQueryOperatorInput>;
   showCaptions?: Maybe<BooleanQueryOperatorInput>;
-  pathPrefix?: Maybe<StringQueryOperatorInput>;
-  wrapperStyle?: Maybe<StringQueryOperatorInput>;
-  backgroundColor?: Maybe<StringQueryOperatorInput>;
-  linkImagesToOriginal?: Maybe<BooleanQueryOperatorInput>;
-  markdownCaptions?: Maybe<BooleanQueryOperatorInput>;
-  withWebp?: Maybe<BooleanQueryOperatorInput>;
-  tracedSVG?: Maybe<BooleanQueryOperatorInput>;
-  loading?: Maybe<StringQueryOperatorInput>;
-  disableBgImageOnAlpha?: Maybe<BooleanQueryOperatorInput>;
-  disableBgImage?: Maybe<BooleanQueryOperatorInput>;
   width?: Maybe<IntQueryOperatorInput>;
   ratio?: Maybe<FloatQueryOperatorInput>;
   height?: Maybe<IntQueryOperatorInput>;
   related?: Maybe<BooleanQueryOperatorInput>;
   noIframeBorder?: Maybe<BooleanQueryOperatorInput>;
   showInfo?: Maybe<BooleanQueryOperatorInput>;
+  wrapperStyle?: Maybe<StringQueryOperatorInput>;
   offsetY?: Maybe<IntQueryOperatorInput>;
   className?: Maybe<StringQueryOperatorInput>;
   aliases?: Maybe<SitePluginPluginOptionsPluginsPluginOptionsAliasesFilterInput>;
   showLineNumbers?: Maybe<BooleanQueryOperatorInput>;
-  ignoreFileExtensions?: Maybe<StringQueryOperatorInput>;
   includePaths?: Maybe<SitePluginPluginOptionsPluginsPluginOptionsIncludePathsFilterListInput>;
   prependToBody?: Maybe<BooleanQueryOperatorInput>;
   color?: Maybe<StringQueryOperatorInput>;
