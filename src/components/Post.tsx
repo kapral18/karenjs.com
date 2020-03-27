@@ -45,7 +45,7 @@ const Post: FC<Props> = ({ node, siteUrl }) => {
                     id: node.id,
                     fields: node.fields,
                     frontmatter: node.frontmatter,
-                    excerpt: node.excerpt
+                    excerpt: node.excerpt,
                 }}
                 message="<Post />: props missing: node.id or node.fields or node.frontmatter or node.excerpt"
             />
@@ -91,7 +91,7 @@ const Post: FC<Props> = ({ node, siteUrl }) => {
                             {...disqusConfig({
                                 identifier: id,
                                 url: siteUrl + slug,
-                                title
+                                title,
                             })}
                         />
                     </span>

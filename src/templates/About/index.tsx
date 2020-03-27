@@ -9,7 +9,7 @@ import {
     Container as ContainerStyles,
     Header as HeaderStyles,
     Title as TitleStyles,
-    Contents as ContentsStyles
+    Contents as ContentsStyles,
 } from "../styles";
 
 interface Props {
@@ -47,7 +47,7 @@ const AboutTemplate: FC<Props> = ({ data }) => {
                 missing={{
                     title: frontmatter.title,
                     slug: fields.slug,
-                    readingTime: fields.readingTime
+                    readingTime: fields.readingTime,
                 }}
                 message={`<AboutTemplate />: props missing:
                                         data.markdownRemark.frontmatter.title or

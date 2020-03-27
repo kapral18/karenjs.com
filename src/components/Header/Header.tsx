@@ -12,7 +12,7 @@ import {
     LogoHeading,
     NavLinks,
     NavLink,
-    NavOutLink
+    NavOutLink,
 } from "./styles";
 
 const navigateRoot = (): Promise<void> => navigate("/");

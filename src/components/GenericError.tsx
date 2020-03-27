@@ -12,7 +12,7 @@ const ErrorStyles = styled.div({
 
     margin: "1em auto",
     width: "fit-content",
-    border: "1px solid red"
+    border: "1px solid red",
 });
 
 const GenericError: FC<Props> = ({ missing, message }) => {

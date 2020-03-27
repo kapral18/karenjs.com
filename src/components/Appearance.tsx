@@ -64,17 +64,13 @@ const Appearance: FC<Props> = ({
     date,
     host,
     location,
-    slidesUrl
+    slidesUrl,
 }) => {
     return (
         <AppearanceStyle>
             <Box>
                 <AppearanceOutLink href={url}>{name}</AppearanceOutLink>
-                <DateStyle>
-                    {moment(date)
-                        .format("DD MMM")
-                        .valueOf()}
-                </DateStyle>
+                <DateStyle>{moment(date).format("DD MMM").valueOf()}</DateStyle>
             </Box>
 
             <div>

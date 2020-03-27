@@ -13,11 +13,11 @@ import {
     Container as ContainerStyles,
     Header as HeaderStyles,
     Title as TitleStyles,
-    Contents as ContentsStyles
+    Contents as ContentsStyles,
 } from "../styles";
 import {
     BlogPostBySlugQueryQuery,
-    BlogPostBySlugQueryQueryVariables
+    BlogPostBySlugQueryQueryVariables,
 } from "../../types/generated";
 import { colors } from "../../services/settings";
 import PrevNext from "./components/PrevNext";
@@ -35,7 +35,7 @@ type DiscussConfig = (opts: {
 
 export const disqusConfig: DiscussConfig = ({ identifier, title, url }) => ({
     shortname: process.env.GATSBY_DISQUS_NAME,
-    config: { identifier, title, url }
+    config: { identifier, title, url },
 });
 
 const TableOfContents = styled(ContentsStyles)`
@@ -85,7 +85,7 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
         excerpt,
         html,
         fields,
-        tableOfContents
+        tableOfContents,
     } = data.markdownRemark;
     if (!frontmatter || !excerpt || !html || !fields) {
         return (
@@ -137,7 +137,7 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
                     title: frontmatter.title,
                     tags: frontmatter.tags,
                     featuredImage: frontmatter.featuredImage,
-                    featuredImageAlt: frontmatter.featuredImageAlt
+                    featuredImageAlt: frontmatter.featuredImageAlt,
                 }}
                 message={`<BlogPost />: props missing:
                                         data.markdownRemark.frontmatter.title or
@@ -150,7 +150,7 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
     }
 
     const {
-        fluid: featuredImageFluid
+        fluid: featuredImageFluid,
     } = frontmatter.featuredImage.childImageSharp;
 
     if (
@@ -221,7 +221,7 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
                                         {...disqusConfig({
                                             identifier: id,
                                             url: siteUrl + fields.slug,
-                                            title: frontmatter.title
+                                            title: frontmatter.title,
                                         })}
                                     />
                                 </Link>
@@ -239,7 +239,7 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
                     <TableOfContents
                         css="list-style-type: none"
                         dangerouslySetInnerHTML={{
-                            __html: tableOfContents
+                            __html: tableOfContents,
                         }}
                     />
                 ) : null}
@@ -253,7 +253,7 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
                                 title: frontmatter.title,
                                 excerpt,
                                 author,
-                                tags: frontmatter.tags
+                                tags: frontmatter.tags,
                             }}
                         />
                     )}
@@ -266,7 +266,7 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
                     {...disqusConfig({
                         identifier: id,
                         url: siteUrl + fields.slug,
-                        title: frontmatter.title
+                        title: frontmatter.title,
                     })}
                 />
                 <ScrollToTop />

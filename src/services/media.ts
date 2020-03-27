@@ -4,7 +4,7 @@ const sizes = {
     desktop: 992,
     tablet: 768,
     phone: 576,
-    mobile: 480
+    mobile: 480,
 };
 
 type SizeKeys = keyof typeof sizes;

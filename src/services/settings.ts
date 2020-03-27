@@ -4,5 +4,5 @@ export const colors = {
     link: "#e2777a",
     linkHover: "#e2777a",
     linkActive: darken("0.1", "#e2777a"),
-    linkFocus: "#e2777a"
+    linkFocus: "#e2777a",
 };

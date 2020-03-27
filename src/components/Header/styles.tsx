@@ -26,14 +26,14 @@ export const getHeaderLinkIcon = (
     "size" | "fill"
 > => styled(iconClass).attrs({
     size: "3.5rem",
-    fill: "white"
+    fill: "white",
 })`
     cursor: pointer;
     display: block;
 `;
 
 export const ReturnArrow = styled(getHeaderLinkIcon(ArrowBack)).attrs({
-    title: "Go back"
+    title: "Go back",
 })`
     ${media.tablet`
         display: none;
@@ -42,7 +42,7 @@ export const ReturnArrow = styled(getHeaderLinkIcon(ArrowBack)).attrs({
 
 export const HomeIcon = styled(getHeaderLinkIcon(Home)).attrs({
     title: "Return home",
-    size: "1.2rem"
+    size: "1.2rem",
 })`
     ${alignNavLink}
 

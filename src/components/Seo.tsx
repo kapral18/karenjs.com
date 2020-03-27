@@ -12,7 +12,7 @@ const baseTags = ["javascript", "react", "gatsby", "blog"];
 const defaultProps = {
     lang: "en",
     keywords: [] as MarkdownRemarkFrontmatter["tags"],
-    slug: "/"
+    slug: "/",
 };
 
 type Props = {
@@ -27,7 +27,7 @@ const Seo = ({
     slug,
     keywords,
     title,
-    article
+    article,
 }: Props): ReactElement | null => {
     const data = useStaticQuery<SeoQueryQuery>(seoQuery);
 
@@ -111,7 +111,7 @@ const Seo = ({
     return (
         <Helmet
             htmlAttributes={{
-                lang
+                lang,
             }}
             titleTemplate={`${siteMetadata.title} - %s`}
         >
@@ -182,7 +182,7 @@ const Seo = ({
                 />,
                 ...tags.map((tag) => (
                     <meta property="article:tag" key={tag} content={tag} />
-                ))
+                )),
             ]}
         </Helmet>
     );

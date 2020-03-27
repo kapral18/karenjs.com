@@ -12,7 +12,7 @@ import {
     LinkedinShareButton,
     LinkedinIcon,
     WhatsappShareButton,
-    WhatsappIcon
+    WhatsappIcon,
 } from "react-share";
 import styled from "styled-components";
 

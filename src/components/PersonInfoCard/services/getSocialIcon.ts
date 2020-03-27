@@ -19,7 +19,7 @@ const getSocialIcon = (
     "title"
 > => {
     return styled(iconClass).attrs({
-        title
+        title,
     })`
         vertical-align: top;
         stroke: white;
