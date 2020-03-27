@@ -106,7 +106,7 @@
     },
     "license": "MIT",
     "scripts": {
-        "build": "gatsby build",
+        "build": "gatsby build && cp -r .well-known public/",
         "develop": "gatsby develop",
         "start": "yarn develop",
         "types:test": "tsc --noEmit",

@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: karenjs.com
+Token: aaf4605a10cf3c5d86e99f1f375959436be933609bfe5ce1c464fee93ba8e339
