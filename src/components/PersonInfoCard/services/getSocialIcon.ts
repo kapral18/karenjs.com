@@ -24,8 +24,8 @@ const getSocialIcon = (
         vertical-align: top;
         stroke: white;
         transition: all 0.5s;
-        width: 1.5rem;
-        height: 1.5rem;
+        width: 1.8rem;
+        height: 1.8rem;
 
         path {
             fill: ${colors.body};

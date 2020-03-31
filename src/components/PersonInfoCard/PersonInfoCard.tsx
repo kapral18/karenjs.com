@@ -79,9 +79,9 @@ export default PersonInfoCard;
 
 const personInfoQuery = graphql`
     query PersonInfoQuery {
-        avatar: file(absolutePath: { regex: "/maface[.]png/" }) {
+        avatar: file(absolutePath: { regex: "/avatar_fresh[.]jpg/" }) {
             childImageSharp {
-                fixed(width: 56, height: 56) {
+                fixed(width: 120, height: 120) {
                     ...GatsbyImageSharpFixed
                 }
             }

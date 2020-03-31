@@ -5,6 +5,8 @@ template: "About"
 
 ### 👋 Hey, nice to meet you.
 
+![My Face HD](./avatar_fresh_full.jpg)
+
 I'm **Karen Grigoryan**.
 
 I am a **JavaScript Engineer** with **8+ years** of extensive hands-on experience in various small to massive projects.
@@ -31,7 +33,7 @@ I am occasionally active on:
 
 🖐 [StackOverflow](https://stackoverflow.com/users/2998898/karen-grigoryan)
 
-👨‍💻 [GitHub](https://github.com/kapral18)
+👨💻 [GitHub](https://github.com/kapral18)
 
 #### Contacts
 
