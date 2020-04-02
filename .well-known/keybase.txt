@@ -1,0 +1,57 @@
+
+==================================================================
+https://keybase.io/kapral18
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://www.karenjs.com
+  * I am kapral18 (https://keybase.io/kapral18) on keybase.
+  * I have a public key ASAAALEmjGN8hR2CehrdBy31fu3G1Xtr7zkkImnpwag-Uwo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120479fee8d5c3e47a38190eb8354a66b2da076ed04e0a18aff126739275ea348380a",
+      "host": "keybase.io",
+      "kid": "01200000b1268c637c851d827a1add072df57eedc6d57b6bef39242269e9c1a83e530a",
+      "uid": "cba63cc7bebc4b9780052ee59e5e2419",
+      "username": "kapral18"
+    },
+    "merkle_root": {
+      "ctime": 1585828829,
+      "hash": "4afe223147afd184f834e931c63fda1004868289bf0111574fc677dd744cbd7c8c1125802c804f677f914a6db1f742e3c79d04b56c25d2445f37ada0a15e8000",
+      "hash_meta": "6372d283ec295ef13517a2520743234a878a8748183b4c0a6299440a8779afd4",
+      "seqno": 15721697
+    },
+    "service": {
+      "entropy": "N68Iz8XrIqLcbj6j5JR1QSou",
+      "hostname": "www.karenjs.com",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "5.3.0"
+  },
+  "ctime": 1585828853,
+  "expire_in": 504576000,
+  "prev": "c1bccf1afc83dddbb89d9f9f495cd2efb5bdd4ea7d5982512f17a1e2fb52507d",
+  "seqno": 30,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgAACxJoxjfIUdgnoa3Qct9X7txtV7a+85JCJp6cGoPlMKp3BheWxvYWTESpcCHsQgwbzPGvyD3du4nZ+fSVzS77W91Op9WYJRLxeh4vtSUH3EIKICZDglv6v2y8/vTW370XJLUA2+dMiMrQFlwlTOkz4zAgHCo3NpZ8RAdNoGquFftgCDfvGnfO0PkRZh69sPNzymWV14hStH/8BBVCnl9F8+592YXAtPosFwwi7rMic4gUomh0mkMdRjBqhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIMbkWXeDqihCmYDXYzs3cID/tAW5ExeQYxpquAquXCVco3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/kapral18
+
+==================================================================
