@@ -903,7 +903,7 @@ const obj = {
     }
 }
 
-obj.method(); // undefined
+obj.method(); // 1
 
 const {method} = obj;
 method(); // undefined
