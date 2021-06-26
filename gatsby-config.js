@@ -17,8 +17,8 @@ module.exports = {
             Telegram: "https://t.me/kapral18",
             Github: "https://github.com/kapral18",
             Youtube: "https://www.youtube.com/kapral18",
-            DevTo: "https://dev.to/kapral18"
-        }
+            DevTo: "https://dev.to/kapral18",
+        },
     },
     plugins: [
         "gatsby-plugin-lodash",
@@ -32,17 +32,17 @@ module.exports = {
                 stages: ["develop"],
                 options: {
                     emitWarning: true,
-                    failOnError: false
-                }
-            }
+                    failOnError: false,
+                },
+            },
         },
         {
             resolve: "gatsby-plugin-react-svg",
             options: {
                 rule: {
-                    include: /\.inline\.svg$/
-                }
-            }
+                    include: /\.inline\.svg$/,
+                },
+            },
         },
         "gatsby-plugin-styled-components",
         "gatsby-plugin-react-helmet",
@@ -52,16 +52,16 @@ module.exports = {
             options: {
                 name: "pages",
                 path: `${__dirname}/src/pages/`,
-                ignore: ["**/.*"]
-            }
+                ignore: ["**/.*"],
+            },
         },
         {
             resolve: "gatsby-source-filesystem",
             options: {
                 name: "images",
                 path: `${__dirname}/src/images/`,
-                ignore: ["**/.*"]
-            }
+                ignore: ["**/.*"],
+            },
         },
         {
             resolve: "gatsby-transformer-remark",
@@ -72,8 +72,8 @@ module.exports = {
                         resolve: "gatsby-remark-images",
                         options: {
                             maxWidth: 590,
-                            showCaptions: true
-                        }
+                            showCaptions: true,
+                        },
                     },
                     {
                         resolve: "gatsby-remark-better-embed-video",
@@ -83,29 +83,29 @@ module.exports = {
                             height: 400, // Optional: Overrides optional.ratio.
                             related: false, // Optional: Will remove related videos from the end of an embedded YouTube video.
                             noIframeBorder: true, // Optional: Disable insertion of <style> border: 0.
-                            showInfo: false // Optional: Hides video title and player actions.
-                        }
+                            showInfo: false, // Optional: Hides video title and player actions.
+                        },
                     },
                     {
                         resolve: "gatsby-remark-responsive-iframe",
                         options: {
-                            wrapperStyle: "margin-bottom: 1.0725rem"
-                        }
+                            wrapperStyle: "margin-bottom: 1.0725rem",
+                        },
                     },
                     "gatsby-remark-external-links",
                     {
                         resolve: `gatsby-remark-autolink-headers`,
                         options: {
                             offsetY: 80,
-                            className: "linked-h-tag"
-                        }
+                            className: "linked-h-tag",
+                        },
                     },
                     {
                         resolve: "gatsby-remark-prismjs",
                         options: {
                             aliases: { sh: "bash", js: "javascript" },
-                            showLineNumbers: true
-                        }
+                            showLineNumbers: true,
+                        },
                     },
                     "gatsby-remark-copy-linked-files",
                     "gatsby-remark-smartypants",
@@ -116,21 +116,21 @@ module.exports = {
                             includePaths: [{ regex: "^/blog/" }],
                             height: 3,
                             prependToBody: false,
-                            color: "#e2777a"
-                        }
+                            color: "#e2777a",
+                        },
                     },
                     {
                         resolve: "gatsby-plugin-nprogress",
                         options: {
                             color: "#e2777a",
-                            showSpinner: false
-                        }
-                    }
-                ]
-            }
+                            showSpinner: false,
+                        },
+                    },
+                ],
+            },
         },
-        "gatsby-transformer-sharp",
         "gatsby-plugin-sharp",
+        "gatsby-transformer-sharp",
         "gatsby-plugin-catch-links",
         {
             resolve: "gatsby-plugin-google-analytics",
@@ -138,15 +138,15 @@ module.exports = {
                 trackingId: process.env.GOOGLE_ANALYTICS_ID || "",
                 head: false,
                 anonymize: true,
-                respectDNT: true
-            }
+                respectDNT: true,
+            },
         },
         {
             resolve: "gatsby-plugin-nprogress",
             options: {
                 color: "tomato",
-                showSpinner: false
-            }
+                showSpinner: false,
+            },
         },
         {
             resolve: `gatsby-plugin-feed`,
@@ -169,9 +169,9 @@ module.exports = {
                             return allMarkdownRemark.edges.map((edge) => {
                                 const siteUrl = site.siteMetadata.siteUrl;
                                 const postText = `
-                                    <div style="margin-top=55px; font-style: italic;">(This is an article posted to my blog at karenjs.com. You can read it online by <a href="${siteUrl +
-                                        edge.node.fields
-                                            .slug}">clicking here</a>.)</div>
+                                    <div style="margin-top=55px; font-style: italic;">(This is an article posted to my blog at karenjs.com. You can read it online by <a href="${
+                                        siteUrl + edge.node.fields.slug
+                                    }">clicking here</a>.)</div>
                                 `;
 
                                 let html = edge.node.html;
@@ -204,9 +204,9 @@ module.exports = {
                                         custom_elements: [
                                             {
                                                 "content:encoded":
-                                                    html + postText
-                                            }
-                                        ]
+                                                    html + postText,
+                                            },
+                                        ],
                                     }
                                 );
                             });
@@ -235,10 +235,10 @@ module.exports = {
                             }
                         `,
                         output: `/rss.xml`,
-                        title: "Karen Grigoryan's KarenJS Blog RSS Feed"
-                    }
-                ]
-            }
+                        title: "Karen Grigoryan's KarenJS Blog RSS Feed",
+                    },
+                ],
+            },
         },
         "gatsby-plugin-sitemap",
         "gatsby-plugin-robots-txt",
@@ -251,9 +251,9 @@ module.exports = {
                 background_color: "#fff",
                 theme_color: "#fff",
                 display: "minimal-ui",
-                icon: "src/images/logo.png"
-            }
+                icon: "src/images/logo.png",
+            },
         },
-        "gatsby-plugin-offline"
-    ]
+        "gatsby-plugin-offline",
+    ],
 };

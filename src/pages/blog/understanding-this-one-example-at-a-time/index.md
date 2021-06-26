@@ -41,7 +41,7 @@ const obj = {
     x: 1,
     method() {
         console.log(this.x);
-    }
+    },
 };
 
 obj.method(); // 1
@@ -226,22 +226,22 @@ const obj = {
     x: 1,
     method() {
         // iife1
-        (function() {
+        (function () {
             // iife2
-            (function() {
+            (function () {
                 // iife3
-                (function() {
+                (function () {
                     // iife4
-                    (function() {
+                    (function () {
                         // iife5
-                        (function() {
+                        (function () {
                             console.log(this.x);
                         })();
                     });
                 });
             });
         })();
-    }
+    },
 };
 
 obj.method(); // undefined
@@ -318,7 +318,7 @@ const obj = {
     x: 1,
     method: () => {
         console.log(this.x);
-    }
+    },
 };
 
 obj.method(); // undefined
@@ -386,7 +386,7 @@ const obj = {
                 })();
             })();
         })();
-    }
+    },
 };
 
 obj.method(); // 1
@@ -468,7 +468,7 @@ const obj = {
     x: 1,
     method() {
         console.log(this.x);
-    }
+    },
 };
 
 obj.method(); // 1
@@ -724,7 +724,7 @@ const obj = {
     method() {
         const boundFn = (() => console.log(this.x)).bind({ x: 2 });
         boundFn();
-    }
+    },
 };
 
 obj.method(); // 1
@@ -738,7 +738,7 @@ const obj = {
     method() {
         const boundFn = () => console.log(this.x);
         boundFn();
-    }
+    },
 };
 
 obj.method(); // 1
@@ -1059,7 +1059,7 @@ const obj = {
     x: 1,
     method() {
         eval("console.log(this.x)");
-    }
+    },
 };
 
 obj.method(); // logs: 1
@@ -1134,7 +1134,7 @@ const obj = {
              })();
              `
         )();
-    }
+    },
 };
 
 obj.method();
@@ -1172,7 +1172,7 @@ const obj = {
             })();
             `
         )();
-    }
+    },
 };
 obj.method();
 
@@ -1196,7 +1196,7 @@ const obj = {
 
             logThis();
         `);
-    }
+    },
 };
 
 obj.method(); // window
@@ -1227,7 +1227,7 @@ const obj = {
         eval(`
             logThis();
         `);
-    }
+    },
 };
 
 obj.method(); // undefined
@@ -1465,7 +1465,7 @@ Behold the ultimate boss.
 const x = 1;
 
 const obj1 = {
-    x: 2
+    x: 2,
 };
 
 class Obj2 {
@@ -1473,7 +1473,7 @@ class Obj2 {
         this.x = 3;
     }
     anotherMethod() {
-        const func = function() {
+        const func = function () {
             new Promise(
                 // iiafe2
                 (resolve, reject) => {
@@ -1483,7 +1483,7 @@ class Obj2 {
 
                     const innerObj = {
                         x: 2,
-                        testFunc
+                        testFunc,
                     };
 
                     innerObj.testFunc();
@@ -1642,7 +1642,7 @@ into something like this
 
 ```ts
 const module = { exports: {} };
-(function(exports, require, module, __filename, __dirname) {
+(function (exports, require, module, __filename, __dirname) {
     console.log(this); // {}
 }.call(
     module.exports,
@@ -1714,7 +1714,7 @@ So to sum it up:
 ```ts
 console.log(this); // {}, i.e. module.exports
 
-(function() {
+(function () {
     console.log(this); // Object [global] {
     //   global: [Circular],
     //   clearInterval: [Function: clearInterval],
@@ -1729,7 +1729,7 @@ console.log(this); // {}, i.e. module.exports
     // }
 })(); // <baseValue> is undefined, gets converted to global object
 
-(function() {
+(function () {
     "use strict";
     console.log(this); // undefined
 })(); // <baseValue> is undefined, doesn't get converted

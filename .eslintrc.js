@@ -7,16 +7,13 @@ module.exports = {
         "plugin:@typescript-eslint/recommended",
         "plugin:jsx-a11y/recommended",
         "plugin:prettier/recommended",
-        "prettier",
-        "prettier/react",
-        "prettier/@typescript-eslint"
     ],
     parserOptions: {
         sourceType: "module",
         ecmaFeatures: {
-            jsx: true
+            jsx: true,
         },
-        project: "./tsconfig.json"
+        project: "./tsconfig.json",
     },
     env: {
         browser: true,
@@ -24,7 +21,7 @@ module.exports = {
         commonjs: true,
         jest: true,
         // this automatically sets ecmaVersion in parserOptions to 11
-        es2020: true
+        es2020: true,
     },
     rules: {
         indent: "off",
@@ -36,21 +33,21 @@ module.exports = {
             "error",
             {
                 allowExpressions: true,
-                allowTypedFunctionExpressions: true
-            }
+                allowTypedFunctionExpressions: true,
+            },
         ],
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
         "react/prop-types": "off",
-        "prettier/prettier": "error"
+        "prettier/prettier": "error",
     },
     settings: {
         react: {
             pragma: "React",
-            version: "detect"
-        }
+            version: "detect",
+        },
     },
     globals: {
-        globalThis: "readable"
-    }
+        globalThis: "readable",
+    },
 };

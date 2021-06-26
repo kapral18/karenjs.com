@@ -18,6 +18,7 @@ import {
 import {
     BlogPostBySlugQueryQuery,
     BlogPostBySlugQueryQueryVariables,
+    MarkdownRemarkFrontmatter,
 } from "../../types/generated";
 import { colors } from "../../services/settings";
 import PrevNext from "./components/PrevNext";
@@ -79,14 +80,8 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
         );
     }
 
-    const {
-        id,
-        frontmatter,
-        excerpt,
-        html,
-        fields,
-        tableOfContents,
-    } = data.markdownRemark;
+    const { id, frontmatter, excerpt, html, fields, tableOfContents } =
+        data.markdownRemark;
     if (!frontmatter || !excerpt || !html || !fields) {
         return (
             <GenericError
@@ -149,9 +144,8 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
         );
     }
 
-    const {
-        fluid: featuredImageFluid,
-    } = frontmatter.featuredImage.childImageSharp;
+    const { fluid: featuredImageFluid } =
+        frontmatter.featuredImage.childImageSharp;
 
     if (
         !featuredImageFluid?.base64 ||
@@ -192,7 +186,7 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
                 slug={fields.slug}
                 description={excerpt}
                 keywords={frontmatter.tags}
-                article={frontmatter}
+                article={frontmatter as MarkdownRemarkFrontmatter}
             />
             <ContainerStyles>
                 <PrevNext prev={prev} next={next} />

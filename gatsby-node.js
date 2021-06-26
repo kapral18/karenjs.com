@@ -22,7 +22,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         fromPath: "/blog/this-mechanics-part-1/",
         toPath: "/blog/understanding-this-one-example-at-a-time/",
         isPermanent: true,
-        redirectInBrowser: true
+        redirectInBrowser: true,
     });
 
     const result = await graphql(`
@@ -84,8 +84,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             context: {
                 slug: node.fields.slug,
                 prev,
-                next
-            }
+                next,
+            },
         });
     });
 
@@ -94,8 +94,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             path: node.fields.slug,
             component: getTemplate(node.frontmatter.template),
             context: {
-                slug: node.fields.slug
-            }
+                slug: node.fields.slug,
+            },
         });
     });
 };
@@ -110,6 +110,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     actions.createNodeField({
         node,
         name: "slug",
-        value: slug
+        value: slug,
     });
 };

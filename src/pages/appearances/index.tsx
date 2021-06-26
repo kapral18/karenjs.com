@@ -32,9 +32,11 @@ const isYearNode = (
     year: string
 ): acc is ReactElement<Year>[] => {
     return !acc.find((item) =>
-        ((item as ReactElement<EdgeNode>).props.date as NonNullable<
-            EdgeNode["date"]
-        >).includes(year)
+        (
+            (item as ReactElement<EdgeNode>).props.date as NonNullable<
+                EdgeNode["date"]
+            >
+        ).includes(year)
     );
 };
 

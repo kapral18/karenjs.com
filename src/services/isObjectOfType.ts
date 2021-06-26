@@ -17,7 +17,7 @@ const isObjectOfType = <TargetType>(
     memberTestFunction: (inputObjectValue: unknown) => boolean
 ): inputObject is TargetType =>
     (isPlainObject(inputObject) || isArray(inputObject)) &&
-    Object.entries(inputObject as object).every(([, value]) =>
+    Object.entries(inputObject as Record<string, unknown>).every(([, value]) =>
         memberTestFunction(value)
     );
 export default isObjectOfType;

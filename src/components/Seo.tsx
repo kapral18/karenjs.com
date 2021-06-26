@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import Helmet from "react-helmet";
+import { Helmet } from "react-helmet";
 import urlJoin from "url-join";
 import { graphql, useStaticQuery } from "gatsby";
 import { SeoQueryQuery, MarkdownRemarkFrontmatter } from "../types/generated";
@@ -203,7 +203,7 @@ const seoQuery = graphql`
             }
         }
 
-        logo: file(absolutePath: { regex: "/logo\\\\.png/" }) {
+        logo: file(absolutePath: { regex: "/logo[.]png/" }) {
             internal {
                 mediaType
             }

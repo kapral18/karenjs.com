@@ -1,7 +1,9 @@
 schema: http://localhost:8000/___graphql
 documents:
-    - ./src/**/*.{ts,tsx}
-    - ./node_modules/gatsby*/!(node_modules)/**/*.js
+    - "node_modules/gatsby*/!(node_modules)/**/*.js"
+    - "!node_modules/gatsby-recipes/**/*.js"
+    - "!node_modules/gatsby-codemods/**/*.js"
+    - "src/**/*.{ts,tsx}"
 generates:
     ./src/types/generated/index.ts:
         config:

@@ -1,7 +1,7 @@
-import React, { FC, ComponentPropsWithoutRef } from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
 import { Link, graphql, useStaticQuery } from "gatsby";
-import Image from "gatsby-image";
+import Image, { FixedObject } from "gatsby-image";
 import { DeepNonNullable } from "utility-types";
 
 import { PersonInfoQueryQuery } from "../../types/generated";
@@ -52,12 +52,7 @@ const PersonInfoCard: FC = () => {
             {data.avatar?.childImageSharp?.fixed && (
                 <Link to="/about">
                     <Image
-                        fixed={
-                            data.avatar.childImageSharp
-                                .fixed as ComponentPropsWithoutRef<
-                                typeof Image
-                            >["fixed"]
-                        }
+                        fixed={data.avatar.childImageSharp.fixed as FixedObject}
                         title={author}
                         alt={author}
                     />

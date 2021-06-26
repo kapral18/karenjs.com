@@ -5,21 +5,21 @@ window.open = () => null;
 
 window.matchMedia =
     window.matchMedia ||
-    function() {
+    function () {
         return {
             matches: false,
-            addListener: function() {},
-            removeListener: function() {}
+            addListener: function () {},
+            removeListener: function () {},
         };
     };
 
-window.requestAnimationFrame = function(callback) {
+window.requestAnimationFrame = function (callback) {
     setTimeout(callback);
 };
 
 window.localStorage = {
-    getItem: function() {},
-    setItem: function() {}
+    getItem: function () {},
+    setItem: function () {},
 };
 
 Object.values = () => [];
