@@ -94,7 +94,7 @@ const Header: FC<Props> = ({ logoFixed }) => {
                     <NavLink to="/appearances" title="Appearances">
                         Appearances
                     </NavLink>
-                    <NavOutLink href="https://kapral18.github.io/cv">
+                    <NavOutLink href="https://kapral18.github.io/cv/senior-frontend-developer.pdf">
                         CV
                     </NavOutLink>
                 </NavLinks>
