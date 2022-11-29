@@ -42,7 +42,7 @@
         "fontsource-merriweather": "4.0.0",
         "fontsource-montserrat": "4.0.0",
         "fontsource-pt-sans": "4.0.0",
-        "gatsby": "3.8.0",
+        "gatsby": "4.14.0",
         "gatsby-cli": "3.8.0",
         "gatsby-codemods": "2.8.0",
         "gatsby-image": "3.8.0",
