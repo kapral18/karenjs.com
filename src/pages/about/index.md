@@ -9,7 +9,7 @@ template: "About"
 
 I'm **Karen Grigoryan**.
 
-I am a **JavaScript Engineer** with **8+ years** of extensive hands-on experience in various small to massive projects.
+I am a **JavaScript Engineer** with **11+ years** of extensive hands-on experience in various small to massive projects.
 
 Currently, I am focused on **React/TypeScript** stack.
 
